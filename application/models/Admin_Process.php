@@ -67,5 +67,12 @@
 			return $result->row();
 		}
 
+		public function match_name($name){
+			$result = NULL ;
+			$result = $this->db->query("select ifnull(count(*),0) cnt from md_department where name Like '$name'");
+			$result = $result->row();
+			return $result->cnt;
+		}
+
     }
 ?>

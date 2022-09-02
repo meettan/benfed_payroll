@@ -12,7 +12,7 @@
                                 <div class="row">
                                     <div class="col-6">
                                     <label for="exampleInputName1">Department Name:</label>
-                                    <input type="text" name="name" class="form-control" id="name" value="" />
+                                    <input type="text" name="name" class="form-control" id="name" value="" required/>
                                     </div>
                                 </div>
                             </div>

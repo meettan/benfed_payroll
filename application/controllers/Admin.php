@@ -125,15 +125,22 @@
 
 			if($_SERVER['REQUEST_METHOD'] == "POST") {
 				
-				$data_array = array (
-					"name"      =>  $this->input->post('name'),
-					"created_by"    =>  $this->session->userdata['loggedin']['user_id'],
-					"created_at"    =>  date('Y-m-d h:i:s')
-				);  
-	
-				$this->Admin_Process->f_insert('md_department', $data_array);
-				$this->session->set_flashdata('msg', 'Successfully added!');
-				$this->dept();
+				$cnt = $this->Admin_Process->match_name($this->input->post('name'));
+				if($cnt === 0){
+					$data_array = array (
+						"name"          =>  $this->input->post('name'),
+						"created_by"    =>  $this->session->userdata['loggedin']['user_id'],
+						"created_at"    =>  date('Y-m-d h:i:s')
+					);  
+		
+					$this->Admin_Process->f_insert('md_department', $data_array);
+					$this->session->set_flashdata('msg', 'Successfully added!');
+					$this->dept();
+				}else{
+					$this->session->set_flashdata('msg', 'Name Exist');
+					$this->dept();
+				}
+				
 			}
 			else {
 				$this->load->view('post_login/payroll_main');
