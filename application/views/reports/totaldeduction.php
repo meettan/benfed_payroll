@@ -82,7 +82,7 @@
               <div class="col-10"> 
                   <div style="text-align:center;">
                   <h3>THE WEST BENGAL STATE CO.OP.MARKETING FEDERATION LTD.</h3>
-                  <h4>HEAD OFFICE: SOUTHEND CONCLAVE, 3RD FLOOR, 1582 RAJDANGA MAIN ROAD, KOLKATA-700107.</h4>
+                  <h4>SOUTHEND CONCLAVE, 3RD FLOOR, 1582 RAJDANGA MAIN ROAD, KOLKATA-700107.</h4>
                   <h4>Total deduction of Regular employees From <?php echo date('d/m/Y',strtotime($this->input->post('from_date'))).' To '.date('d/m/Y',strtotime($this->input->post('to_date')));?> 
                   <!-- <h4>Pay Slip for <?php echo date($this->input->post('sal_month'),"d/m/Y").'-'.$this->input->post('year');?></h4> -->
                   <!-- <?php echo $year->param_value;?> -->

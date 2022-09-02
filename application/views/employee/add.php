@@ -123,8 +123,14 @@
                 <div class="row">
                     <div class="col-6">
                         <label for="exampleInputName1">Department:</label>
-                        <input type="text" class= "form-control" name = "department"
-                               id="department" value=""/>
+                            <select class="form-control" name="department" id="department">
+                            <option value="">Select Department</option>
+                            <?php foreach($dept as $dep) { ?>
+                                <option value="<?php echo $dep->id ?>" >
+                                        <?php echo $dep->name; ?>
+                                </option>
+                            <?php } ?>
+                            </select>
                     </div>
                     <div class="col-6">
                         <label for="exampleInputName1">Address:</label>

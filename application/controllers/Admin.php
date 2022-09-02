@@ -232,29 +232,17 @@
 					"ret_dt"           =>  $this->input->post('ret_dt'),
 					"phn_no"           =>  $this->input->post('phn_no'),
 					"email"            =>  $this->input->post('email'),
-					
 					"designation"      =>  $this->input->post('designation'),
-					
 					"department"       =>  $this->input->post('department'),
-
 					"emp_addr"         =>  $this->input->post('emp_addr'),
-
 					"pan_no"           =>  $this->input->post('pan_no'),
-
 					"aadhar_no"        =>  $this->input->post('aadhar'),
-
 					"bank_name"        =>  $this->input->post('bank_name'),
-
 					"bank_ac_no"       =>  $this->input->post('bank_ac_no'),
-
 					"pf_ac_no"         =>  $this->input->post('pf_ac_no'),
-
 					"uan"              =>  $this->input->post('uan'),
-
 					"basic_pay"        =>  $this->input->post('basic_pay'),
-
 					"created_by"       =>  $this->session->userdata['loggedin']['user_id'],
-
 					"created_dt"       =>  date('Y-m-d h:i:s')
 
 				);  
@@ -278,8 +266,9 @@
 		else {
 
 			//Category List 
-			$employee['category_dtls']    =   $this->Admin_Process->f_get_particulars("md_category", NULL, NULL, 0);
-			$employee['dist_dtls']    =   $this->Admin_Process->f_get_particulars("md_district", NULL, NULL, 0);
+			$employee['category_dtls'] =   $this->Admin_Process->f_get_particulars("md_category", NULL, NULL, 0);
+			$employee['dist_dtls']     =   $this->Admin_Process->f_get_particulars("md_district", NULL, NULL, 0);
+			$employee['dept']          =   $this->Admin_Process->f_get_particulars("md_department", NULL, NULL, 0);
 			$this->load->view('post_login/payroll_main');
 
 			$this->load->view("employee/add", $employee);
@@ -410,7 +399,7 @@
 	
 				//Employee list
 				$employee['employee_dtls']    =   $this->Admin_Process->f_get_particulars("md_employee", $select, $where, 1);
-	
+				$employee['dept']          =   $this->Admin_Process->f_get_particulars("md_department", NULL, NULL, 0);
 				$this->load->view('post_login/payroll_main');
 	
 				$this->load->view("employee/edit", $employee);
