@@ -59,11 +59,12 @@
 				       	   'user_id' => $user_id,
 			      	       'terminal_name'=>$pcaddr);
 			$this->db->insert('td_audit_trail',$value);
+			return $this->db->insert_id();
 		}
 
 		public function f_update_audit_trail($user_id){				//update audit trail when user logs out			
 			$time = date("Y-m-d h:i:s");
-			$sl_no= $this->session->userdata('sl_no')->sl_no;
+			$sl_no= $this->session->userdata('sl_no');
 			$value= array('logout'=>$time);
 			$this->db->where('sl_no',$sl_no);
 			$this->db->update('td_audit_trail',$value);
