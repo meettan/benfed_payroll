@@ -227,7 +227,7 @@
 				$count = $query->num_rows(); //counting result from query
 		
 				if ($count === 0) {
-				$this->Admin_Process->f_get_particulars('md_employee', $data_array);
+				//$this->Admin_Process->f_get_particulars('md_employee', $data_array);
 				$data_array = array (
 
 					"emp_code"         =>  $this->input->post('emp_code'),
@@ -253,9 +253,9 @@
 					"created_dt"       =>  date('Y-m-d h:i:s')
 
 				);  
-
+		
 				$this->Admin_Process->f_insert('md_employee', $data_array);
-				$this->session->set_flashdata('msg', 'Successfully added!');
+				$this->session->set_flashdata('success', 'Successfully added!');
 				redirect('stfemp');
 			   }else{
 				$this->session->set_flashdata('msg', 'Employee Code Already Exist');
