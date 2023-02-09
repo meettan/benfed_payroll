@@ -206,6 +206,13 @@
 		
 	}
 
+	public function check_empcode(){
+		$emp_code = trim($this->input->post("empcode"));
+		$query = $this->db->get_where('md_employee', array('emp_code' => $emp_code ));
+		$count = $query->num_rows(); //counting result from query
+		echo $count;
+	}
+
 	public function employee_add() {	//Add Employee		
 
 		if($_SERVER['REQUEST_METHOD'] == "POST") {

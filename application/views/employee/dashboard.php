@@ -10,6 +10,11 @@
                 <?php echo $this->session->flashdata('msg'); ?>
                </div>
                <?php } ?>
+               <?php if($this->session->flashdata('success')){ ?>
+                <div class="alert alert-success" role="alert">
+                <?php echo $this->session->flashdata('success'); ?>
+               </div>
+               <?php } ?>
                 </div>
                 <div class="col-2">
                     <div class="form-check">

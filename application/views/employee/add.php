@@ -8,11 +8,6 @@
                 <?php echo $this->session->flashdata('msg'); ?>
                </div>
                <?php } ?>
-               <?php if($this->session->flashdata('success')){ ?>
-                <div class="alert alert-success" role="alert">
-                <?php echo $this->session->flashdata('success'); ?>
-               </div>
-               <?php } ?>
              
               <div class="row">
                 <div class="col-12 grid-margin stretch-card">
@@ -232,5 +227,22 @@
         $('#ret_dt').val(rtday);
 
     })
+
+    $("#emp_code").change(function(){
+      $.ajax({url: "<?=base_url()?>index.php/Admin/check_empcode",
+         type: "POST",
+         data: {empcode : $(this).val()},
+         success: function(result){
+          if(result != 0){
+           
+            alert('Employee Code already exist');
+            $("#emp_code").val('');
+            document.getElementById('emp_code').style.borderColor = "red";
+          }else{
+            document.getElementById('emp_code').style.borderColor = "";
+          }
+        
+      }});
+});
     
 </script>
