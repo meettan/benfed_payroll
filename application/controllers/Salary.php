@@ -92,7 +92,7 @@
             $select = array ("emp_code", "emp_name", "emp_catg","emp_dist");
 
             //Employee List
-            $earning['emp_list']   =   $this->Salary_Process->f_get_particulars("md_employee", $select, array("emp_status" => 'A'), 0);
+            $earning['emp_list']   =   $this->Salary_Process->f_get_particulars("md_employee", $select, array("emp_status" => 'A','1 order by emp_name'=>NULL), 0);
 
             //Category List
             $earning['category']   =   $this->Salary_Process->f_get_particulars("md_category", NULL, NULL, 0);
@@ -320,7 +320,8 @@
             $where  = array (
 
 		    "emp_catg in (1,2)"  => null,
-		     "emp_status"	   => 'A'
+		     "emp_status"	   => 'A',
+             '1 order by emp_name'=>NULL
 
             );
 	
