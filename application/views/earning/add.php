@@ -1,4 +1,4 @@
-      <div class="main-panel">
+ <div class="main-panel">
         <div class="content-wrapper">
           <div class="card">
             <div class="card-body">
@@ -17,41 +17,24 @@
                                     </div>
                                     <div class="col-6">
                                     <label for="exampleInputName1">Name:</label>
-                                    <select
-                                class="form-control required"
-                                name="emp_code"
-                                id="emp_code">
-
-                        <option value="">Select Employee</option>
-
-                        <?php  
-
-                        if($emp_list) {
-
-                            foreach ($emp_list as $e_list) {
-
-                                foreach ($category  as $catg) {
-
-                                    if($e_list->emp_catg == $catg->category_code) {
-
-                        ?>        
-                                <option value="<?php echo $e_list->emp_code ?>"
-
-                                catg="<?php echo $catg->category_type; ?>"            
-                                ><?php echo $e_list->emp_name; ?></option>
-
-                        <?php
-                                    }
-
-                                }    
-
-                            }
-
-                        }
-
-                        ?>
-                            
-                        </select>
+                                    <select class="form-control" required name="emp_code" id="emp_code" >
+                                           <option value="">Select Employee</option>
+                                            <?php  
+                                            if($emp_list) {
+                                                foreach ($emp_list as $e_list) {
+                                                    foreach ($category  as $catg) {
+                                                        if($e_list->emp_catg == $catg->category_code) {
+                                            ?>        
+                                                    <option value="<?php echo $e_list->emp_code ?>"
+                                                    catg="<?php echo $catg->category_type; ?>"            
+                                                    ><?php echo $e_list->emp_name; ?></option>
+                                            <?php
+                                                        }
+                                                    }    
+                                                }
+                                            }
+                                            ?>
+                                    </select>
 
                                     </div>
                                 </div>

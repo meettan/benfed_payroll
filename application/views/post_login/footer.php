@@ -14,6 +14,7 @@
   <!-- container-scroller -->
 
   <!-- plugins:js -->
+ 
   <script src="<?=base_url()?>assets/js/vendor.bundle.base.js"></script>
   <!-- endinject -->
   <!-- Plugin js for this page -->
@@ -32,6 +33,13 @@
   <!-- Custom js for this page-->
   <script src="<?=base_url()?>assets/js/dashboard.js"></script>
   <script src="<?=base_url()?>assets/js/data-table.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+   <script src="<?=base_url()?>assets/js/select2.min.js"></script>
+  <script>
+  $("#emp_code").select2( {
+    placeholder: ""
+    } );
+  </script>
   <!-- End custom js for this page-->
 </body>
 </html>

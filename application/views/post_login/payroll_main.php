@@ -5,14 +5,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Benfed Payrol CRM</title>
+  <link rel="stylesheet" href="<?=base_url()?>assets/css/select2.min.css" />
   <link rel="stylesheet" href="<?=base_url()?>assets/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="<?=base_url()?>assets/css/vendor.bundle.base.css">
   <link rel="stylesheet" href="<?=base_url()?>assets/css/style.css">
   <link rel="stylesheet" href="<?=base_url()?>assets/css/dataTables.bootstrap4.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> -->
   <script src="https://code.jquery.com/jquery-latest.min.js"></script>
-   
   <link rel="shortcut icon" href="<?=base_url()?>assets/images/favicon.png" />
 
 </head>
