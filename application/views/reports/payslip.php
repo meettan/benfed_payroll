@@ -6,7 +6,7 @@
         WindowObject.document.open();
         WindowObject.document.writeln('<!DOCTYPE html>');
         WindowObject.document.writeln('<html><head><title></title><style type="text/css">');
-        WindowObject.document.writeln('@media print { .center { text-align: center;} .underline { text-decoration: underline; } p { display:inline; } .left { margin-left: 315px; text-align="left" display: inline; } .right { margin-right: 375px; display: inline; } td.left_algn { text-align: left; } td.right_algn { text-align: right; } .t2 td, th { border: 1px solid black; } td.hight { hight: 15px; } table.width { width: 100%; } table.noborder { border: 0px solid black; } th.noborder { border: 0px solid black; } .border { border: 1px solid black; } .bottom { position: absolute;; bottom: 5px; width: 100%; } } </style>');
+        WindowObject.document.writeln('@media print {.center { text-align: center;} .underline { text-decoration: underline; } p { display:inline; } .left { margin-left: 315px; text-align="left" display: inline; } .right { margin-right: 375px; display: inline; } td.left_algn { text-align: left; } td.right_algn { text-align: right; } .t2 td, th { border: 1px solid black; } td.hight { hight: 15px; } table.width { width: 100%; } table.noborder { border: 0px solid black; } th.noborder { border: 0px solid black; } .border { border: 1px solid black; } .bottom { position: absolute;; bottom: 5px; width: 100%; } } </style>');
         WindowObject.document.writeln('</head><body onload="window.print()">');
         WindowObject.document.writeln(divToPrint.innerHTML);
         WindowObject.document.writeln('</body></html>');
@@ -124,16 +124,12 @@
                             <td>Pan No</td>
                             <td class="left_algn">:</td>
                             <td><?php echo $payslip_dtls->pan_no; ?></td>
-
                         </tr>
-                      
                       </tbody>
                     </table>
                     <br>
-                    <table class="width" cellpadding="6" style="width:100%; ">
-
+                    <table class="width" cellpadding="6" style="width:100%;">
                         <thead>
-
                             <tr class="t2">
                                 <th width="30%">Earnings</th>
                                 <th width="20%">Amount</th>
@@ -293,9 +289,7 @@
                                 <td class="right_algn"></td>
                                 <td class="left_algn">Net Amount</td>
                                 <td class="right_algn"><?php echo $tot_er - $tot_dd; ?></td>
-
                             </tr>
-
                         </tbody>
 
                     </table>
@@ -307,7 +301,11 @@
                 </div>
               </div>
             </div>
-            <input type='button' id='btn' value='Print' onclick='printDiv();'>
+            <div class="row">
+            <div class="col-md-12" style="text-align: center;"><button type="button" class='btn btn-primary' id='btn' value='Print' onclick='printDiv();'>Print</button></div>
+           
+            </div>
+            </div>
           </div>
           
         </div>
