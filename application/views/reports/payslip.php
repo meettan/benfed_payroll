@@ -54,7 +54,7 @@
             // }
 ?>  
       <div class="main-panel">
-        <div class="content-wrapper">
+        <div class="content-wrapper"> 
           <div class="card" >
             <div class="card-body" id='divToPrint'>
             <div class="row">
@@ -63,7 +63,7 @@
                 <div style="text-align:center;">
                 <h3>WEST BENGAL STATE CONSUMERS' CO-OPERATIVE FEDERATION LTD.</h3>
                 <h4>Southend Conclave, 3rd Floor, 1582, Rajdanga Main Rd, Kasba, Kolkata-700073</h4>
-                <h4>Pay Slip for <?php echo MONTHS[$this->input->post('sal_month')].'-'.$this->input->post('year');?></h4>
+                <h4>Pay Slip for <?php echo $months->month_name.'-'.$this->input->post('year');?> </h4>
                 <h4><?php echo $payslip_dtls->emp_name; ?></h4>
                 </div> 
             </div>    

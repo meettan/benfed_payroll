@@ -4,7 +4,9 @@
 
 		public function __construct(){
 			parent::__construct();
-
+            if(!isset($this->session->userdata('loggedin')['user_id'])){
+                redirect('Payroll_Login/login');
+            }
 			$this->load->model('Login_Process');
             $this->load->model('Report_Process');
             $this->load->model('Admin_Process');
@@ -221,8 +223,7 @@ public function salarycatgreport() {
 
             $payslip['payslip_dtls']    =   $this->Report_Process->f_get_emp_dtls($empno, $sal_month,$sal_yr);
             // $payslip['payslip_dtls']=   $this->Report_Process->f_get_particulars("td_pay_slip", NULL, $where, 1);
-            // echo $this->db->last_query();
-            // die();
+            $payslip['months']    =   $this->Report_Process->f_get_particulars("md_month", NULL, array("id" =>  $this->input->post('sal_month')), 1);
 
             $this->load->view('post_login/payroll_main');
 
