@@ -243,7 +243,7 @@ public function salarycatgreport() {
             //Employee List
             unset($select);
             $select = array ("emp_code", "emp_name");
-            $payslip['emp_list']   =   $this->Report_Process->f_get_particulars("md_employee", $select, array("emp_catg IN (1,2,3)" => NULL), 0);
+            $payslip['emp_list']   =   $this->Report_Process->f_get_particulars("md_employee", $select, array("emp_catg IN (1,2,3)" => NULL,'order by emp_name'), 0);
             $this->load->view('post_login/payroll_main');
             $this->load->view("reports/payslip", $payslip);
             $this->load->view('post_login/footer');
