@@ -40,6 +40,11 @@
     placeholder: ""
     } );
   </script>
+   <script>
+  $("#emp_cd").select2( {
+    placeholder: "Select Employee"
+    } );
+  </script>
   <!-- End custom js for this page-->
 </body>
 </html>
