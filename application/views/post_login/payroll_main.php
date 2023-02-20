@@ -162,7 +162,7 @@
                 <span class="menu-title">Dashboard</span>
               </a>
             </li>
-            <?php if($this->session->userdata['loggedin']['user_type']="A" ){?>  
+            <?php if($this->session->userdata['loggedin']['user_type']=="A" ){?>  
             <li class="nav-item">
               <a href="#" class="nav-link">
                 <!-- <i class="mdi mdi-file-document-box-outline menu-icon"></i> -->
@@ -178,6 +178,7 @@
               </div>
             </li>
             <?php } ?>
+            <?php if( $this->session->userdata['loggedin']['user_type']== "A"){  ?> 
             <li class="nav-item">
               <a href="#" class="nav-link">
                 <!-- <i class="mdi mdi-file-document-box-outline menu-icon"></i> -->
@@ -186,15 +187,16 @@
               <div class="submenu">
                 <ul class="submenu-item">
                 
-                  <?php if( $this->session->userdata['loggedin']['user_type']=="A"){?> 
+                  
                   <li class="nav-item"><a href="<?php echo site_url("slrydtl");?>">Earnings</a></li>
                   <li class="nav-item"><a href="<?php echo site_url("slryded");?>">Deductions</a></li>
                   <li class="nav-item"><a href="<?php echo site_url("genspl");?>">Generate Payslip</a></li>
                   <li class="nav-item"><a href="<?php echo site_url("payapprv");?>">Approve</a> </li>
-                  <?php } ?>
+                  
                 </ul>
               </div>
             </li>
+            <?php } ?>
            
             <li class="nav-item">
               <a href="#" class="nav-link">
