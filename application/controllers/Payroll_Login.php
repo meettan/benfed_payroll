@@ -43,8 +43,7 @@
 			                //  Setting Id OF logged Person in System
 							$id = $this->Login_Process->f_insert_audit_trail($user_id);
 							$this->session->set_userdata('sl_no',$id);
-							//  End
-					
+							
 							redirect('Payroll_Login/main');
 						}
 						else{

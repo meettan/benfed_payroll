@@ -4,6 +4,11 @@
 
 		public function __construct(){
 			parent::__construct();
+            if(!isset($this->session->userdata('loggedin')['user_id'])){
+            
+                redirect('Payroll_Login/login');
+
+            }
 
 			$this->load->model('Login_Process');
 
