@@ -73,7 +73,7 @@
                 <div style="text-align:center;">
                     <h3>THE WEST BENGAL STATE CO.OP.MARKETING FEDERATION LTD.</h3>
                     <h4>Southend Conclave, 3rd Floor, 1582, Rajdanga Main Rd, Kasba, Kolkata-700073</h4>
-                    <h4>Salary summary report for the month of <?php echo MONTHS[$this->input->post('sal_month')].' '.$this->input->post('year'); ?></h4>
+                    <h4>Salary summary report for the month of <?php echo $months->month_name.' '.$this->input->post('year'); ?></h4>
                 </div>
             </div>    
             </div>
