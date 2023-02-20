@@ -139,7 +139,7 @@ public function salarycatgreport() {
             );
 
             $statement['statement'] =   $this->Report_Process->f_get_particulars("md_employee m, td_pay_slip t", $select, $where, 0);
-            $payslip['months']    =   $this->Report_Process->f_get_particulars("md_month", NULL, array("id" =>  $this->input->post('sal_month')), 1);
+            $statement['months']    =   $this->Report_Process->f_get_particulars("md_month", NULL, array("id" =>  $this->input->post('sal_month')), 1);
             $this->load->view('post_login/payroll_main');
 
             $this->load->view("reports/statement", $statement);
