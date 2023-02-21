@@ -4,7 +4,7 @@
             <div class="card-body">
             <div class="row" style="margin-bottom:10px">
                 <div class="col-10"> <h3>Earnings</h3></div>
-                <div class="col-2"> <a href="<?php echo site_url("slryad");?>" class="btn btn-primary" style="width: 100px;">Add</a></div>
+                <div class="col-2 addBtnSec"> <a href="<?php echo site_url("slryad");?>" class="btn btn-primary">Add</a></div>
                 <span class="confirm-div" style="float:right; color:green;"></span>
             </div>    
               <div class="row">

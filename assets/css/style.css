@@ -9015,7 +9015,7 @@ template {
 
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
-  margin-bottom: 0.5rem;
+  margin-bottom: 16px;
   font-weight: 500;
   line-height: 1.2;
 }
@@ -9227,7 +9227,7 @@ pre code {
 
 @media (min-width: 1200px) {
   .container {
-    max-width: 1140px;
+    max-width: 1340px;
   }
 }
 
@@ -26126,8 +26126,13 @@ body.avgrund-active {
 }
 
 .dataTables_wrapper select {
-  padding: .4rem;
-  outline-offset: -2px;
+  /* padding: .4rem;
+  outline-offset: -2px; */
+
+    padding: 10px 14px;
+    outline-offset: -2px;
+    max-width: 66px;
+    width: 100% !important;
 }
 
 .dataTables_wrapper .dataTables_length select {
@@ -28314,7 +28319,7 @@ div.tagsinput span.tag a {
 
 @media (min-width: 1200px) {
   .content-wrapper {
-    max-width: 1140px;
+    max-width: 1340px;
   }
 }
 
@@ -29070,3 +29075,54 @@ div.tagsinput span.tag a {
 
 
 /*# sourceMappingURL=../maps/horizontal-layout/style.css.map */
+.form-control, .asColorPicker-input, .dataTables_wrapper select, .jsgrid .jsgrid-table .jsgrid-filter-row input[type="text"], 
+.jsgrid .jsgrid-table .jsgrid-filter-row select, .jsgrid .jsgrid-table .jsgrid-filter-row input[type="number"], .select2-container--default 
+.select2-selection--single, .select2-container--default .select2-selection--single .select2-search__field, .typeahead, .tt-query, .tt-hint {
+border: 1px solid #b7b5b5;}
+
+  select.form-control, select.asColorPicker-input, .dataTables_wrapper select, .jsgrid .jsgrid-table .jsgrid-filter-row select, 
+  .select2-container--default select.select2-selection--single, .select2-container--default .select2-selection--single select.select2-search__field, 
+  select.typeahead, select.tt-query, select.tt-hint{
+border: 1px solid #b7b5b5;
+  }
+
+.table_responsive_print{padding-top: 20px;}
+
+table.dataTable tbody tr td{font-family: arial; font-size:14px;} table.dataTable tbody tr td{border-top:1px solid #ccc; padding:10px;}
+table.dataTable tbody tr:last-child td{border-bottom:1px solid #ccc; padding:10px;}
+
+
+table.tablePrint{margin-bottom:20px;} table.tablePrint thead tr th{background:#323d62; color:#fff;}
+table.tablePrint thead tr th{font-family: arial; font-size:15px; border:none;} table.tablePrint thead tr th{border:none; padding:10px;text-align: left; }
+table.tablePrint thead th:last-child td{padding:10px; border:none;}
+
+table.tablePrint tbody tr td{font-family: arial; font-size:15px;} table.tablePrint tbody tr td{border:none; border:1px solid #ccc; padding:6px;text-align: left; }
+table.tablePrint tbody tr:last-child td{border:none; border:1px solid #ccc; padding:6px;}
+
+ul.header_top{list-style-type: none;}
+ul.header_top li{float: left; padding-right: 20px;}
+ul.header_top li:last-child{padding-right: 0;}
+
+.nav_profile_name_custom i{margin-right:0 !important;}
+
+.logoutLastNav{font-size: 15px !important;}
+.logoutLastNav i{margin-right: .2rem !important; font-size: 18px;}
+
+a .fa-edit{color: #237bd9 !important; font-size: 19px;}
+
+.fa-trash-o{color: #bd2130 !important; font-size: 19px !important;}
+.fa-trash{color: #bd2130 !important; font-size: 19px !important;}
+
+.addBtnSec{text-align: right;}
+
+.btn-info{background:#405189; border:#405189;}
+
+.topLogo img {background: #FFF; padding: 6px; height: 50px !important; overflow: hidden; border-radius: 10px;}
+
+
+ul.listCustom{list-style-type: none; margin: 0; padding: 0;}
+ul.listCustom li{margin-bottom: 10px;}
+ul.listCustom li::before{content:"\F052";font-family:"Material Design Icons"; margin-right: 7px; color: #00c689;}
+ul.listCustom li a{color: #033303;}
+
+

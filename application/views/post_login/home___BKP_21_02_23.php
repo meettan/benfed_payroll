@@ -32,8 +32,8 @@
                     <div class="card-body">
                       <p class="card-title">Active Employee</p>
                       <div class="d-flex flex-wrap align-items-baseline">
-                        <h2 class="mr-3">123</h2>
-                        <!-- <i class="mdi mdi-arrow-up mr-1 text-success"></i><span><p class="mb-0 text-success font-weight-medium">+9.12%</p></span>                           -->
+                        <h2 class="mr-3">50.36%</h2>
+                        <i class="mdi mdi-arrow-up mr-1 text-success"></i><span><p class="mb-0 text-success font-weight-medium">+9.12%</p></span>                          
                       </div>
                       <p class="mb-0 text-muted">Total Employee world wide</p>
                     </div>
@@ -45,8 +45,8 @@
                 <div class="col-md-12 stretch-card">
                   <div class="card">
                     <div class="card-body">
-                      <p class="card-title">Earning & Deduction</p>
-                      <p class="mb-2 text-success">Salary paid upto <strong>2023</strong></p>
+                      <p class="card-title">Downloads</p>
+                      <p class="text-muted mb-2">Watching ice melt. This is fun. Only you could make those words cute.</p>
                       <div class="row mt-4">
                         <div class="col-md-6 stretch-card">
                           <div class="row d-flex align-items-center">
@@ -54,7 +54,7 @@
                               <div id="offlineProgress"></div>                              
                             </div>
                             <div class="col-6 pl-0">
-                              <p class="mb-0">Earning</p>
+                              <p class="mb-0">Offline</p>
                               <h2>45,324</h2>
                             </div>
                           </div>
@@ -65,7 +65,7 @@
                               <div id="onlineProgress"></div>                              
                             </div>
                             <div class="col-6 pl-0">
-                              <p class="mb-0">Deduction</p>
+                              <p class="mb-0">Online</p>
                               <h2>12,236</h2>
                             </div>
                           </div>
@@ -123,70 +123,9 @@
                             <p class="mb-0">0.00</p>
                             <!-- <p class="text-muted mb-0">View on map</p> -->
                           </td>
-                        </tr>
-
-                        <tr>
-                          <td>2</td>
-                          <td>
-                            <p class="mb-0">10001.00</p>
-                            <!-- <p class="text-muted mb-0">Connecticut</p> -->
-                          </td>
-                          <td>
-                            <p class="mb-0">15000.00</p>
-                            <!-- <p class="text-muted mb-0">9:30 am</p> -->
-                          </td>
-                          <td>
-                            <p class="mb-0">110.00</p>
-                            <!-- <p class="text-muted mb-0">View on map</p> -->
-                          </td>
-                        </tr>
-
-                        <tr>
-                          <td>3</td>
-                          <td>
-                            <p class="mb-0">15001.00</p>
-                            <!-- <p class="text-muted mb-0">Connecticut</p> -->
-                          </td>
-                          <td>
-                            <p class="mb-0">25000.00</p>
-                            <!-- <p class="text-muted mb-0">9:30 am</p> -->
-                          </td>
-                          <td>
-                            <p class="mb-0">130.00</p>
-                            <!-- <p class="text-muted mb-0">View on map</p> -->
-                          </td>
-                        </tr>
-
-                        <tr>
-                          <td>4</td>
-                          <td>
-                            <p class="mb-0">25001.00</p>
-                            <!-- <p class="text-muted mb-0">Connecticut</p> -->
-                          </td>
-                          <td>
-                            <p class="mb-0">40000.00</p>
-                            <!-- <p class="text-muted mb-0">9:30 am</p> -->
-                          </td>
-                          <td>
-                            <p class="mb-0">150.00</p>
-                            <!-- <p class="text-muted mb-0">View on map</p> -->
-                          </td>
-                        </tr>
-
-                          <tr>
-                          <td>5</td>
-                          <td>
-                            <p class="mb-0">40001.00</p>
-                            <!-- <p class="text-muted mb-0">Connecticut</p> -->
-                          </td>
-                          <td>
-                            <p class="mb-0">99999999.00</p>
-                            <!-- <p class="text-muted mb-0">9:30 am</p> -->
-                          </td>
-                          <td>
-                            <p class="mb-0">200.00</p>
-                            <!-- <p class="text-muted mb-0">View on map</p> -->
-                          </td>
+                          <!-- <td class="pr-0">
+                            <i class="mdi mdi-dots-horizontal icon-sm cursor-pointer"></i>
+                          </td> -->
                         </tr>
                        
                       </tbody>
@@ -198,7 +137,7 @@
               </div>
             </div>
           </div>
-          <!-- <div class="row">
+          <div class="row">
             <div class="col-md-3 grid-margin stretch-card">
               <div class="card border-0 border-radius-2 bg-success">
                 <div class="card-body">
@@ -454,6 +393,6 @@
 								</div>
 							</div>
             </div>
-          </div> -->
+          </div>
         </div>
         <!-- content-wrapper ends -->

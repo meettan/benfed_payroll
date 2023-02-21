@@ -14,7 +14,7 @@
 
             <h3>
             
-                <small><a href="<?php echo site_url("payroll/stopsalary/add");?>" class="btn btn-primary" style="width: 100px;">Add</a></small>
+                <small><a href="<?php echo site_url("payroll/stopsalary/add");?>" class="btn btn-primary">Add</a></small>
                 <span class="confirm-div" style="float:right; color:green;"></span>
 
             </h3>

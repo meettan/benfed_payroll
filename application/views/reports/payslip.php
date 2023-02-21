@@ -6,7 +6,24 @@
         WindowObject.document.open();
         WindowObject.document.writeln('<!DOCTYPE html>');
         WindowObject.document.writeln('<html><head><title></title><style type="text/css">');
-        WindowObject.document.writeln('@media print {.center { text-align: center;} .underline { text-decoration: underline; } p { display:inline; } .left { margin-left: 315px; text-align="left" display: inline; } .right { margin-right: 375px; display: inline; } td.left_algn { text-align: left; } td.right_algn { text-align: right; } .t2 td, th { border: 1px solid black; } td.hight { hight: 15px; } table.width { width: 100%; } table.noborder { border: 0px solid black; } th.noborder { border: 0px solid black; } .border { border: 1px solid black; } .bottom { position: absolute;; bottom: 5px; width: 100%; } } </style>');
+        WindowObject.document.writeln('@media print {.center { text-align: center;} .underline { text-decoration: underline; } '
+        +'p { display:inline; } .left { margin-left: 315px; text-align="left" display: inline; } '
+        +'.right { margin-right: 375px; display: inline; } td.left_algn { text-align: left; } td.right_algn { text-align: right; } '
+        +'.t2 td, th { border: 1px solid black; } td.hight { hight: 15px; } table.width { width: 100%; } table.noborder { border: 0px solid black; } '
+        +'th.noborder { border: 0px solid black; } .border { border: 1px solid black; } .bottom { position: absolute;; bottom: 5px; width: 100%; }'
+    +'.col-1{max-width:100%; float:none;text-align: left; text-align: center;} .col-10{max-width:100%; float:none;}'
++'.printHead h3{font-size:18px; margin: 0 0 10px 0; padding: 0; line-height: 19px;} .printHead h4{font-size:16px; margin: 0 0 10px 0; padding: 0; line-height: 17px;}'
++'table.dataTable tbody tr td{font-family: arial; font-size:15px;} table.dataTable tbody tr td{border-top:1px solid #ccc; padding:6px;}'
++'table.dataTable tbody tr:last-child td{border-bottom:1px solid #ccc; padding:6px;}'
+
++'table.tablePrint{margin-bottom:20px;} table.tablePrint thead tr th{background:#000; color:#fff;}'
++'table.tablePrint thead tr th{font-family: arial; font-size:15px; border:none;} table.tablePrint thead tr th{border:none; padding:6px;text-align: left; }'
++'table.tablePrint thead th:last-child td{padding:6px; border:none;} .table_responsive_print{padding-top: 20px;}'
+
++'table.tablePrint tbody tr td{font-family: arial; font-size:15px;} table.tablePrint tbody tr td{border:none; border:1px solid #ccc; padding:6px;text-align: left; }'
++'table.tablePrint tbody tr:last-child td{border:none; border:1px solid #ccc; padding:6px;}'
+
+    +'}</style>');
         WindowObject.document.writeln('</head><body onload="window.print()">');
         WindowObject.document.writeln(divToPrint.innerHTML);
         WindowObject.document.writeln('</body></html>');
@@ -58,32 +75,31 @@
           <div class="card" >
             <div class="card-body" id='divToPrint'>
             <div class="row">
-            <div class="col-1"><a href="javascript:void()"><img src="<?=base_url()?>assets/images/benfed.png" alt="logo"/></a></div>
+            <div class="col-1 logoPrint"><a href="javascript:void()"><img src="<?=base_url()?>assets/images/benfed.png" alt="logo"/></a></div>
             <div class="col-10">
-                <div style="text-align:center;">
+                <div style="text-align:center;" class="printHead">
                 <h3>WEST BENGAL STATE CONSUMERS' CO-OPERATIVE FEDERATION LTD.</h3>
                 <h4>Southend Conclave, 3rd Floor, 1582, Rajdanga Main Rd, Kasba, Kolkata-700073</h4>
                 <h4>Pay Slip for <?php echo $months->month_name.'-'.$this->input->post('year');?> </h4>
-                <h4><?php echo $payslip_dtls->emp_name; ?></h4>
+                <!-- <h4><?php //echo $payslip_dtls->emp_name; ?></h4> -->
                 </div> 
             </div>    
             </div>
               <div class="row">
                 <div class="col-12">
-                  <div class="table-responsive">
-                    <table id="order-listing" class="table">
-                      <thead>
+                  <div class="table-responsive table_responsive_print">
+                    <table id="order-listing" class="table" width="100%" border="0" cellspacing="0" cellpadding="0">
+                      <!-- <thead>
                       <tr>
                             <th class="noborder" width="25%"></th>
                             <th class="noborder" width="1%"></th>
                             <th class="noborder" width="25%"></th>
                             <th class="noborder" width="1%"></th>
-                            <th class="noborder" width="30%"></th>
+                            <th class="noborder" width="25%"></th>
                             <th class="noborder" width="1%"></th>
-                            <th class="noborder" width="20%"></th>
-                            <th class="noborder" width="20%"></th>
+                            <th class="noborder" width="25%"></th>
                         </tr>
-                      </thead>
+                      </thead> -->
                       <tbody>
                      
                       <tr>
@@ -128,7 +144,7 @@
                       </tbody>
                     </table>
                     <br>
-                    <table class="width" cellpadding="6" style="width:100%;">
+                    <table class="width tablePrint" cellpadding="6" style="width:100%;" width="100%" border="0" cellspacing="0" cellpadding="0">
                         <thead>
                             <tr class="t2">
                                 <th width="30%">Earnings</th>

@@ -22,24 +22,32 @@
       <nav class="navbar top-navbar col-lg-12 col-12 p-0">
         <div class="container">
           <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-            <a class="navbar-brand brand-logo" href="<?=base_url()?>"><img src="<?=base_url()?>assets/images/benfed.png" alt="logo"/></a>
+            <a class="navbar-brand brand-logo topLogo" href="<?=base_url()?>"><img src="<?=base_url()?>assets/images/benfed.png" alt="logo"/></a>
             <a class="navbar-brand brand-logo-mini" href="index.html"><img src="../../images/logo-mini.svg" alt="logo"/></a>
           </div>
           <div class="navbar-menu-wrapper d-flex align-items-center">
             <ul class="navbar-nav mr-lg-2">
               <li class="nav-item nav-search d-none d-lg-block">
-                <div class="input-group">
+                <!-- <div class="input-group">
                   <div class="input-group-prepend">
-                    <span class="input-group-text" id="search">
+                    <span class="input-group-text" id="search"> -->
                       <!-- <i class="mdi mdi-magnify"></i> -->
-                    </span>
-                  </div>
+                    <!-- </span>
+                  </div> -->
                   <!-- <input type="text" class="form-control" placeholder="Search..." aria-label="search" aria-describedby="search"> -->
-                </div>
+                <!-- </div> -->
+                <ul class="header_top">
+    <li><strong>Branch Name: </strong>Dakhin Dinajpur</li>
+    <li><strong>Financial Year: </strong>2022-23</li>
+    <li><strong>User: </strong>synergic</li>
+    <li><strong>Module:</strong> Fertilizer Management</li>
+    <li class="date"><strong>Date: </strong> 20-02-2023</li>
+       
+</ul>
               </li>
             </ul>
             <ul class="navbar-nav navbar-nav-right">
-              <li class="nav-item dropdown mr-1">
+              <!-- <li class="nav-item dropdown mr-1">
                 <a class="nav-link count-indicator dropdown-toggle d-flex justify-content-center align-items-center" id="messageDropdown" href="#" data-toggle="dropdown">
                   <i class="mdi mdi-email mx-0"></i>
                 </a>
@@ -129,11 +137,11 @@
                     </div>
                   </a>
                 </div>
-              </li>
+              </li> -->
               <li class="nav-item nav-profile dropdown mr-0 mr-sm-2">
                 <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-                  <img src="https://via.placeholder.com/40x40" alt="profile"/>
-                  <span class="nav-profile-name">Benfed</span>
+                  <!-- <img src="https://via.placeholder.com/40x40" alt="profile"/> -->
+                  <span class="nav-profile-name nav_profile_name_custom"><i class="fa fa-cog fa-spin fa-fw" aria-hidden="true"></i></span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
                   <a class="dropdown-item">
@@ -146,6 +154,9 @@
                   </a>
                 </div>
               </li>
+              <li class="nav-item dropdown mr-4"><a class="nav-link logoutLastNav" href="#"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
+
+
             </ul>
             <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="horizontal-menu-toggle">
               <span class="mdi mdi-menu"></span>

@@ -2,7 +2,7 @@
 <footer class="footer">
           <div class="w-100 clearfix">
             <span class="text-muted d-block text-center text-sm-left d-sm-inline-block"><strong>Copyright © 2020 </strong><a href="https://synergicsoftek.in/" target="_blank">Synergic Softek Solutions PVT. LTD. </a>. All rights reserved.</span>
-            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> <i class="mdi mdi-heart-outline text-danger"></i></span>
+            <!-- <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> <i class="mdi mdi-heart-outline text-danger"></i></span> -->
           </div>
         </footer>
         <!-- partial -->

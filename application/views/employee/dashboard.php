@@ -49,8 +49,8 @@
                     </div>
                 </div>
                 
-                <div class="col-1">
-                <small><a href="<?php echo site_url("emadst");?>" class="btn btn-primary" style="width: 100px;">Add</a></small>
+                <div class="col-1 addBtnSec">
+                <small><a href="<?php echo site_url("emadst");?>" class="btn btn-primary">Add</a></small>
                 </div>
              </div>
              <br>
