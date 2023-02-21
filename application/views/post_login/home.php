@@ -14,12 +14,12 @@
                       </div>
                       <p class="mb-0 text-muted">Total users world wide</p> -->
                       <ul class="listCustom">
-                        <li><a href="#">Employeeg</a></li>
-                        <li><a href="#">Department</a></li>
-                        <li><a href="#">Earnings</a></li>
-                        <li><a href="#">Deductions</a></li>
-                        <li><a href="#">Pay Shlip</a></li>
-                        <li><a href="#">Salary Statement</a></li>
+                        <li><a href="<?php echo site_url("stfemp");?>">Employee</a></li>
+                        <li><a href="<?php echo base_url(); ?>index.php/dept">Department</a></li>
+                        <li><a href="<?php echo site_url("slrydtl");?>">Earnings</a></li>
+                        <li><a href="<?php echo site_url("slryded");?>">Deductions</a></li>
+                        <li><a href="<?php echo site_url('reports/payslipreport'); ?>">Pay Slip</a></li>
+                        <li><a href="<?php echo site_url('reports/paystatementreport'); ?>">Salary Statement</a></li>
                         
 
                       </ul>
@@ -32,10 +32,10 @@
                     <div class="card-body">
                       <p class="card-title">Active Employee</p>
                       <div class="d-flex flex-wrap align-items-baseline">
-                        <h2 class="mr-3">123</h2>
+                        <h2 class="mr-3"><?=$tot_employee->tot_emp?></h2>
                         <!-- <i class="mdi mdi-arrow-up mr-1 text-success"></i><span><p class="mb-0 text-success font-weight-medium">+9.12%</p></span>                           -->
                       </div>
-                      <p class="mb-0 text-muted">Total Employee world wide</p>
+                      <p class="mb-0 text-muted">Total Employee</p>
                     </div>
                     <canvas id="projects-chart"></canvas>
                   </div>
@@ -46,7 +46,7 @@
                   <div class="card">
                     <div class="card-body">
                       <p class="card-title">Earning & Deduction</p>
-                      <p class="mb-2 text-success">Salary paid upto <strong>2023</strong></p>
+                      <p class="mb-2 text-success">Salary paid upto <strong><?=$month_name->month_name?> <?=$generation_dtls->sal_year?> </strong></p>
                       <div class="row mt-4">
                         <div class="col-md-6 stretch-card">
                           <div class="row d-flex align-items-center">
@@ -55,7 +55,7 @@
                             </div>
                             <div class="col-6 pl-0">
                               <p class="mb-0">Earning</p>
-                              <h2>45,324</h2>
+                              <h2>&#8377; <?=$tot_ear_deduction->tot_eer?></h2>
                             </div>
                           </div>
                         </div>
@@ -66,7 +66,7 @@
                             </div>
                             <div class="col-6 pl-0">
                               <p class="mb-0">Deduction</p>
-                              <h2>12,236</h2>
+                              <h2 >&#8377; <?=$tot_ear_deduction->tot_ded?></h2>
                             </div>
                           </div>
                         </div>
@@ -79,8 +79,8 @@
             <div class="col-xl-6 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <p class="card-title">Professional Tax Slab Rate</p>
-                  <p class="text-muted">Audience to which the users belonged while on the current date Audience to which the users belonged while on the current date Audience to which the users belonged while on the current date </p>
+                  <p class="card-title">Professional Tax Slab</p>
+                  <!-- <p class="text-muted">Audience to which the users belonged while on the current date Audience to which the users belonged while on the current date Audience to which the users belonged while on the current date </p> -->
                   <div class="d-flex flex-wrap mb-4 mt-4 pb-4">
                     <!-- <div class="mr-4 mr-md-5">
                       <p class="mb-0">From Rs.0.00</p><p class="mb-0">UPTO Rs.10000</p>

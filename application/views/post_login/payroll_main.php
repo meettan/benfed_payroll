@@ -37,11 +37,11 @@
                   <!-- <input type="text" class="form-control" placeholder="Search..." aria-label="search" aria-describedby="search"> -->
                 <!-- </div> -->
                 <ul class="header_top">
-    <li><strong>Branch Name: </strong>Dakhin Dinajpur</li>
-    <li><strong>Financial Year: </strong>2022-23</li>
-    <li><strong>User: </strong>synergic</li>
-    <li><strong>Module:</strong> Fertilizer Management</li>
-    <li class="date"><strong>Date: </strong> 20-02-2023</li>
+    <li><strong>Branch Name: </strong>Head Office</li>
+    <!-- <li><strong>Financial Year: </strong>2022-23</li> -->
+    <li><strong>User: </strong><?=$this->session->userdata('loggedin')['user_name']?></li>
+    <li><strong>Module:</strong> HRMS Management</li>
+    <li class="date"><strong>Date: </strong> <?=date('d-m-Y',strtotime(date('Y-m-d')))?></li>
        
 </ul>
               </li>
@@ -138,23 +138,25 @@
                   </a>
                 </div>
               </li> -->
-              <li class="nav-item nav-profile dropdown mr-0 mr-sm-2">
+              <!-- <li class="nav-item nav-profile dropdown mr-0 mr-sm-2">
                 <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-                  <!-- <img src="https://via.placeholder.com/40x40" alt="profile"/> -->
+                 
                   <span class="nav-profile-name nav_profile_name_custom"><i class="fa fa-cog fa-spin fa-fw" aria-hidden="true"></i></span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-                  <a class="dropdown-item">
+                  <a href="#" class="dropdown-item">
                     <i class="mdi mdi-settings text-primary"></i>
-                    Settings
+                    Change Password
                   </a>
-                  <a class="dropdown-item">
+                
+                  <a href="#" class="dropdown-item">
                     <i class="mdi mdi-logout text-primary"></i>
-                    Logout
+                    Create User
                   </a>
+                 
                 </div>
-              </li>
-              <li class="nav-item dropdown mr-4"><a class="nav-link logoutLastNav" href="#"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
+              </li> -->
+              <li class="nav-item dropdown mr-4"><a class="nav-link logoutLastNav" href="<?php echo site_url("Payroll_Login/logout") ?>"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
 
 
             </ul>
@@ -197,8 +199,6 @@
                 <i class="menu-arrow"></i></a>
               <div class="submenu">
                 <ul class="submenu-item">
-                
-                  
                   <li class="nav-item"><a href="<?php echo site_url("slrydtl");?>">Earnings</a></li>
                   <li class="nav-item"><a href="<?php echo site_url("slryded");?>">Deductions</a></li>
                   <li class="nav-item"><a href="<?php echo site_url("genspl");?>">Generate Payslip</a></li>
@@ -229,23 +229,23 @@
             <li class="nav-item">
               <a href="#" class="nav-link">
                 <!-- <i class="mdi mdi-file-document-box-outline menu-icon"></i> -->
-                <span class="menu-title">Setting</span></a>
+                <span class="menu-title">Settings</span>
                 <i class="menu-arrow"></i></a>
-                <div class="submenu">
-                  <ul class="submenu-item">
-                  <li class="nav-item"><a href="<?php echo site_url("profile") ?>">Change Password</a></li>
-                            <?php  if($this->session->userdata['loggedin']['user_type']="A"){
-                                ?>
+              <div class="submenu">
+                <ul class="submenu-item">
+                <li class="nav-item"><a href="<?php echo site_url("profile") ?>">Change Password</a></li>
+                <?php  if($this->session->userdata['loggedin']['user_type']="A"){ ?>
                     <li class="nav-item"> <a href="<?php echo site_url('admin/user'); ?>">Create User</a></li>
-                            <?php }?>
-                  </ul>
-                  </div>
-             </li>
-             <li class="nav-item">
-              <a href="<?php echo site_url("Payroll_Login/logout") ?>" class="nav-link">
-                <!-- <i class="mdi mdi-file-document-box-outline menu-icon"></i> -->
+                    <?php  }  ?>
+                </ul>
+              </div>
+            </li>
+           
+             <!-- <li class="nav-item">
+              <a href="<?php //echo site_url("Payroll_Login/logout") ?>" class="nav-link">
+     
                 <span class="menu-title">Logout</span></a>
-              </li>
+              </li> -->
           </ul>
         </div>
       </nav>

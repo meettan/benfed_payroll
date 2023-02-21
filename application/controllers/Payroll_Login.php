@@ -6,6 +6,7 @@
 			parent::__construct();
 
 			$this->load->model('Login_Process');
+			$this->load->model('Salary_Process');
 		}
 		
 		public function index(){
@@ -111,8 +112,16 @@
 				$from_yr_day = date('Y-m-d',strtotime($from_fin_yr.'-04-01'));
 
 				$to_yr_day 	 = date('Y-m-d',strtotime($to_fin_yr.'-03-31'));*/
- 
-				$this->load->view('post_login/payroll_main');
+
+				$data['tot_employee'] = $this->Login_Process->f_get_particulars('md_employee',array('count(*) as tot_emp'),array('emp_status'=>'A'),1);
+
+				$data['generation_dtls']    =   $this->Salary_Process->f_get_generation();
+				
+				$data['tot_ear_deduction']  = $this->Login_Process->f_get_particulars('td_pay_slip',array('sum(basic_pay+da_amt+hra_amt+med_allow+othr_allow) as tot_eer','sum(insuarance+ccs+hbl+telephone+med_adv+festival_adv+tf+med_ins+comp_loan+ptax+itax+gpf+epf+other_deduction) as tot_ded'),
+				array('sal_month'=>$data['generation_dtls']->sal_month,'sal_year'=>$data['generation_dtls']->sal_year),1);
+				
+				$data['month_name']       = $this->Login_Process->f_get_particulars('md_month',NULL,array('id'=>$data['generation_dtls']->sal_month),1);
+				$this->load->view('post_login/payroll_main',$data);
 
 				$this->load->view('post_login/home');
 
