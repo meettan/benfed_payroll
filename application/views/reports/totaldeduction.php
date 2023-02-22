@@ -74,7 +74,7 @@
 ?> 
       <div class="main-panel">
         <div class="content-wrapper">
-          <div class="card">
+          <div class="card" id="divToPrint">
             <div class="card-body">
             <div class="row">
               <div class="col-1"><a href="javascript:void()"><img src="<?=base_url()?>assets/images/benfed.png" alt="logo"/></a></div>
@@ -264,6 +264,10 @@ $tot_ins = $tot_css= $tot_hbl = $tot_tel =$tot_med_adv =$tot_fa =$tot_tf = $tot_
                   </div>
                 </div>
               </div>
+            </div>
+            <div class="row">
+            <div class="col-md-12" style="text-align: center;"><button type="button" class='btn btn-primary' id='btn' value='Print' onclick='printDiv();'>Print</button></div>
+           
             </div>
           </div>
         </div>

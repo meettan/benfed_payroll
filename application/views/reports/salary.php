@@ -27,22 +27,51 @@
 
 </style>
 <script>
+//   function printDiv() {
+//         var divToPrint = document.getElementById('divToPrint');
+//         var WindowObject = window.open('', 'Print-Window');
+//         WindowObject.document.open();
+//         WindowObject.document.writeln('<!DOCTYPE html>');
+//         WindowObject.document.writeln('<html><head><title></title><style type="text/css">');
+//         WindowObject.document.writeln('@media print { .center { text-align: center;}' +
+//             '                                         .inline { display: inline; }' +
+//             '                                         .underline { text-decoration: underline; }' +
+//             '                                         .left { margin-left: 315px;} ' +
+//             '                                         .right { margin-right: 375px; display: inline; }' +
+//             '                                          .table{ width: 236%; max-width: 250%; margin-bottom: 20px; } table { border-collapse: collapse; font-size: 14px;}' +
+//             '                                          th, td { border: 1px solid black; border-collapse: collapse; padding: 10px;}' +
+//             '                                           th, td { }' +
+//             '                                         .border { border: 1px solid black; } ' +
+//             '                                         .bottom { bottom: 5px; width: 100%; position: fixed ' +
+//             '                                       ' +
+//             '                                   } } </style>');
+//         WindowObject.document.writeln('</head><body onload="window.print()">');
+//         WindowObject.document.writeln(divToPrint.innerHTML);
+//         WindowObject.document.writeln('</body></html>');
+//         WindowObject.document.close();
+//         setTimeout(function () {
+//             WindowObject.close();
+//         }, 10);
+
+//   }
+
+  
+</script>
+
+<script>
   function printDiv() {
 
         var divToPrint = document.getElementById('divToPrint');
-
         var WindowObject = window.open('', 'Print-Window');
         WindowObject.document.open();
         WindowObject.document.writeln('<!DOCTYPE html>');
         WindowObject.document.writeln('<html><head><title></title><style type="text/css">');
-
-
         WindowObject.document.writeln('@media print { .center { text-align: center;}' +
             '                                         .inline { display: inline; }' +
             '                                         .underline { text-decoration: underline; }' +
             '                                         .left { margin-left: 315px;} ' +
             '                                         .right { margin-right: 375px; display: inline; }' +
-            '                                          .table{ width: 236%; max-width: 250%; margin-bottom: 20px; } table { border-collapse: collapse; font-size: 14px;}' +
+            '                                          table { border-collapse: collapse; }' +
             '                                          th, td { border: 1px solid black; border-collapse: collapse; padding: 10px;}' +
             '                                           th, td { }' +
             '                                         .border { border: 1px solid black; } ' +
@@ -56,9 +85,9 @@
         setTimeout(function () {
             WindowObject.close();
         }, 10);
-
   }
 </script>
+
 
 <?php
     if($_SERVER['REQUEST_METHOD'] == "POST" ) {
@@ -103,7 +132,7 @@
 ?>  
       <div class="main-panel">
         <div class="content-wrapper">
-        <div class="card">
+        <div class="card" id="divToPrint">
         <div class="card-body">
         <div class="row">
             <div class="col-1"><a href="javascript:void()"><img src="<?=base_url()?>assets/images/benfed.png" alt="logo"/></a></div>
@@ -371,6 +400,10 @@ echo getIndianCurrency($pa);
               </div>
             </div>
           </div>
+          <div class="row">
+            <div class="col-md-12" style="text-align: center;"><button type="button" class='btn btn-primary' id='btn' value='Print' onclick='printDiv();'>Print</button></div>
+           
+            </div>
         </div>
 
 

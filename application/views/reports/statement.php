@@ -81,68 +81,68 @@
                 <div class="col-12">
                   <div class="table-responsive">
                     <table id="order-listing" class="table">
-                    <thead>
+                        <thead>
                         <tr>
                             <th>Sl No.</th>
                             <th>Name</th>
                             <th>Account No</th>
                             <th>Net Amount</th>
                         </tr>
-</thead>
-<tbody> 
+                            </thead>
+                            <tbody> 
 
-<?php 
-    
-if($statement) {
+                            <?php 
+                            
+                        if($statement) {
 
-    $i  =   1;
+                            $i  =   1;
 
-    $tot_net = 0;
-        
-    foreach($statement as $s_list) {
+                            $tot_net = 0;
+                                
+                            foreach($statement as $s_list) {
 
-        $tot_net += $s_list->net_amount;
+                                $tot_net += $s_list->net_amount;
 
-    ?>
+                            ?>
 
-        <tr>
+                                <tr>
 
-            <td><?php echo $i++; ?></td>
+                                    <td><?php echo $i++; ?></td>
 
-            <td><?php echo $s_list->emp_name; ?></td>
+                                    <td><?php echo $s_list->emp_name; ?></td>
+                                
+                                    <td style="text-align: center;"><?php echo $s_list->bank_ac_no; ?></td>
+                                    
+                                    <td style="text-align: right;"><?php echo $s_list->net_amount; ?></td>
 
-            <td style="text-align: center;"><?php echo $s_list->bank_ac_no; ?></td>
-            
-            <td style="text-align: right;"><?php echo $s_list->net_amount; ?></td>
+                                </tr>
 
-        </tr>
+                        <?php
+                                    
+                                }
 
-<?php
-            
-        }
-
-?>
+                        ?>
 
 
-        <tr>
+                                <tr>
 
-            <td colspan="3">Total Amount</td>
+                                    <td colspan="3">Total Amount</td>
 
-            <td style="text-align: right;"> Rs. <?php echo $tot_net; ?></td>
+                                    <td style="text-align: right;"> Rs. <?php echo $tot_net; ?></td>
 
-        </tr>
+                                </tr>
 
-<?php        
-        
-    }
+                        <?php        
+                                
+                            }
 
-    else {
+                            else {
 
-        echo "<tr><td colspan='4' style='text-align:center;'>No Data Found</td></tr>";
-    }
-?>
+                                echo "<tr><td colspan='4' style='text-align:center;'>No Data Found</td></tr>";
+                            }
+                        ?>
 
-</tbody>
+                        </tbody>
                     </table>
                     <br>
                     <div>
@@ -163,12 +163,17 @@ if($statement) {
 
                     </div>
             
-                  </div>
+                </div>
                 </div>
               </div>
             </div>
-            <input type='button' id='btn' value='Print' onclick='printDiv();'>
+            
           </div>
+          <div class="row">
+            <div class="col-md-12" style="text-align: center;"><button type="button" class='btn btn-primary' id='btn' value='Print' onclick='printDiv();'>Print</button></div>
+           
+            </div>
+         
         </div>
 
 

@@ -77,8 +77,6 @@ public function salarycatgreport() {
 
         $salary['count']              =   $this->Report_Process->f_get_particulars("md_employee m,td_pay_slip t", $select, $where, 0);
         // f_get_particulars("md_employee m, td_pay_slip t", $select, $where, 0);
-        // echo $this->db->last_query();
-        // die();
 
         $this->load->view('post_login/payroll_main');
 
