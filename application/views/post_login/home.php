@@ -55,7 +55,7 @@
                             </div>
                             <div class="col-6 pl-0">
                               <p class="mb-0">Earning</p>
-                              <h2>&#8377; <?=$tot_ear_deduction->tot_eer?></h2>
+                              <h4>&#8377; <?=$tot_ear_deduction->tot_eer?></h4>
                             </div>
                           </div>
                         </div>
@@ -66,7 +66,7 @@
                             </div>
                             <div class="col-6 pl-0">
                               <p class="mb-0">Deduction</p>
-                              <h2 >&#8377; <?=$tot_ear_deduction->tot_ded?></h2>
+                              <h4>&#8377; <?=$tot_ear_deduction->tot_ded?></h4>
                             </div>
                           </div>
                         </div>
