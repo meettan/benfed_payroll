@@ -11,7 +11,7 @@
 
     table, td, th {
         border: 1px solid #dddddd;
-
+    
         padding: 6px;
 
         font-size: 14px;
@@ -20,7 +20,7 @@
     th {
 
         text-align: center;
-
+        font-weight: 600 !important;
     }
 
     tr:hover {background-color: #f5f5f5;}
@@ -196,7 +196,7 @@ else {
 
 ?>
     
-    <tr>
+    <tr style='font-weight: 600 !important;'>
         
         <th width="15px">Sl No.</th>
         <th width="200px">Emplyee Name</th>
@@ -311,7 +311,7 @@ else {
         }
 
         ?>
-            <tr>
+            <tr style='font-weight: bold;'>
                 
                 <td colspan="3">Total</td>
                 <td><?php echo $basic; ?></td>

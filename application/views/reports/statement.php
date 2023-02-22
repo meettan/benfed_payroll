@@ -27,7 +27,13 @@
         }, 10);
   }
 </script>
+<style>
+  th {
 
+text-align: center;
+font-weight: 600 !important;
+}
+  </style>
 <?php
     if($_SERVER['REQUEST_METHOD'] == "POST" ) {
             // function getIndianCurrency($number)
@@ -124,7 +130,7 @@
                         ?>
 
 
-                                <tr>
+                                <tr style='font-weight: bold;'>
 
                                     <td colspan="3">Total Amount</td>
 

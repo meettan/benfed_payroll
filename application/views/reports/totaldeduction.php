@@ -30,6 +30,13 @@
 
   }
 </script>
+<style>
+  th {
+
+text-align: center;
+font-weight: 600 !important;
+}
+  </style>
 
 <?php
     if($_SERVER['REQUEST_METHOD'] == "POST" ) {
@@ -190,41 +197,41 @@ $tot_ins = $tot_css= $tot_hbl = $tot_tel =$tot_med_adv =$tot_fa =$tot_tf = $tot_
     ?>
 
 
-            <tr>
+            <tr style='font-weight: bold;'>
 
                 <td colspan="2">Total Amount</td>
 
-                <td> Rs. <?php echo $tot_ins; ?></td>
+                <td>  <?php echo $tot_ins; ?></td>
 
-                <td> Rs. <?php echo $tot_css; ?></td>
+                <td>  <?php echo $tot_css; ?></td>
 
-                <td> Rs. <?php echo $tot_hbl; ?></td>
+                <td>  <?php echo $tot_hbl; ?></td>
 
-                <td> Rs. <?php echo $tot_tel; ?></td>
+                <td>  <?php echo $tot_tel; ?></td>
 
-                <td> Rs. <?php echo $tot_med_adv; ?></td>
+                <td>  <?php echo $tot_med_adv; ?></td>
 
-                <td> Rs. <?php echo $tot_fa; ?></td>
+                <td>  <?php echo $tot_fa; ?></td>
 
-                <td> Rs. <?php echo $tot_tf; ?></td>
+                <td>  <?php echo $tot_tf; ?></td>
 
-                <td> Rs. <?php echo $tot_med_ins; ?></td>
+                <td>  <?php echo $tot_med_ins; ?></td>
 
-                <td> Rs. <?php echo $tot_comp_loan; ?></td>
+                <td>  <?php echo $tot_comp_loan; ?></td>
 
-                <!-- <td> Rs. <?php echo $tot_comp_loan; ?></td> -->
+                <!-- <td>  <?php echo $tot_comp_loan; ?></td> -->
 
-                <!-- <td> Rs. <?php echo $tot_pf; ?></td> -->
+                <!-- <td>  <?php echo $tot_pf; ?></td> -->
                 
-                <td> Rs. <?php echo $tot_ptax; ?></td>
+                <td>  <?php echo $tot_ptax; ?></td>
 
-                <td> Rs. <?php echo $tot_itax; ?></td>
+                <td>  <?php echo $tot_itax; ?></td>
 
-                <td> Rs. <?php echo $tot_gpf; ?></td>
+                <td> <?php echo $tot_gpf; ?></td>
 
-                <td> Rs. <?php echo $tot_epf; ?></td>
+                <td> <?php echo $tot_epf; ?></td>
 
-                <td> Rs. <?php echo $tot_other_deduction; ?></td>
+                <td> <?php echo $tot_other_deduction; ?></td>
 
                 
 
