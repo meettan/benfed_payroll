@@ -62,10 +62,10 @@ $route['deddl'] = 'salary/deduction_delete';
 $route['genspl'] = 'salary/generate_slip';
 $route['addgen'] = 'salary/generation_add';
 $route['unapslipdel'] = 'salary/generation_delete';
-/*$route['slrydeded'] = 'salary/deduction_edit';
-$route['deddl'] = 'salary/deduction_delete';*/
+$route['changepassword'] = 'Admin/change_passwoerd';
+/*$route['deddl'] = 'salary/deduction_delete';*/
 // $route['paysliprep'] = 'reports/payslipreport';
 //For Profile
-$route['profile'] = 'profiles';
+
 $route['profile/(:any)/(:any)'] = 'profiles/f_$1_$2';
 $route['profile/(:any)'] = 'profiles/f_$1';
