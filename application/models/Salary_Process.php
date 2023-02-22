@@ -274,12 +274,13 @@
 		//For Salary slip generation
 		public function f_get_generation() {
 
-			$sql = "SELECT sal_month, sal_year, 
-						   MAX(trans_date) trans_date
-					FROM   td_salary 
-					GROUP BY sal_month, 
-							 sal_year LIMIT 1";
-
+			// $sql = "SELECT sal_month, sal_year, 
+			// 			   MAX(trans_date) trans_date
+			// 		FROM   td_salary 
+			// 		GROUP BY sal_month, 
+			// 				 sal_year LIMIT 1";
+				$sql = " SELECT max(sal_month) sal_month,max(`sal_year`) sal_year FROM `td_salary`
+				where sal_year=(select max(sal_year) from  td_salary)";
 			$result	=	$this->db->query($sql);
 
 			return $result->row();
