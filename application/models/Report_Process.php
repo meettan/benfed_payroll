@@ -97,7 +97,7 @@
 								sum(a.other_deduction)other_deduction,
 								SUM(itax) itax FROM td_pay_slip a,md_employee b
 											   WHERE a.emp_no=b.emp_code
-											   and  trans_date BETWEEN '$from_date' AND '$to_date'
+											   and  a.trans_date BETWEEN '$from_date' AND '$to_date'
 											   GROUP BY a.emp_no, b.emp_name
 						";
 			

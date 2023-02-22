@@ -406,11 +406,10 @@ echo getIndianCurrency($pa);
                                     <div class="col-6">
                                     <label for="exampleInputName1">Select Month:</label>
                                     <select
-                                class="form-control required"
+                                class="form-control" required
                                 name="sal_month"
                                 id="sal_month"
                                 >
-
                                 <option value="">Select Month</option>
 
                                 <?php foreach($month_list as $m_list) {?>
@@ -430,14 +429,14 @@ echo getIndianCurrency($pa);
                                 <div class="row">
                                     <div class="col-6">
                                     <label for="exampleInputName1">Input Year:</label>
-                                     <input type="text" class="form-control" name="year" id="year"
+                                     <input type="text" class="form-control" name="year" id="year" required
                                      value="<?php echo date('Y');?>" />
                   </div>
                     <div class="col-6">
                         <label for="exampleInputName1">Category:</label>
                         <select
                             class="form-control required"
-                            name="category"
+                            name="category" required
                             id="category"
                             >
 

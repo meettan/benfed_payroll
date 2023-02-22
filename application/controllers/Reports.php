@@ -172,9 +172,9 @@ public function salarycatgreport() {
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
         $totaldeduction['total_deduct'] =   $this->Report_Process->f_get_totaldeduction($this->input->post('from_date'), $this->input->post('to_date'));
-
         //Current Year
         $totaldeduction['year']  =   $this->Report_Process->f_get_particulars("md_parameters", array('param_value'), array('sl_no' => 15), 1);
+       
 
         $this->load->view('post_login/payroll_main');
 

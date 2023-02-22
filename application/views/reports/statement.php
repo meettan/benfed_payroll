@@ -202,7 +202,7 @@ if($statement) {
                                     </div>
                                     <div class="col-6">
                                     <label for="exampleInputName1">Select Month:</label>
-                                    <select class="form-control" name="sal_month" id="sal_month" >
+                                    <select class="form-control" name="sal_month" id="sal_month" required>
                                 <option value="">Select Month</option>
                                 <?php foreach($month_list as $m_list) {?>
 
@@ -221,12 +221,12 @@ if($statement) {
                                 <div class="row">
                                     <div class="col-6">
                                     <label for="exampleInputName1">Input Year:</label>
-                                     <input type="text" class="form-control" name="year" id="year"
+                                     <input type="text" class="form-control" name="year" id="year" required
                                      value="<?php echo date('Y');?>" />
                   </div>
                     <div class="col-6">
                         <label for="exampleInputName1">Category:</label>
-                        <select class="form-control required" name="category" id="category">
+                        <select class="form-control required" name="category" id="category" required>
 
                             <option value="">Select Category</option>
 

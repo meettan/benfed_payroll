@@ -348,8 +348,7 @@
                                   
                                     <div class="col-4">
                                         <label for="exampleInputName1">Month:</label>
-                                        <select class="form-control" name="sal_month"
-                                        id="sal_month" >
+                                        <select class="form-control" name="sal_month" id="sal_month" required>
                                         <option value="">Select Month</option>
                                         <?php foreach($month_list as $m_list) {?>
                                             <option value="<?php echo $m_list->id ?>" ><?php echo $m_list->month_name; ?></option>
@@ -361,12 +360,12 @@
                                     </div>
                                     <div class="col-4">
                                         <label for="exampleInputName1">Input Year:</label>
-                                        <input type="text" class="form-control" name="year" id="year"
+                                        <input type="text" class="form-control" name="year" id="year" required
                                         value="<?php echo date('Y');?>"/>
                                     </div>
                                     <div class="col-4">
                                 `      <label for="exampleInputName1">Emplyee Name:</label>
-                                        <select class="form-control required" name="emp_cd" id="emp_cd">
+                                        <select class="form-control required" name="emp_cd" id="emp_cd" required>
                                         <option value="">Select Employee</option>
                                         <?php  
 
