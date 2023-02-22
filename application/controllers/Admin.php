@@ -453,7 +453,45 @@
 
 		}
 
-	}
+	public function change_passwoerd(){
+
+        if ($_SERVER['REQUEST_METHOD'] == "POST") {
+
+            $oldpassword = $this->input->post('oldpass');
+            $password = $this->input->post('password');
+            // $this->session->userdata['loggedin']['user_id']
+            $returnData = $this->Admin_Process->checkOldPassword($oldpassword);
+            if ($returnData == 1) {
+                $dataArray = array(
+                    'password' => password_hash($password, PASSWORD_BCRYPT),
+                    'modified_by' => $this->session->userdata['loggedin']['user_name'],
+                    'modified_dt' => date('Y-m-d h:i:s')
+                );
+                $where = array('user_id' => $this->session->userdata['loggedin']['user_id']);
+                $this->Admin_Process->f_edit('md_users', $dataArray, $where);
+               // $this->Admin_Process->update_fin_user($dataArray, $this->session->userdata['loggedin']['user_id']);
+                $this->session->set_flashdata('success', 'Successfully Change Password!');
+              //  echo "<script>alert('Successfully Change Password!');</script>";
+				redirect('changepassword');
+            } else {
+                $this->session->set_flashdata('error', 'Incorrect old password!');
+                echo "<script>alert('Wrong Password!');</script>";
+				redirect('changepassword');
+            }
+
+            
+        } else {
+
+            $this->load->view('post_login/payroll_main');
+
+            $this->load->view("user/change_password");
+
+            $this->load->view('post_login/footer');
+        }
+    }
+
+}
+
 ?>
 		
 		 
