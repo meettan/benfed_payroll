@@ -490,6 +490,45 @@
         }
     }
 
+	public function user(){
+		$where = array("user_status" => 'A');
+		$data['user_dtls']    =   $this->Admin_Process->f_get_particulars("md_users", NULL, $where, 0);
+		$this->load->view('post_login/payroll_main');
+		$this->load->view("user/dashboard",$data);
+		$this->load->view('post_login/footer');
+	}
+
+	public function user_add()
+    {
+
+        if ($_SERVER['REQUEST_METHOD'] == "POST") {
+               $pass  = 123;
+                $data_array = array(
+                    "user_id"       =>  trim($this->input->post('user_id')),
+                    "password"      =>  password_hash($pass, PASSWORD_DEFAULT),
+					"user_type"     =>  $this->input->post('user_type'),
+                    "user_name"     =>  $this->input->post('user_name'),
+                    "user_status"     =>  'A',
+                    "branch_id"     =>  $this->input->post('branch_id'),
+                    "st"            =>  0,
+                    "created_by"    =>  $this->session->userdata['loggedin']['user_name'],
+                    "created_dt"    =>  date('Y-m-d h:i:s')
+                );
+                $this->Admin_Process->f_insert('md_users', $data_array);
+              //  $this->session->set_flashdata('msg', 'Successfully added!');
+
+                $this->session->set_flashdata('success', 'Successfully Add User!');
+                redirect('admin/user');
+            
+        } else {
+			$data['dist_dtls']     =   $this->Admin_Process->f_get_particulars("md_district", NULL, NULL, 0);
+            $this->load->view('post_login/payroll_main');
+            $this->load->view("user/add",$data);
+            $this->load->view('post_login/footer');
+        }
+    }
+
+
 }
 
 ?>
