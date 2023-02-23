@@ -3,7 +3,7 @@
 
 	class Admin_Process extends CI_Model{
 
-		public function f_get_particulars($table_name, $select=NULL, $where=NULL, $flag) {
+		public function f_get_particulars($table_name, $select=NULL, $where=NULL, $flag = NULL) {
 
 			if(isset($select)) {
 

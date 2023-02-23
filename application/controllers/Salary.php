@@ -487,8 +487,7 @@
     public function generate_slip() {                                //Payslip Generation
 
         //Generation Details
-        $generation['generation_dtls']  =   $this->Salary_Process->f_get_particulars("td_salary", NULL, array( "approval_status" => 'U'), 0);
-     
+        $generation['generation_dtls']  =   $this->Salary_Process->f_get_particulars("td_salary", NULL, array("approval_status" => 'U'), 0);
         //Category List
         $generation['category']         =   $this->Salary_Process->f_get_particulars("md_category", NULL, NULL, 0);
 
@@ -502,7 +501,8 @@
     public function get_required_yearmonth(){
 
         $category = $this->input->post('category');
-        $max_year =   $this->Salary_Process->f_get_particulars("td_salary", NULL, array( "approval_status" => 'A','catg_cd'=>$category,'1 order by sal_year,sal_month desc limit 1'=> NULL), 1);
+        //$max_year =   $this->Salary_Process->f_get_particulars("td_salary", NULL, array( "approval_status" => 'A','catg_cd'=>$category,'1 order by sal_year,sal_month desc limit 1'=> NULL), 1);
+        $max_year = $this->Salary_Process->f_get_generation();
         if($max_year->sal_month == 12){
             $data['year'] = ($max_year->sal_year)+1;
             $data['month'] = 1;
