@@ -46,7 +46,7 @@
                   <div class="card">
                     <div class="card-body">
                       <p class="card-title">Earning & Deduction</p>
-                      <p class="mb-2 text-success">Salary paid upto <strong><?=$month_name->month_name?> <?=$generation_dtls->sal_year?> </strong></p>
+                      <p class="mb-2 text-success">Salary paid upto <strong><?php if(isset($month_name->month_name)) echo $month_name->month_name;?> <?php if(isset($generation_dtls->sal_year)) echo $generation_dtls->sal_year; ?> </strong></p>
                       <div class="row mt-4">
                         <div class="col-md-6 stretch-card">
                           <div class="row d-flex align-items-center">
