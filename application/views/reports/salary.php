@@ -11,67 +11,38 @@
 
     table, td, th {
         border: 1px solid #dddddd;
-    
-        padding: 6px;
 
+        padding: 6px;
         font-size: 14px;
+        text-transform:capitalize !important;
     }
 
     th {
-
+        font-weight:bold !important;
         text-align: center;
-        font-weight: 600 !important;
+
     }
 
     tr:hover {background-color: #f5f5f5;}
 
 </style>
 <script>
-//   function printDiv() {
-//         var divToPrint = document.getElementById('divToPrint');
-//         var WindowObject = window.open('', 'Print-Window');
-//         WindowObject.document.open();
-//         WindowObject.document.writeln('<!DOCTYPE html>');
-//         WindowObject.document.writeln('<html><head><title></title><style type="text/css">');
-//         WindowObject.document.writeln('@media print { .center { text-align: center;}' +
-//             '                                         .inline { display: inline; }' +
-//             '                                         .underline { text-decoration: underline; }' +
-//             '                                         .left { margin-left: 315px;} ' +
-//             '                                         .right { margin-right: 375px; display: inline; }' +
-//             '                                          .table{ width: 236%; max-width: 250%; margin-bottom: 20px; } table { border-collapse: collapse; font-size: 14px;}' +
-//             '                                          th, td { border: 1px solid black; border-collapse: collapse; padding: 10px;}' +
-//             '                                           th, td { }' +
-//             '                                         .border { border: 1px solid black; } ' +
-//             '                                         .bottom { bottom: 5px; width: 100%; position: fixed ' +
-//             '                                       ' +
-//             '                                   } } </style>');
-//         WindowObject.document.writeln('</head><body onload="window.print()">');
-//         WindowObject.document.writeln(divToPrint.innerHTML);
-//         WindowObject.document.writeln('</body></html>');
-//         WindowObject.document.close();
-//         setTimeout(function () {
-//             WindowObject.close();
-//         }, 10);
-
-//   }
-
-  
-</script>
-
-<script>
   function printDiv() {
 
         var divToPrint = document.getElementById('divToPrint');
+
         var WindowObject = window.open('', 'Print-Window');
         WindowObject.document.open();
         WindowObject.document.writeln('<!DOCTYPE html>');
         WindowObject.document.writeln('<html><head><title></title><style type="text/css">');
+
+
         WindowObject.document.writeln('@media print { .center { text-align: center;}' +
             '                                         .inline { display: inline; }' +
             '                                         .underline { text-decoration: underline; }' +
             '                                         .left { margin-left: 315px;} ' +
             '                                         .right { margin-right: 375px; display: inline; }' +
-            '                                          table { border-collapse: collapse; }' +
+            '                                          .table{ width: 236%; max-width: 250%; margin-bottom: 20px; } table { border-collapse: collapse; font-size: 14px;}' +
             '                                          th, td { border: 1px solid black; border-collapse: collapse; padding: 10px;}' +
             '                                           th, td { }' +
             '                                         .border { border: 1px solid black; } ' +
@@ -85,9 +56,9 @@
         setTimeout(function () {
             WindowObject.close();
         }, 10);
+
   }
 </script>
-
 
 <?php
     if($_SERVER['REQUEST_METHOD'] == "POST" ) {
@@ -132,7 +103,7 @@
 ?>  
       <div class="main-panel">
         <div class="content-wrapper">
-        <div class="card" id="divToPrint">
+        <div class="card">
         <div class="card-body">
         <div class="row">
             <div class="col-1"><a href="javascript:void()"><img src="<?=base_url()?>assets/images/benfed.png" alt="logo"/></a></div>
@@ -196,33 +167,33 @@ else {
 
 ?>
     
-    <tr style='font-weight: 600 !important;'>
+    <tr style="">
         
         <th width="15px">Sl No.</th>
         <th width="200px">Emplyee Name</th>
-        <th width="15px">Desig</th>
+        <!-- <th width="15px">Desig</th> -->
         <th width="15px">Basic Pay</th>
         <th width="15px">D.A.</th>
         <th width="15px">H.R.A.</th>
-        <th width="15px">Medical allow.</th>
-        <th width="15px">Other Allow</th>
-        <th width="15px">insuarance</th>
+        <th width="15px">Medi.</th>
+        <th width="15px">Oth.</th>
+        <th width="15px">insua.</th>
         <th width="15px">CCS</th>
         <th width="15px">HBL</th>
-        <th width="15px">Telephone</th>
-        <th width="15px">Med Advance</th>
-        <th width="15px">Festival Adv.</th>
+        <th width="15px">Tel.</th>
+        <th width="15px">Med Adv.</th>
+        <th width="15px">Fest. Adv.</th>
         <th width="15px">TF.</th>
         <th width="15px">Med Ins.</th>
         <th width="15px">P-tax</th>
-        <th width="15px">Comp Loan</th>
+        <th width="15px">Cmp Lo.</th>
         <th width="15px">I-Tax</th>
         <th width="15px">EPF.</th>
         <th width="15px">GPF.</th>
-        <th width="15px">Other Deduction</th>
-        <th width="15px">Total Deduction</th>
-        <th width="15px">Net Amount</th>
-        <th width="15px">Remarks</th>
+        <th width="15px">Oth. Ded</th>
+        <th width="15px">Tot Ded.</th>
+        <th width="15px">Net Amt</th>
+        <!-- <th width="15px">Remarks</th> -->
    
     </tr>
 
@@ -258,7 +229,7 @@ else {
             $epf         +=  $s_list->epf;
             $gpf         +=  $s_list->gpf;
             $oth_ded     +=  $s_list->other_deduction;
-            $tot_deduct  +=  $s_list->tot_deduction;
+            //$tot_deduct  +=  $s_list->tot_deduction;
             $net         +=  $s_list->net_amount;
 
     ?>        
@@ -267,13 +238,12 @@ else {
 
         <?php foreach($count as $row){
 
-                if(($row->emp_code == $s_list->emp_code) && ($row->emp_code != $temp_var)){
+        if(($row->emp_code == $s_list->emp_code) && ($row->emp_code != $temp_var)){
+          ?>
+                    <td><?=$i++?></td>
+                    <td><?=$s_list->emp_name?></td>
 
-                    echo '<td >'.$i++.'</td>';
-
-                    echo '<td >'.$s_list->emp_name.'</td>';
-
-                     $temp_var = $row->emp_code;
+         <?php      $temp_var = $row->emp_code;
                     
                 }
 
@@ -281,7 +251,7 @@ else {
             
         ?>  
         
-        <td><?php echo $s_list->designation; ?></td>
+        <!-- <td><?php //echo $s_list->designation; ?></td> -->
         <td><?php echo $s_list->basic_pay; ?></td>
         <td><?php echo $s_list->da_amt; ?></td>
         <td><?php echo $s_list->hra_amt; ?></td>
@@ -301,9 +271,14 @@ else {
         <td><?php echo $s_list->epf; ?></td>
         <td><?php echo $s_list->gpf; ?></td>
         <td><?php echo $s_list->other_deduction; ?></td>
-        <td><?php echo $s_list->tot_deduction; ?></td>
+        <td><?php //echo $s_list->tot_deduction;
+           echo  ($s_list->insuarance)+($s_list->ccs)+($s_list->hbl)+($s_list->telephone)+($s_list->med_adv)+($s_list->festival_adv)+($s_list->tf)+($s_list->med_ins)
+           +($s_list->ptax)+($s_list->comp_loan)+($s_list->itax)+($s_list->epf)+($s_list->gpf)+($s_list->other_deduction);
+           $tot_deduct  +=($s_list->insuarance)+($s_list->ccs)+($s_list->hbl)+($s_list->telephone)+($s_list->med_adv)+($s_list->festival_adv)+($s_list->tf)+($s_list->med_ins)
+           +($s_list->ptax)+($s_list->comp_loan)+($s_list->itax)+($s_list->epf)+($s_list->gpf)+($s_list->other_deduction);
+        ?></td>
         <td><?php echo $s_list->net_amount; ?></td>
-        <td><?php echo $s_list->remarks; ?></td>
+        <!-- <td><?php echo $s_list->remarks; ?></td> -->
        
     </tr>
 <?php
@@ -311,9 +286,9 @@ else {
         }
 
         ?>
-            <tr style='font-weight: bold;'>
+            <tr>
                 
-                <td colspan="3">Total</td>
+                <td colspan="2">Total</td>
                 <td><?php echo $basic; ?></td>
                 <td><?php echo $da; ?></td>
                 <td><?php echo $hra; ?></td>
@@ -335,7 +310,7 @@ else {
                 <td><?php echo $oth_ded; ?></td>
                 <td><?php echo $tot_deduct; ?></td>
                 <td><?php echo $net; ?></td>
-                <td></td>
+                <!-- <td></td> -->
              
                 
             </tr>
@@ -400,10 +375,6 @@ echo getIndianCurrency($pa);
               </div>
             </div>
           </div>
-          <div class="row">
-            <div class="col-md-12" style="text-align: center;"><button type="button" class='btn btn-primary' id='btn' value='Print' onclick='printDiv();'>Print</button></div>
-           
-            </div>
         </div>
 
 
@@ -439,10 +410,11 @@ echo getIndianCurrency($pa);
                                     <div class="col-6">
                                     <label for="exampleInputName1">Select Month:</label>
                                     <select
-                                class="form-control" required
+                                class="form-control required"
                                 name="sal_month"
                                 id="sal_month"
                                 >
+
                                 <option value="">Select Month</option>
 
                                 <?php foreach($month_list as $m_list) {?>
@@ -462,14 +434,14 @@ echo getIndianCurrency($pa);
                                 <div class="row">
                                     <div class="col-6">
                                     <label for="exampleInputName1">Input Year:</label>
-                                     <input type="text" class="form-control" name="year" id="year" required
+                                     <input type="text" class="form-control" name="year" id="year"
                                      value="<?php echo date('Y');?>" />
                   </div>
                     <div class="col-6">
                         <label for="exampleInputName1">Category:</label>
                         <select
                             class="form-control required"
-                            name="category" required
+                            name="category"
                             id="category"
                             >
 
