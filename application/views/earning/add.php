@@ -66,7 +66,7 @@
                     <div class="col-6">
                         <label for="exampleInputName1">Basic:</label>
                         <input type="text"
-                            class= "form-control"
+                            class= "form-control ded"
                             name = "basic"
                             id   = "basic"
                             value = 0.00	
@@ -75,7 +75,7 @@
                     <div class="col-6">
                         <label for="exampleInputName1">DA:</label>
                         <input type = "text"
-                            class= "form-control"
+                            class= "form-control ded"
                             name = "da"
                             id   = "da"
                             value = 0.00 
@@ -88,7 +88,7 @@
                     <div class="col-6">
                         <label for="exampleInputName1">HRA:</label>
                         <input type = "text"
-                            class= "form-control"
+                            class= "form-control ded"
                             name = "hra"
                             id   = "hra"
                             value = 0.00
@@ -98,7 +98,7 @@
                     <div class="col-6">
                         <label for="exampleInputName1">Medical Allowance:</label>
                         <input type = "text"
-                            class= "form-control"
+                            class= "form-control ded"
                             name = "ma"
                             id   = "ma"
                             value = 0.00
@@ -111,11 +111,22 @@
                     <div class="col-6">
                         <label for="exampleInputName1">Other Allowance:</label>
                         <input type = "text"
-                            class= "form-control"
+                            class= "form-control ded"
                             name = "oa"
                             id   = "oa"
                             value = 0.00
                         />
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                     <div class="col-4">
+                        <label for="exampleInputName1">Total Earning:</label>
+                        <input type = "text"
+                            class= "form-control"
+                            name = "" id = "tdud"  readonly
+                            value = ""/>
                     </div>
                 </div>
             </div>
@@ -173,6 +184,16 @@
             });
 
         });
+
+        $('.ded').change(function(){
+            var sum = 0;
+            $('.ded').each(function() {
+                sum += parseFloat($(this).val());
+            });
+            //alert(sum);
+            $('#tdud').val();
+            $('#tdud').val(sum);
+        })
 
     });
     

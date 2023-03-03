@@ -81,7 +81,7 @@
                   <div class="col-6">
                         <label for="exampleInputName1">Salary Linked Insurance:</label>
                         <input type="text"
-                            class= "form-control"
+                            class= "form-control ded"
                             name = "sal_ins"
                             id   = "sal_ins"
                             value = 0.00	
@@ -104,7 +104,7 @@
                     <div class="col-6">
                         <label for="exampleInputName1">Co-operative Credit Society:</label>
                         <input type = "text"
-                            class= "form-control"
+                            class= "form-control ded"
                             name = "ccs"
                             id   = "ccs"
                             value = 0.00 
@@ -114,7 +114,7 @@
                     <div class="col-6">
                         <label for="exampleInputName1">House Building Loan:</label>
                         <input type = "text"
-                                class= "form-control"
+                                class= "form-control ded"
                                 name = "hbl"
                                 id   = "hbl"
                                 value = 0.00 
@@ -127,7 +127,7 @@
                     <div class="col-6">
                         <label for="exampleInputName1">Telephone:</label>
                         <input type = "text"
-                            class= "form-control"
+                            class= "form-control ded"
                             name = "phone"
                             id   = "phone"
                             value = 0.00
@@ -136,7 +136,7 @@
                     <div class="col-6">
                         <label for="exampleInputName1">Medical Advance::</label>
                         <input type = "text"
-                            class= "form-control"
+                            class= "form-control ded"
                             name = "med_adv"
                             id   = "med_adv"
                             value = 0.00
@@ -149,7 +149,7 @@
                     <div class="col-6">
                         <label for="exampleInputName1">Festival Advance:</label>
                         <input type = "text"
-                            class= "form-control"
+                            class= "form-control ded"
                             name = "fest_adv"
                             id   = "fest_adv"
                             value = 0.00
@@ -158,7 +158,7 @@
                     <div class="col-6">
                         <label for="exampleInputName1">Thrift Fund:</label>
                         <input type = "text"
-                            class= "form-control"
+                            class= "form-control ded"
                             name = "tf"
                             id   = "tf"
                             value = 0.00
@@ -171,7 +171,7 @@
                     <div class="col-6">
                         <label for="exampleInputName1">Medical Insurance:</label>
                         <input type = "text"
-                            class= "form-control"
+                            class= "form-control ded"
                             name = "med_ins"
                             id   = "med_ins"
                             value = 0.00
@@ -180,7 +180,7 @@
                     <div class="col-6">
                         <label for="exampleInputName1">Computer Loan:</label>
                            <input type = "text"
-                                class= "form-control"
+                                class= "form-control ded"
                                 name = "comp_loan"
                                 id   = "comp_loan"
                                 value = 0.00
@@ -194,7 +194,7 @@
                     <div class="col-6">
                         <label for="exampleInputName1">Itax:</label>
                         <input type = "text"
-                            class= "form-control"
+                            class= "form-control ded"
                             name = "itax"
                             id   = "itax"
                             value = 0.00
@@ -203,7 +203,7 @@
                     <div class="col-6">
                         <label for="exampleInputName1">GPF</label>
                         <input type = "text"
-                            class= "form-control"
+                            class= "form-control ded"
                             name = "gpf"
                             id   = "gpf"
                             value = 0.00
@@ -216,7 +216,7 @@
                     <div class="col-4">
                         <label for="exampleInputName1">EPF:</label>
                         <input type = "text"
-                            class= "form-control"
+                            class= "form-control ded"
                             name = "epf"
                             id   = "epf"
                             value = 0.00
@@ -225,7 +225,7 @@
                     <div class="col-4">
                         <label for="exampleInputName1">Other Deductions:</label>
                         <input type = "text"
-                            class= "form-control"
+                            class= "form-control ded"
                             name = "other_ded"
                             id   = "other_ded"
                             value = 0.00
@@ -234,11 +234,22 @@
                     <div class="col-4">
                         <label for="exampleInputName1">PTax:</label>
                         <input type = "text"
-                            class= "form-control"
+                            class= "form-control ded"
                             name = "ptax"
                             id   = "ptax"
                             value = 0.00
                         />
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                     <div class="col-4">
+                        <label for="exampleInputName1">Total deduction:</label>
+                        <input type = "text"
+                            class= "form-control"
+                            name = "" id = "tdud"  readonly
+                            value = ""/>
                     </div>
                 </div>
             </div>
@@ -293,6 +304,17 @@
             });
 
         });
+
+
+        $('.ded').change(function(){
+            var sum = 0;
+            $('.ded').each(function() {
+                sum += parseFloat($(this).val());
+            });
+            //alert(sum);
+            $('#tdud').val();
+            $('#tdud').val(sum);
+        })
 
     });
     

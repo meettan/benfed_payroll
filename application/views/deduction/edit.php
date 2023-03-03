@@ -241,7 +241,7 @@
                         <label for="exampleInputName1">Total deduction:</label>
                         <input type = "text"
                             class= "form-control"
-                            name = "tdud"
+                            name = ""
                             id   = "tdud"  readonly
                             value = "<?php echo ($deduction_dtls->insuarance)+($deduction_dtls->ccs)+($deduction_dtls->hbl)+($deduction_dtls->telephone)+($deduction_dtls->med_adv)+($deduction_dtls->festival_adv)+($deduction_dtls->tf)+($deduction_dtls->med_ins)
            +($deduction_dtls->ptax)+($deduction_dtls->comp_loan)+($deduction_dtls->itax)+($deduction_dtls->epf)+($deduction_dtls->gpf)+($deduction_dtls->other_deduction); ?>"

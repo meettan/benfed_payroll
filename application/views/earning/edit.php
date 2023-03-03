@@ -72,7 +72,7 @@
                     <div class="col-6">
                         <label for="exampleInputName1">Basic Pay:</label>
                         <input type = "text"
-                            class="form-control required"
+                            class="form-control ded"
                             name = "basic"
                             id   = "basic"
                             value="<?php echo $earning_dtls->basic_pay;?>"
@@ -86,7 +86,7 @@
                     <div class="col-6">
                         <label for="exampleInputName1">DA:</label>
                         <input type = "text"
-                            class="form-control required"
+                            class="form-control ded"
                             name = "da"
                             id   = "da"
                             value="<?php echo $earning_dtls->da_amt;?>"
@@ -95,7 +95,7 @@
                     <div class="col-6">
                         <label for="exampleInputName1">HRA:</label>
                         <input type = "text"
-                            class="form-control required"
+                            class="form-control ded"
                             name = "hra"
                             id   = "hra"
                             value="<?php echo $earning_dtls->hra_amt;?>"
@@ -108,7 +108,7 @@
                     <div class="col-6">
                         <label for="exampleInputName1">Medical Allowance:</label>
                         <input type = "text"
-                            class="form-control required"
+                            class="form-control ded"
                             name = "ma"
                             id   = "ma"
                             value="<?php echo $earning_dtls->med_allow;?>"
@@ -117,11 +117,22 @@
                     <div class="col-6">
                         <label for="exampleInputName1">Other Allownce:</label>
                         <input type = "text"
-                            class="form-control required"
+                            class="form-control ded"
                             name = "oa"
                             id   = "oa"
                             value="<?php echo $earning_dtls->othr_allow;?>"
                         />
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                     <div class="col-4">
+                        <label for="exampleInputName1">Total Earning:</label>
+                        <input type = "text"
+                            class= "form-control"
+                            name = "" id = "tdud"  readonly
+                            value = "<?php echo round($earning_dtls->basic_pay+$earning_dtls->da_amt+$earning_dtls->hra_amt+$earning_dtls->med_allow+$earning_dtls->othr_allow); ?>"/>
                     </div>
                 </div>
             </div>
@@ -136,3 +147,18 @@
 
           </div>
         </div>
+
+
+
+
+        <script>
+            $('.ded').change(function(){
+            var sum = 0;
+            $('.ded').each(function() {
+                sum += parseFloat($(this).val());
+            });
+            //alert(sum);
+            $('#tdud').val();
+            $('#tdud').val(sum);
+        })
+        </script>
