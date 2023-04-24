@@ -67,7 +67,7 @@
         
         $basic = $da  =  $ir = $hra = $ma = $oa = $ccs = $ins = $tf=$hbl=$tel=$med_adv=$med_ins=
 
-       $oth_ded= $comp_loan= $fa = $lic  =  $itx = $pa = 0;       
+       $oth_ded= $comp_loan= $fa = $lic  =  $itx = $pa = 0;$tot_earning = 0;$earning  = 0;   $deduction = 0; 
             // function getIndianCurrency($number)
             // {
             //     $decimal = round($number - ($no = floor($number)), 2) * 100;
@@ -177,6 +177,7 @@ else {
         <th width="15px">H.R.A.</th>
         <th width="15px">Medi.</th>
         <th width="15px">Oth.</th>
+        <th>Total Earning</th>
         <th width="15px">insua.</th>
         <th width="15px">CCS</th>
         <th width="15px">HBL</th>
@@ -230,7 +231,7 @@ else {
             $gpf         +=  $s_list->gpf;
             $oth_ded     +=  $s_list->other_deduction;
             //$tot_deduct  +=  $s_list->tot_deduction;
-            $net         +=  $s_list->net_amount;
+           
 
     ?>        
 
@@ -257,6 +258,9 @@ else {
         <td><?php echo $s_list->hra_amt; ?></td>
         <td><?php echo $s_list->med_allow; ?></td>
         <td><?php echo $s_list->othr_allow; ?></td>
+        <td><?php $earning = $s_list->basic_pay+$s_list->da_amt+$s_list->hra_amt+$s_list->med_allow+$s_list->othr_allow ;
+                    echo $earning;$tot_earning +=$earning;
+        ?></td>
         <td><?php echo $s_list->insuarance; ?></td>
         <td><?php echo $s_list->ccs; ?></td>
         <td><?php echo $s_list->hbl; ?></td>
@@ -272,17 +276,21 @@ else {
         <td><?php echo $s_list->gpf; ?></td>
         <td><?php echo $s_list->other_deduction; ?></td>
         <td><?php //echo $s_list->tot_deduction;
-           echo  ($s_list->insuarance)+($s_list->ccs)+($s_list->hbl)+($s_list->telephone)+($s_list->med_adv)+($s_list->festival_adv)+($s_list->tf)+($s_list->med_ins)
+           echo $deduction = ($s_list->insuarance)+($s_list->ccs)+($s_list->hbl)+($s_list->telephone)+($s_list->med_adv)+($s_list->festival_adv)+($s_list->tf)+($s_list->med_ins)
            +($s_list->ptax)+($s_list->comp_loan)+($s_list->itax)+($s_list->epf)+($s_list->gpf)+($s_list->other_deduction);
            $tot_deduct  +=($s_list->insuarance)+($s_list->ccs)+($s_list->hbl)+($s_list->telephone)+($s_list->med_adv)+($s_list->festival_adv)+($s_list->tf)+($s_list->med_ins)
            +($s_list->ptax)+($s_list->comp_loan)+($s_list->itax)+($s_list->epf)+($s_list->gpf)+($s_list->other_deduction);
+
         ?></td>
-        <td><?php echo $s_list->net_amount; ?></td>
+        <td><?php //echo $s_list->net_amount;
+                     echo round($earning-$deduction);
+                     $net         +=  $earning-$deduction;
+        ?></td>
         <!-- <td><?php echo $s_list->remarks; ?></td> -->
        
     </tr>
 <?php
-            $tempCount++;
+            $tempCount++;$earning=0;$deduction=0;
         }
 
         ?>
@@ -294,6 +302,7 @@ else {
                 <td><?php echo $hra; ?></td>
                 <td><?php echo $ma; ?></td>
                 <td><?php echo $oa; ?></td>
+                <td><?php echo $tot_earning; ?></td>
                 <td><?php echo $ins; ?></td>
                 <td><?php echo $ccs; ?></td>
                 <td><?php echo $hbl; ?></td>
