@@ -34,6 +34,7 @@
   <script src="<?=base_url()?>assets/js/dashboard.js"></script>
   <script src="<?=base_url()?>assets/js/data-table.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/linways/table-to-excel@v1.0.4/dist/tableToExcel.js"></script>
    <script src="<?=base_url()?>assets/js/select2.min.js"></script>
   <script>
   $("#emp_code").select2( {
@@ -45,6 +46,20 @@
     placeholder: "Select Employee"
     } );
   </script>
+
+  <script>
+    $(document).ready(function(){
+    $("#btnExport").click(function() {
+        let table = document.getElementsByTagName("table");
+        TableToExcel.convert(table[0], { // html code may contain multiple tables so here we are refering to 1st table tag
+           name: `export.xlsx`, // fileName you could use any name
+           sheet: {
+              name: 'Sheet 1' // sheetName
+           }
+        });
+    });
+});
+    </script>
   <!-- End custom js for this page-->
 </body>
 </html>

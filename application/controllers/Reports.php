@@ -249,6 +249,95 @@ public function salarycatgreport() {
         }
 
     }
+
+    public function bankadvise() {
+
+        if($_SERVER['REQUEST_METHOD'] == "POST") {
+    
+            $select     =   array("emp_code");
+    
+            $where      =   array(
+    
+                "emp_catg"  =>  $this->input->post('category')
+    
+            );
+    
+            $emp_id     =   $this->Report_Process->f_get_particulars("md_employee", $select, $where, 0);
+    
+            //Temp variable for emp_list
+            $eid_list   =   [];
+    
+            for($i = 0; $i < count($emp_id); $i++) {
+    
+                array_push($eid_list, $emp_id[$i]->emp_code);
+    
+            }
+    
+    
+            //List of Salary Category wise
+            unset($where);
+            $where = array (
+                "m.emp_code = t.emp_no" =>  NULL,
+                "t.sal_month"     =>  $this->input->post('sal_month'),
+    
+                "t.sal_year"      =>  $this->input->post('year')
+    
+            );
+    
+           // $salary['list']               =   $this->Report_Process->f_get_particulars_in("md_employee m,td_pay_slip t", $eid_list, $where);
+    
+            // $salary['attendance_dtls']    =   $this->Report_Process->f_get_attendance();
+    
+            //Employee Group Count
+            unset($select);
+            unset($where);
+    
+            $select =   array(
+    
+                "m.emp_code",  "COUNT(m.emp_code) count","m.emp_name"
+    
+            );
+    
+            $where  =   array(
+    
+                "t.sal_month"     =>  $this->input->post('sal_month'),
+    
+                "t.sal_year = '".$this->input->post('year')."' GROUP BY m.emp_code,m.emp_name"      =>  NULL
+    
+            );
+    
+            $salary['count']              =   $this->Report_Process->f_get_particulars("md_employee m,td_pay_slip t", $select, $where, 0);
+            // f_get_particulars("md_employee m, td_pay_slip t", $select, $where, 0);
+            $salary['list']               =   $this->Report_Process->f_get_gov_ben_salary_list($this->input->post('year'),$this->input->post('sal_month'));
+            
+            $this->load->view('post_login/payroll_main');
+    
+            $this->load->view("reports/salary_bank_advice", $salary);
+    
+            $this->load->view('post_login/footer');
+    
+        }
+    
+        else {
+    
+            //Month List
+            $salary['month_list'] =   $this->Report_Process->f_get_particulars("md_month",NULL, NULL, 0);
+    
+            //For Current Date
+            $salary['sys_date']   =   $_SESSION['sys_date'];
+    
+            //Category List
+            $salary['category']   =   $this->Report_Process->f_get_particulars("md_category", NULL, array('category_code IN (1,2,3)' => NULL), 0);
+    
+            $this->load->view('post_login/payroll_main');
+    
+            $this->load->view("reports/salary_bank_advice", $salary);
+    
+            $this->load->view('post_login/footer');
+    
+        }
+    
+    }
     
 
 }

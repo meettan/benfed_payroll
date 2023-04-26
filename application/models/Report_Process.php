@@ -131,6 +131,22 @@
 
 			return $result->row();
 		}
+		public function f_get_gov_ben_salary_list($sal,$month){
+
+			$sql	="SELECT
+			(a.basic_pay+a.da_amt+a.hra_amt+a.med_allow+a.othr_allow) - a.tot_deduction as net_pay ,CURDATE() Value_Date,2017 Branch_Code,'Saving' Sender_Account_Type,'50100385096908' Remitter_Account_No,
+			ifsc,50100385096908 Debit_Account,'Saving' Beneficiary_Account_type,
+			bank_ac_no Bank_Account_Number,
+			b.emp_name,'' Remittance_Details,2 Debit_Account_System,''Originator_Of_Remmittance,
+			phn_no EMAILMOBILENO
+			FROM td_pay_slip a,md_employee b
+			WHERE a.emp_no=b.emp_code
+			and a.sal_month=$month
+			and a.sal_year=$sal
+			and emp_catg in(1,2)";
+			$result = $this->db->query($sql);
+			return $result->result();
+		}
 
     }
 ?>

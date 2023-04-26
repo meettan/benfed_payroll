@@ -222,6 +222,7 @@
                     <li class="nav-item"><a href="<?php echo site_url('reports/paystatementreport'); ?>">Salary Statement Month Wise</a></li>
                     <li class="nav-item"><a href="<?php echo site_url('reports/salarycatgreport'); ?>">Category wise Salary List</a></li>
                     <li class="nav-item"><a href="<?php echo site_url('reports/totaldeduction'); ?>">Total Deduction</a></li>
+                    <li class="nav-item"><a href="<?php echo site_url('reports/bankadvise'); ?>">Bank Advise</a></li>
                   <?php } ?>
                 </ul>
               </div>
