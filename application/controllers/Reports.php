@@ -118,8 +118,7 @@ public function salarycatgreport() {
 
                 "m.emp_name", "m.bank_ac_no",
                 
-                "t.net_amount"
-
+                "(t.basic_pay+t.da_amt+t.hra_amt+t.med_allow+t.othr_allow) - (t.insuarance+t.ccs+t.hbl+t.telephone+t.med_adv+t.festival_adv+t.tf+t.med_ins+t.comp_loan+ t.ptax + t.itax + t.gpf +t.epf + t.other_deduction) as net_amount"
             );
 
             $where  = array(
