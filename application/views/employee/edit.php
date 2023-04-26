@@ -177,6 +177,21 @@
                             id   = "bank_name"
                             value="<?php echo $employee_dtls->bank_name; ?>"/>
                     </div>
+                    
+                    
+                </div>
+            </div> 
+
+           <div class="form-group">
+                <div class="row">
+                    <div class="col-6">
+                        <label for="exampleInputName1">IFSC:</label>
+                        <input type="text"
+                            class= "form-control"
+                            name = "ifsc"
+                            id   = "ifsc"
+                            value="<?php echo $employee_dtls->ifsc; ?>"/>
+                    </div>
                     <div class="col-6">
                         <label for="exampleInputName1">A/C No.:</label>
                         <input type="text"

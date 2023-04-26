@@ -160,11 +160,23 @@
             <div class="form-header">
             <h4>Bank & Other Details</h4>
            </div>
+
            <div class="form-group">
                 <div class="row">
                     <div class="col-6">
                         <label for="exampleInputName1">Bank Name:</label>
                         <input type="text" class= "form-control" name = "bank_name" id   = "bank_name"
+                            value=""/>
+                    </div>
+                    
+                </div>
+            </div> 
+
+           <div class="form-group">
+                <div class="row">
+                    <div class="col-6">
+                        <label for="exampleInputName1">IFSC:</label>
+                        <input type="text" class= "form-control" name = "ifsc" id   = "ifsc"
                             value=""/>
                     </div>
                     <div class="col-6">

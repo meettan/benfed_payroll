@@ -258,6 +258,7 @@
 					"aadhar_no"        =>  $this->input->post('aadhar'),
 					"bank_name"        =>  $this->input->post('bank_name'),
 					"bank_ac_no"       =>  $this->input->post('bank_ac_no'),
+					"ifsc"             =>  $this->input->post('ifsc'),
 					"pf_ac_no"         =>  $this->input->post('pf_ac_no'),
 					"uan"              =>  $this->input->post('uan'),
 					"basic_pay"        =>  $this->input->post('basic_pay'),
@@ -359,6 +360,8 @@
 					"bank_name"        =>  $this->input->post('bank_name'),
 	
 					"bank_ac_no"       =>  $this->input->post('bank_ac_no'),
+
+					"ifsc"             =>  $this->input->post('ifsc'),
 	
 					"pf_ac_no"         =>  $this->input->post('pf_ac_no'),
 
@@ -401,7 +404,7 @@
 				unset($select);
 				$select = array ("emp_code", "emp_name", "emp_catg","emp_dist", "dob","email", "phn_no",
 								 "designation", "department","emp_addr",
-								 "pan_no", "bank_name", "bank_ac_no", "join_dt","ret_dt",
+								 "pan_no", "bank_name", "bank_ac_no", "ifsc","join_dt","ret_dt",
 								 "pf_ac_no","uan","basic_pay","aadhar_no","emp_status"
 								 );
 	
