@@ -134,7 +134,7 @@
 		public function f_get_gov_ben_salary_list($sal,$month){
 
 			$sql	="SELECT
-			(a.basic_pay+a.da_amt+a.hra_amt+a.med_allow+a.othr_allow) - a.tot_deduction as net_pay ,CURDATE() Value_Date,2017 Branch_Code,'Saving' Sender_Account_Type,'50100385096908' Remitter_Account_No,
+			(a.basic_pay+a.da_amt+a.hra_amt+a.med_allow+a.othr_allow) - (a.insuarance+a.ccs+a.hbl+a.telephone+a.med_adv+a.festival_adv+a.tf+a.med_ins+a.comp_loan+ a.ptax + itax + gpf +epf + a.other_deduction) as net_pay ,CURDATE() Value_Date,2017 Branch_Code,'Saving' Sender_Account_Type,'50100385096908' Remitter_Account_No,
 			ifsc,50100385096908 Debit_Account,'Saving' Beneficiary_Account_type,
 			bank_ac_no Bank_Account_Number,
 			b.emp_name,'' Remittance_Details,2 Debit_Account_System,''Originator_Of_Remmittance,
