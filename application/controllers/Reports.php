@@ -344,15 +344,10 @@ public function salarycatgreport() {
 
             //Payslip
             $empno     =  $this->input->post('emp_cd');
-            $sal_month  = $this->input->post('sal_month');
+         
             $sal_yr     = $this->input->post('year');
 
-            $where  =   array(
-
-                "emp_no"            =>  $this->input->post('emp_cd'),
-                "sal_month"         =>  $this->input->post('sal_month'),
-                "sal_year"          =>  $this->input->post('year'),
-                "approval_status"   =>  'A' );
+            
 
             $payslip['emp_dtls']    =   $this->Report_Process->f_get_particulars("md_employee", NULL, array("emp_code" =>  $this->input->post('emp_cd')), 1);
 

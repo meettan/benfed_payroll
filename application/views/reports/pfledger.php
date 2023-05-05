@@ -237,18 +237,7 @@
                             <div class="form-group">
                                 <div class="row">
                                   
-                                    <div class="col-4">
-                                        <label for="exampleInputName1">Month:</label>
-                                        <select class="form-control" name="sal_month" id="sal_month" required>
-                                        <option value="">Select Month</option>
-                                        <?php foreach($month_list as $m_list) {?>
-                                            <option value="<?php echo $m_list->id ?>" ><?php echo $m_list->month_name; ?></option>
-
-                                        <?php
-                                        }
-                                        ?>
-                                        </select> 
-                                    </div>
+                                    
                                     <div class="col-4">
                                         <label for="exampleInputName1">Input Year:</label>
                                         <input type="text" class="form-control" name="year" id="year" required
