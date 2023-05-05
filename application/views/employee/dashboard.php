@@ -3,7 +3,7 @@
           <div class="card">
             <div class="card-body">
              <div class="row">
-                <div class="col-3">
+                <div class="col-2">
                   <h3>Employee List</h3>
                   <?php if($this->session->flashdata('msg')){ ?>
                 <div class="alert alert-danger" role="alert">
@@ -16,7 +16,7 @@
                </div>
                <?php } ?>
                 </div>
-                <div class="col-2">
+                <div class="col-1">
                     <div class="form-check">
                               <label class="form-check-label">
                                 <input type="radio" class="form-check-input" name="active_status" id="active_status" value="A" checked>
@@ -24,7 +24,7 @@
                             </label>
                     </div>
                 </div>
-                <div class="col-2">
+                <div class="col-1">
                     <div class="form-check">
                         <label class="form-check-label">
                           <input type="radio" class="form-check-input" name="active_status" id="active_status" value="R" >
@@ -40,11 +40,20 @@
                             </label>
                     </div>
                 </div>
+                <div class="col-1">
+                    <div class="form-check">
+                        <label class="form-check-label" style="margin-left: 1.3rem;font-size: 13px;">
+                          <input type="radio" class="form-check-input" name="active_status" id="active_status" value="RG" >
+                            Resigned
+                            </label>
+                            
+                    </div>
+                </div>
                 <div class="col-2">
                     <div class="form-check">
                         <label class="form-check-label">
-                          <input type="radio" class="form-check-input" name="active_status" id="active_status" value="RG" >
-                            Resigned
+                          <input type="radio" class="form-check-input" name="active_status" id="active_status" value="OH" >
+                            On Hold
                             </label>
                     </div>
                 </div>
