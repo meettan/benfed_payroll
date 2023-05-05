@@ -162,6 +162,13 @@
                             class= "form-control required" name = "basic_pay" id   = "basic_pay"
                             value="<?php echo $employee_dtls->basic_pay; ?>"/>
                     </div>
+                    <div class="col-6">
+                        <label for="exampleInputName1">Salary From Benfed:<span class="requiredfield">*</span></label><br>
+                        <input type="radio" name="salary_status" value="1" <?php if ($employee_dtls->salary_status == 1 ) echo "checked"; ?>>
+                        <label for="Yes">Yes</label>
+                        <input type="radio"  name="salary_status" value="0" <?php if ($employee_dtls->salary_status == 0 ) echo "checked"; ?>>
+                        <label for="No">No</label>
+                    </div>
                 </div>
             </div>
             <div class="form-header">
@@ -257,6 +264,7 @@
                             <label for="exampleInputName1">Status:</label>
                             <select name='emp_status' class='form-control'>
                                 <option value="A"<?php if($employee_dtls->emp_status=='A') echo 'selected'; ?>>Active</option>
+                                <option value="OH" <?php if($employee_dtls->emp_status=='OH') echo 'selected'; ?>>On Hold</option>
                                 <option value="R" <?php if($employee_dtls->emp_status=='R') echo 'selected'; ?>>Retired</option>
                                 <option value="S" <?php if($employee_dtls->emp_status=='S') echo 'selected'; ?>>Suspended</option>
                                 <option value="RG" <?php if($employee_dtls->emp_status=='RG') echo 'selected'; ?>>Resigned</option>

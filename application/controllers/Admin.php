@@ -199,7 +199,6 @@
 						"a.department",'b.district_name');
 
 		$employee['employee_dtls']    =   $this->Admin_Process->f_get_particulars("md_employee a,md_district b", $select, array("a.emp_dist = b.district_code"=> NULL, "a.emp_status" => 'A'), 0);
-
 		//Category List 
 		$employee['category_dtls']    =   $this->Admin_Process->f_get_particulars("md_category", NULL, NULL, 0);
 
@@ -370,6 +369,9 @@
 					"basic_pay"        =>  $this->input->post('basic_pay'),
 
 					"emp_status"       => $this->input->post('emp_status'),
+
+					"salary_status"    => $this->input->post('emp_status'),
+
 					"remarks"           => $this->input->post('remarks'),
 	
 					"modified_by"       => $this->session->userdata['loggedin']['user_id'],
@@ -403,7 +405,7 @@
 				//For Employee Details
 				unset($select);
 				$select = array ("emp_code", "emp_name", "emp_catg","emp_dist", "dob","email", "phn_no",
-								 "designation", "department","emp_addr",
+								 "designation", "department","emp_addr","salary_status",
 								 "pan_no", "bank_name", "bank_ac_no", "ifsc","join_dt","ret_dt",
 								 "pf_ac_no","uan","basic_pay","aadhar_no","emp_status"
 								 );
