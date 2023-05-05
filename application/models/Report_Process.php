@@ -148,5 +148,20 @@
 			return $result->result();
 		}
 
+		public function f_get_emp_pf_dtls($empno){
+
+			$sql   = "SELECT b.`emp_name`,b.`dob`,b.`UAN`,b.`bank_ac_no`,
+			'' WAGE_MONTH,CONCAT(c.month_name,' ',a.sal_year) CONTRIBUTION_MONTH,a.basic_pay+a.da_amt as EPF_WAGES,15000 EPF_WAGE,round((a.basic_pay+a.da_amt)*(12/100),2) employees_EPF,round(15000*(8.33/100),2) EMPLOYER_EPF,round((a.basic_pay+a.da_amt)*(12/100) - (15000*(8.33/100)),2) EMPLOYER_epfs
+			FROM td_pay_slip a,md_employee b,md_month c
+			where a.emp_no=b.emp_code
+			and a.emp_no = $empno
+			and a.`trans_date` between '2023-02-20' and '2023-04-30'  
+			and a.sal_month=c.id
+			ORDER BY `b`.`emp_name` ASC" ;
+			$result = $this->db->query($sql);
+			return $result->result();
+
+		}
+
     }
 ?>

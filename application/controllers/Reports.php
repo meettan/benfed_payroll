@@ -337,6 +337,54 @@ public function salarycatgreport() {
         }
     
     }
+
+    public function pfledger() {
+
+        if($_SERVER['REQUEST_METHOD'] == "POST") {
+
+            //Payslip
+            $empno     =  $this->input->post('emp_cd');
+            $sal_month  = $this->input->post('sal_month');
+            $sal_yr     = $this->input->post('year');
+
+            $where  =   array(
+
+                "emp_no"            =>  $this->input->post('emp_cd'),
+                "sal_month"         =>  $this->input->post('sal_month'),
+                "sal_year"          =>  $this->input->post('year'),
+                "approval_status"   =>  'A' );
+
+            $payslip['emp_dtls']    =   $this->Report_Process->f_get_particulars("md_employee", NULL, array("emp_code" =>  $this->input->post('emp_cd')), 1);
+
+            $payslip['pf_dtls']    =   $this->Report_Process->f_get_emp_pf_dtls($empno);
+
+            $this->load->view('post_login/payroll_main');
+
+            $this->load->view("reports/pfledger", $payslip);
+
+            $this->load->view('post_login/footer');
+
+        }
+        
+        else {
+
+            //Month List
+            $payslip['month_list'] =   $this->Report_Process->f_get_particulars("md_month",NULL, NULL, 0);
+            //For Current Date
+            $payslip['sys_date']   =   $_SESSION['sys_date'];
+
+            //Employee List
+            unset($select);
+            $select = array ("emp_code", "emp_name");
+            $payslip['emp_list']   =   $this->Report_Process->f_get_particulars("md_employee", $select, array("emp_catg IN (1,2,3)" => NULL,'1 order by emp_name'=>NULL), 0);
+
+            $this->load->view('post_login/payroll_main');
+            $this->load->view("reports/pfledger", $payslip);
+            $this->load->view('post_login/footer');
+            
+        }
+
+    }
     
 
 }

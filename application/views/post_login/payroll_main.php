@@ -223,6 +223,7 @@
                     <li class="nav-item"><a href="<?php echo site_url('reports/salarycatgreport'); ?>">Category wise Salary List</a></li>
                     <li class="nav-item"><a href="<?php echo site_url('reports/totaldeduction'); ?>">Total Deduction</a></li>
                     <li class="nav-item"><a href="<?php echo site_url('reports/bankadvise'); ?>">Bank Advise</a></li>
+                    <li class="nav-item"><a href="<?php echo site_url('reports/pfledger'); ?>">Pf Ledger</a></li>
                   <?php } ?>
                 </ul>
               </div>
