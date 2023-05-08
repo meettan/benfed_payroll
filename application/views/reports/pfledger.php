@@ -80,7 +80,7 @@
                 <div style="text-align:center;" class="printHead">
                 <h3>WEST BENGAL STATE CONSUMERS' CO-OPERATIVE FEDERATION LTD.</h3>
                 <h4>Southend Conclave, 3rd Floor, 1582, Rajdanga Main Rd, Kasba, Kolkata-700073</h4>
-                <!-- <h4>Pay Slip for <?php //echo $months->month_name.'-'.$this->input->post('year');?> </h4> -->
+                <h4>EMPLOYEES PROVIDENT FUND ACCOUNT LEDGER </h4>
                 <!-- <h4><?php //echo $payslip_dtls->emp_name; ?></h4> -->
                 </div> 
             </div>    
@@ -110,7 +110,7 @@
                         <td >ACCOUNT/ID NO	
                         <!-- <td></td> -->
                         <td class="left_algn">:</td>
-                        <td><?php //echo $emp_dtls->emp_no; ?></td>
+                        <td><?php echo $emp_dtls->pf_ac_no; ?></td>
                       </tr>
                       <tr>
                         <td>DATE OF BIRTH</td>
@@ -128,7 +128,7 @@
                             <td></td>
                             <td>FINANCIAL YEAR</td>
                             <td class="left_algn">:</td>
-                            <td><?php //echo $emp_dtls->designation; ?></td>
+                            <td><?php echo $this->input->post('syear').'-'.$this->input->post('eyear'); ?></td>
 
                         </tr>
                         
@@ -136,13 +136,13 @@
                     </table>
                     <br>
                     <table class="width tablePrint" cellpadding="6" style="width:100%;" width="100%" border="0" cellspacing="0" cellpadding="0">
-                        <thead>
+                        <thead style="background-color:#808080 !important">
                             <tr class="t2">
                                 <th rowspan="3">WAGE MONTH</th>
                                 <th rowspan="3">CONTRI BUTION MONTH</th>
                                 <th rowspan="3">EPF WAGES (B.P +D.A)</th>
                                 <th rowspan="3">EPS WAGES (15000)</th>
-                                <th colspan="3">DEPOSITED</th>
+                                <th colspan="3" style="text-align:center">DEPOSITED</th>
                                
                             </tr>
                             <tr class="t2">
@@ -173,7 +173,7 @@
 
                         <tr>
                             <td><?=$pf->WAGE_MONTH?></td>
-                            <td><?=$pf->CONTRIBUTION_MONTH?></td>
+                            <td><?=$pf->CONTRIBUTION_MONTH?> <?=$pf->CONTRIBUTION_YR?></td>
                             <td><?=$pf->EPF_WAGES?></td>
                             <td><?=$pf->EPF_WAGE?></td>
                             <td><?=$pf->employees_EPF?></td>
@@ -188,11 +188,11 @@
 
                                 <td colspan="2"><b>Total </b></td>
                               
-                                <td class="right_algn"><b><?=$tot_epf1?></b></td>
-                                <td class="right_algn"><b><?=$tot_epf2?></b></td>
-                                <td class="right_algn"><b><?=$tot_emp_epf?></b></td>
-                                <td class="right_algn"><b><?=$tot_ey_epf?></b></td>
-                                <td class="right_algn"><b><?=$tot_epfs?></b></td>
+                                <td class="right_algn"><b><?=number_format($tot_epf1,2)?></b></td>
+                                <td class="right_algn"><b><?=number_format($tot_epf2,2)?></b></td>
+                                <td class="right_algn"><b><?=number_format($tot_emp_epf,2)?></b></td>
+                                <td class="right_algn"><b><?=number_format($tot_ey_epf,2)?></b></td>
+                                <td class="right_algn"><b><?=number_format($tot_epfs,2)?></b></td>
 
                             </tr>
                           

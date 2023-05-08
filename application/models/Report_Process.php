@@ -152,15 +152,17 @@
 
 			$start = $ssal_yr.'-01-04';
 			$end   = $esal_yr.'-03-31';
-
-			$sql   = "SELECT b.`emp_name`,b.`dob`,b.`UAN`,b.`bank_ac_no`,
-			'' WAGE_MONTH,CONCAT(c.month_name,' ',a.sal_year) CONTRIBUTION_MONTH,a.basic_pay+a.da_amt as EPF_WAGES,15000 EPF_WAGE,round((a.basic_pay+a.da_amt)*(12/100),2) employees_EPF,round(15000*(8.33/100),2) EMPLOYER_EPF,round((a.basic_pay+a.da_amt)*(12/100) - (15000*(8.33/100)),2) EMPLOYER_epfs
-			FROM td_pay_slip a,md_employee b,md_month c
-			where a.emp_no=b.emp_code
+			$sql   ="SELECT b.`emp_name`,b.`dob`,b.`UAN`,b.`bank_ac_no`, CONCAT(c.month_name,' ',a.sal_year)WAGE_MONTH,
+			MONTHNAME(LAST_DAY(CONCAT(a.sal_year,'-',c.id,'-','01')  + INTERVAL 1 MONTH))CONTRIBUTION_MONTH,
+			YEAR(LAST_DAY(CONCAT(a.sal_year,'-',c.id,'-','01')  + INTERVAL 1 MONTH))CONTRIBUTION_YR,a.basic_pay+a.da_amt as EPF_WAGES,15000 EPF_WAGE,
+			round((a.basic_pay+a.da_amt)*(12/100),2) employees_EPF,round(15000*(8.33/100),2) EMPLOYER_EPF,
+			round((a.basic_pay+a.da_amt)*(12/100) - (15000*(8.33/100)),2) EMPLOYER_epfs 
+			FROM td_pay_slip a,md_employee b,md_month c 
+			where a.emp_no=b.emp_code 
 			and a.emp_no = $empno
-			and a.`trans_date` between '$start' and '$end'  
-			and a.sal_month=c.id
-			ORDER BY `b`.`emp_name` ASC" ;
+			and a.`trans_date` between '$start' and '$end'
+			and a.sal_month=c.id 
+			ORDER BY `b`.`emp_name` ASC";
 			$result = $this->db->query($sql);
 			return $result->result();
 
