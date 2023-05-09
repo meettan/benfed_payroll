@@ -81,7 +81,7 @@
                 <h3>WEST BENGAL STATE CONSUMERS' CO-OPERATIVE FEDERATION LTD.</h3>
                 <h4>Southend Conclave, 3rd Floor, 1582, Rajdanga Main Rd, Kasba, Kolkata-700073</h4>
                 <h4>EMPLOYEES PROVIDENT FUND ACCOUNT LEDGER </h4>
-                <!-- <h4><?php //echo $payslip_dtls->emp_name; ?></h4> -->
+                <h4>Financial Year :<?php echo $this->input->post('syear').'-'.$this->input->post('eyear'); ?></h4>
                 </div> 
             </div>    
             </div>
@@ -103,17 +103,17 @@
                       <tbody>
                      
                       <tr>
-                        <td>Employee Name</td>
+                        <td><b>NAME OF EMPLOYEE</b></td>
                         <td class="left_algn">:</td>
                         <td class="left_algn"><?php echo $emp_dtls->emp_name; ?></td>
                         <td></td>
-                        <td >ACCOUNT/ID NO	
+                        <td ><b>ACCOUNT/ID NO</b>	</td>
                         <!-- <td></td> -->
                         <td class="left_algn">:</td>
                         <td><?php echo $emp_dtls->pf_ac_no; ?></td>
                       </tr>
                       <tr>
-                        <td>DATE OF BIRTH</td>
+                        <td><b>DATE OF BIRTH</b></td>
                         <td class="left_algn">:</td>
                         <td class="left_algn"><?php if(($emp_dtls->join_dt != "0000-00-00") && ($emp_dtls->join_dt != NULL)){ echo date('d-m-Y', strtotime($emp_dtls->join_dt)); } ?></td>
                         <td></td>
@@ -122,11 +122,11 @@
                     
                       </tr>
                       <tr>
-                        <td>UAN NO	</td>
+                        <td><b>UAN NO</b>	</td>
                             <td class="left_algn">:</td>
                             <td class="left_algn"><?php echo $emp_dtls->UAN; ?></td>
                             <td></td>
-                            <td>FINANCIAL YEAR</td>
+                            <td><b>FINANCIAL YEAR</b></td>
                             <td class="left_algn">:</td>
                             <td><?php echo $this->input->post('syear').'-'.$this->input->post('eyear'); ?></td>
 
@@ -187,7 +187,6 @@
                             <tr class="t2">
 
                                 <td colspan="2"><b>Total </b></td>
-                              
                                 <td class="right_algn"><b><?=number_format($tot_epf1,2)?></b></td>
                                 <td class="right_algn"><b><?=number_format($tot_epf2,2)?></b></td>
                                 <td class="right_algn"><b><?=number_format($tot_emp_epf,2)?></b></td>
