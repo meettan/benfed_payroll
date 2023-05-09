@@ -175,7 +175,7 @@
                             <td><?=$pf->WAGE_MONTH?></td>
                             <td><?=$pf->CONTRIBUTION_MONTH?> <?=$pf->CONTRIBUTION_YR?></td>
                             <td><?=$pf->EPF_WAGES?></td>
-                            <td><?=$pf->EPF_WAGE?></td>
+                            <td><?=number_format($pf->EPF_WAGE,2)?></td>
                             <td><?=$pf->employees_EPF?></td>
                             <td><?=$pf->EMPLOYER_EPF?></td>
                             <td><?=$pf->EMPLOYER_epfs?></td>
