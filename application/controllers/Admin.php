@@ -131,13 +131,14 @@
 			if($_SERVER['REQUEST_METHOD'] == "POST") {
 				
 				$cnt = $this->Admin_Process->match_name($this->input->post('name'));
-				if($cnt === 0){
+				
+				if($cnt == 0){
 					$data_array = array (
 						"name"          =>  $this->input->post('name'),
 						"created_by"    =>  $this->session->userdata['loggedin']['user_id'],
 						"created_at"    =>  date('Y-m-d h:i:s')
 					);  
-		
+					
 					$this->Admin_Process->f_insert('md_department', $data_array);
 					$this->session->set_flashdata('msg', 'Successfully added!');
 					$this->dept();
@@ -407,13 +408,12 @@
 				$select = array ("emp_code", "emp_name", "emp_catg","emp_dist", "dob","email", "phn_no",
 								 "designation", "department","emp_addr","salary_status",
 								 "pan_no", "bank_name", "bank_ac_no", "ifsc","join_dt","ret_dt",
-								 "pf_ac_no","uan","basic_pay","aadhar_no","emp_status"
-								 );
+								 "pf_ac_no","uan","basic_pay","aadhar_no","emp_status");
 	
 	
 				$where = array(
 	
-					"emp_code"       =>  $this->input->get('emp_code')
+					"emp_code"     =>  $this->input->get('emp_code')
 	
 				);
 	
