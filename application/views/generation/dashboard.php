@@ -18,7 +18,7 @@
                         <th>Year</th>
                         <th>Month</th>
                         <th>Created By</th>
-                        <th>Edit</th>
+                        <!-- <th>Edit</th> -->
                         <th>Delete</th>
                         </tr>
                       </thead>
@@ -43,19 +43,14 @@ if($generation_dtls) {
             <td><?php echo $d_dtls->sal_year; ?></td>
             <td><?php echo date("F", mktime(0, 0, 0, $d_dtls->sal_month, 10)); ?></td>
             <td><?php echo $d_dtls->created_by; ?></td>
-            <td>
-            
+            <!-- <td>
                 <a href="generation/edit?trans_no=<?php echo $d_dtls->trans_no; ?>&month=<?php echo $d_dtls->sal_month; ?>&year=<?php echo $d_dtls->sal_year; ?>" 
                     data-toggle="tooltip"
                     data-placement="bottom" 
-                    title="Edit"
-                >
-
+                    title="Edit">
                     <i class="fa fa-edit fa-2x" style="color: #007bff"></i>
-                    
                 </a>
-
-            </td>
+            </td> -->
 
             <td>
                 <span 
