@@ -77,8 +77,8 @@ font-weight: 600 !important;
             <div class="col-1"><a href="javascript:void()"><img src="<?=base_url()?>assets/images/benfed.png" alt="logo"/></a></div>
             <div class="col-10">
                 <div style="text-align:center;">
-                    <h3>THE WEST BENGAL STATE CO.OP.MARKETING FEDERATION LTD.</h3>
-                    <h4>Southend Conclave, 3rd Floor, 1582, Rajdanga Main Rd, Kasba, Kolkata-700073</h4>
+                    <h3>The West Bengal State Co Operative Marketing Federation Ltd.</h3>
+                    <h4>Southend Conclave, 3rd Floor, 1582, Rajdanga Main Rd, Kasba, Kolkata-700107</h4>
                     <h4>Salary summary report for the month of <?php echo $months->month_name.' '.$this->input->post('year'); ?></h4>
                 </div>
             </div>    
@@ -161,11 +161,13 @@ font-weight: 600 !important;
                         
                         <p style="display: inline;">Prepared By</p>
 
-                        <p style="display: inline; margin-left: 8%;"></p>
+                        <p style="display: inline; margin-left: 8%;">Deputy Manager(Accounts)</p>
 
-                        <p style="display: inline; margin-left: 8%;"></p>
+                        <p style="display: inline; margin-left: 8%;">Manager Accounts</p>
 
                         <p style="display: inline; margin-left: 8%;">Chief Executive officer</p>
+
+                        <p style="display: inline; margin-left: 8%;">General Manager</p>
 
                     </div>
             

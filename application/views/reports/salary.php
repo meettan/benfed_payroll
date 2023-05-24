@@ -368,13 +368,13 @@ echo getIndianCurrency($pa);
                 
                 <p style="display: inline;">Prepared By</p>
 
-                <p style="display: inline; margin-left: 8%;">Establishment, Sr. Asstt.</p>
+                <p style="display: inline; margin-left: 8%;">Deputy Manager(Accounts)</p>
 
-                <p style="display: inline; margin-left: 8%;">Assistant Manager-II</p>
-
-                <p style="display: inline; margin-left: 8%;">ARCS Attached to CONFED-WB</p>
+                <p style="display: inline; margin-left: 8%;">Manager Accounts</p>
 
                 <p style="display: inline; margin-left: 8%;">Chief Executive Officer</p>
+
+                <p style="display: inline; margin-left: 8%;">General Manager</p>
 
             </div>
 
