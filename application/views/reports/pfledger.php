@@ -113,7 +113,7 @@
                         <td><?php echo $emp_dtls->pf_ac_no; ?></td>
                       </tr>
                       <tr>
-                        <td><b>DATE OF BIRTH</b></td>
+                        <td><b>DATE OF JOINING</b></td>
                         <td class="left_algn">:</td>
                         <td class="left_algn"><?php if(($emp_dtls->join_dt != "0000-00-00") && ($emp_dtls->join_dt != NULL)){ echo date('d-m-Y', strtotime($emp_dtls->join_dt)); } ?></td>
                         <td></td>
