@@ -276,4 +276,15 @@ else {
 }
 
 ?>
-      
+    <script src="https://cdn.jsdelivr.net/gh/linways/table-to-excel@v1.0.4/dist/tableToExcel.js"></script>  
+      <script>
+            function exportReportToExcel() {
+  let table = document.getElementsByTagName("table"); // you can use document.getElementById('tableId') as well by providing id to the table tag
+  TableToExcel.convert(table[0], { // html code may contain multiple tables so here we are refering to 1st table tag
+    name: `statement.xlsx`, // fileName you could use any name
+    sheet: {
+      name: 'statement' // sheetName
+    }
+  });
+}
+        </script>
