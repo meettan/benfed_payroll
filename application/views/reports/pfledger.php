@@ -117,8 +117,10 @@
                         <td class="left_algn">:</td>
                         <td class="left_algn"><?php if(($emp_dtls->join_dt != "0000-00-00") && ($emp_dtls->join_dt != NULL)){ echo date('d-m-Y', strtotime($emp_dtls->join_dt)); } ?></td>
                         <td></td>
-                        <td></td>
-                        <td></td><td></td>
+                        <td><b>DATE OF BIRTH</b></td>
+                        <td class="left_algn">:</td>
+                        <td class="left_algn"><?php if(($emp_dtls->dob != "0000-00-00") && ($emp_dtls->dob != NULL)){ echo date('d-m-Y', strtotime($emp_dtls->dob)); } ?></td>
+                        
                     
                       </tr>
                       <tr>
