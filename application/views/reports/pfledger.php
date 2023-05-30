@@ -180,7 +180,8 @@
                             <td><?=number_format($pf->EPF_WAGE,2)?></td>
                             <td><?=$pf->employees_EPF?></td>
                             <td><?=$pf->EMPLOYER_EPF?></td>
-                            <td><?=$pf->EMPLOYER_epfs?></td>
+                            <!-- <td><?=$pf->EMPLOYER_epfs?></td> -->
+                            <td><?=$pf->employees_EPF - $pf->EMPLOYER_EPF ?></td>
                         </tr>
                             <?php } ?>
                             
