@@ -168,7 +168,7 @@
                             $tot_epf2 +=$pf->EPF_WAGE;
                             $tot_emp_epf +=$pf->employees_EPF;
                             $tot_ey_epf +=$pf->EMPLOYER_EPF;
-                            $tot_epfs +=$pf->EMPLOYER_epfs;
+                            $tot_epfs +=$pf->employees_EPF- $pf->EMPLOYER_EPF;
 
                             
                             ?>
