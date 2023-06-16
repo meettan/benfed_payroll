@@ -153,8 +153,8 @@
                             </tr>
                             <tr class="t2">
                                 <th >EPF</th>
-                                <th >EPF</th>
                                 <th >EPS</th>
+                                <th >EPF</th>
                             </tr>
 
                         </thead>
