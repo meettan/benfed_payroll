@@ -716,8 +716,6 @@
         }
         
     }
-
-
     
 
 
@@ -1314,7 +1312,6 @@ public function f_statementold_report(){
 
     }
 
-
     //PF Contribution Report
     public function f_pfcontribution_report () {
 
@@ -1324,20 +1321,15 @@ public function f_statementold_report(){
             $where  =   array(
 
                 "emp_no"      => $this->input->post('emp_cd'),
-
                 "trans_dt < " => $this->input->post("from_date")
-
             );
-
             //Max Transaction Date
             $max_trans_dt   =   $this->Payroll->f_get_particulars("tm_pf_dtls", array("MAX(trans_dt) trans_dt"), $where, 1);
-            
 
             //temp variable
             $pfcontribution['pf_contribution']   =   NULL;
 
             if(!is_null($max_trans_dt->trans_dt)) {
-
                 //Opening Balance
                 $pfcontribution['opening_balance']   =   $this->Payroll->f_get_particulars("tm_pf_dtls", array("balance"), array("emp_no" => $this->input->post('emp_cd'),"trans_dt" => $max_trans_dt->trans_dt), 1);
 
@@ -1355,9 +1347,7 @@ public function f_statementold_report(){
             $where  =   array(
 
                 "emp_no"    => $this->input->post('emp_cd'),
-
                 "trans_dt BETWEEN '".$this->input->post("from_date")."' AND '".$this->input->post('to_date')."'" => NULL
-
             );
 
             $pfcontribution['pf_contribution']   =   $this->Payroll->f_get_particulars("tm_pf_dtls", NULL, $where, 0);
@@ -1378,10 +1368,8 @@ public function f_statementold_report(){
         }
 
         else{
-
             //Month List
             $pfcontribution['month_list'] =   $this->Payroll->f_get_particulars("md_month",NULL, NULL, 0);
-
             //For Current Date
             $pfcontribution['sys_date']   =   $_SESSION['sys_date'];
 
@@ -1389,24 +1377,83 @@ public function f_statementold_report(){
             $select =   array ("emp_code", "emp_name");
 
             $where  =   array(
-
                 "emp_catg IN (1,2,3)"      => NULL,
-
                 "deduction_flag"           => "Y"
             );
 
             $pfcontribution['emp_list']   =   $this->Payroll->f_get_particulars("md_employee", $select, $where, 0);
-
             $this->load->view('post_login/main');
-
             $this->load->view("reports/pfcontribution", $pfcontribution);
-
             $this->load->view('post_login/footer');
-
         }
-
     }
 
+    public function upload_files(){
+
+        $this->load->view('post_login/payroll_main');
+        $this->load->view("deduction/upload_files");
+        $this->load->view('post_login/footer');
+    }
+    public function income_tax_files(){
+        $this->load->dbutil();
+        $this->load->helper('file');
+        $this->load->helper('download');
+        $query = $this->db->query("SELECT emp_code,emp_name,amount FROM md_employee");
+        $delimiter = ",";
+        $newline = "\r\n";
+        $data = $this->dbutil->csv_from_result($query, $delimiter, $newline);
+        force_download('emp_code_emp_name_amount.csv', $data);
+    }
+    public function upload_files_data(){
+
+        $file_type = $this->input->post('file_type');
+
+        $csvMimes = array('text/x-comma-separated-values',
+					   'text/comma-separated-values',
+					   'application/octet-stream',
+					   'application/vnd.ms-excel',
+					   'application/x-csv',
+					   'text/x-csv',
+					   'text/csv',
+					   'application/csv',
+					   'application/excel',
+					   'application/vnd.msexcel',
+                       'text/plain');
+            
+            //For Cheque Details uploadation
+            if(!empty($_FILES['f_upload']['name']) && in_array($_FILES['f_upload']['type'],$csvMimes)){
+					   
+                $csvFile = fopen($_FILES['f_upload']['tmp_name'], 'r');
+                    
+                    while(($line = fgetcsv($csvFile)) !== FALSE){
+                        
+                    if($line[2] > 0){
+                        $data[] = array(
+                            'emp_code'     => $line[0],
+                            'amount'       =>  $line[2],
+                            "created_dt"   =>  date('Y-m-d'),
+                            "created_by"   =>  $this->session->userdata['loggedin']['user_name'],
+                            );
+                    }
+                                    
+                }  
+                    
+                    unset($data[0]);
+                    $data = array_values($data);
+                    
+                fclose($csvFile);
+                if($file_type == 1){
+                    $this->db->insert_batch('td_income_tax', $data);
+                }elseif($file_type == 2){
+                    $this->db->insert_batch('td_eccs', $data);
+                }
+            }
+
+           // $this->session->set_flashdata('msg', 'Successfully Deleted!');
+            $this->session->set_flashdata('msg', 'Successfully Updated');
+            redirect('salary/upload_files');
+
+    }
 }
     
 ?>

@@ -201,9 +201,9 @@
                 <ul class="submenu-item">
                   <li class="nav-item"><a href="<?php echo site_url("slrydtl");?>">Earnings</a></li>
                   <li class="nav-item"><a href="<?php echo site_url("slryded");?>">Deductions</a></li>
+                  <li class="nav-item"><a href="<?php echo site_url("salary/upload_files");?>">Upload File</a></li>
                   <li class="nav-item"><a href="<?php echo site_url("genspl");?>">Generate Payslip</a></li>
-                  <li class="nav-item"><a href="<?php echo site_url("payapprv");?>">Approve</a> </li>
-                  
+                  <li class="nav-item"><a href="<?php echo site_url("payapprv");?>">Approve</a></li>
                 </ul>
               </div>
             </li>
