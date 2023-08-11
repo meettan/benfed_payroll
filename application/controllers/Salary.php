@@ -1428,25 +1428,27 @@ public function f_statementold_report(){
                     while(($line = fgetcsv($csvFile)) !== FALSE){
                         
                     if($line[2] > 0){
-                        $data[] = array(
+                        $data = array(
                             'emp_code'     => $line[0],
                             'amount'       =>  $line[2],
                             "created_dt"   =>  date('Y-m-d'),
                             "created_by"   =>  $this->session->userdata['loggedin']['user_name'],
                             );
                     }
+
+                    if($file_type == 1){
+                        $this->db->insert_batch('td_income_tax', $data);
+                    }elseif($file_type == 2){
+                        $this->db->insert_batch('td_eccs', $data);
+                    }
                                     
                 }  
                     
-                    unset($data[0]);
-                    $data = array_values($data);
+                  //  unset($data[0]);
+                  //  $data = array_values($data);
                     
                 fclose($csvFile);
-                if($file_type == 1){
-                    $this->db->insert_batch('td_income_tax', $data);
-                }elseif($file_type == 2){
-                    $this->db->insert_batch('td_eccs', $data);
-                }
+               
             }
 
            // $this->session->set_flashdata('msg', 'Successfully Deleted!');
