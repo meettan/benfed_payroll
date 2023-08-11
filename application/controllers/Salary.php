@@ -1435,11 +1435,12 @@ public function f_statementold_report(){
                             "created_by"   =>  $this->session->userdata['loggedin']['user_name'],
                             );
                     }
-
+                    if(count($data) > 0){
                     if($file_type == 1){
                         $this->db->insert('td_income_tax', $data);
                     }elseif($file_type == 2){
                         $this->db->insert('td_eccs', $data);
+                    }
                     }
                                     
                 }  
