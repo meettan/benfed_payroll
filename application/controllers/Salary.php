@@ -1407,7 +1407,7 @@ public function f_statementold_report(){
     public function upload_files_data(){
 
         $file_type = $this->input->post('file_type');
-
+        $data =array();
         $csvMimes = array('text/x-comma-separated-values',
 					   'text/comma-separated-values',
 					   'application/octet-stream',
@@ -1437,9 +1437,9 @@ public function f_statementold_report(){
                     }
 
                     if($file_type == 1){
-                        $this->db->insert_batch('td_income_tax', $data);
+                        $this->db->insert('td_income_tax', $data);
                     }elseif($file_type == 2){
-                        $this->db->insert_batch('td_eccs', $data);
+                        $this->db->insert('td_eccs', $data);
                     }
                                     
                 }  
