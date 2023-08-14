@@ -1398,7 +1398,7 @@ public function f_statementold_report(){
         $this->load->dbutil();
         $this->load->helper('file');
         $this->load->helper('download');
-        $query = $this->db->query("SELECT emp_code,emp_name,amount FROM md_employee");
+        $query = $this->db->query("SELECT emp_code,emp_name,amount FROM md_employee where emp_status = 'A' ");
         $delimiter = ",";
         $newline = "\r\n";
         $data = $this->dbutil->csv_from_result($query, $delimiter, $newline);
