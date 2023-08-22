@@ -167,8 +167,8 @@
 $sql   ="SELECT TIMESTAMPDIFF(MONTH, b.`dob`, DATE_FORMAT(CONCAT(a.sal_year,'-',c.month_no,'-','01'),'%Y-%m-%d')) months,
 b.`emp_name`,b.`dob`,b.`UAN`,b.`bank_ac_no`, CONCAT(a.sal_year,'-',c.month_no,'- ','01'),CONCAT(c.month_name,' ',a.sal_year)WAGE_MONTH, MONTHNAME(LAST_DAY(CONCAT(a.sal_year,'-',c.id,'-','01') + INTERVAL 1 MONTH))CONTRIBUTION_MONTH, YEAR(LAST_DAY(CONCAT(a.sal_year,'-',c.id,'-','01') + INTERVAL 1 MONTH))CONTRIBUTION_YR,a.basic_pay+a.da_amt as EPF_WAGES,15000 EPF_WAGE,
 round((a.basic_pay+a.da_amt)*(12/100),0) employees_EPF,
-IF((TIMESTAMPDIFF(MONTH, b.`dob`, DATE_FORMAT(CONCAT(a.sal_year,'-',c.month_no,'-','01'),'%Y-%m-%d')))>696,0,round(15000*(8.33/100),0)) EMPLOYER_EPF, 
-IF((TIMESTAMPDIFF(MONTH, b.`dob`, DATE_FORMAT(CONCAT(a.sal_year,'-',c.month_no,'-','01'),'%Y-%m-%d')))>696,round((a.basic_pay+a.da_amt)*(12/100) - (15000*(8.33/100)),0)+ round(15000*(8.33/100),0),round((a.basic_pay+a.da_amt)*(12/100) - (15000*(8.33/100)),0)) EMPLOYER_epfs 
+IF((TIMESTAMPDIFF(MONTH, b.`dob`, DATE_FORMAT(CONCAT(a.sal_year,'-',c.month_no,'-','01'),'%Y-%m-%d')))>695,0,round(15000*(8.33/100),0)) EMPLOYER_EPF, 
+IF((TIMESTAMPDIFF(MONTH, b.`dob`, DATE_FORMAT(CONCAT(a.sal_year,'-',c.month_no,'-','01'),'%Y-%m-%d')))>695,round((a.basic_pay+a.da_amt)*(12/100) - (15000*(8.33/100)),0)+ round(15000*(8.33/100),0),round((a.basic_pay+a.da_amt)*(12/100) - (15000*(8.33/100)),0)) EMPLOYER_epfs 
 FROM td_pay_slip a,md_employee b,md_month c 
 where a.emp_no=b.emp_code 
 and a.emp_no = $empno
