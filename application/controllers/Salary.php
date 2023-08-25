@@ -155,9 +155,10 @@
             $oa         =   $this->input->post('oa');
 
             $data_array = array (
+                   "basic_pay"       =>  $this->input->post('basic'),
 
                     "da_amt"         =>  $da,
-
+                    
                     "hra_amt"        =>  $hra,
 
                     "med_allow"      =>  $ma,

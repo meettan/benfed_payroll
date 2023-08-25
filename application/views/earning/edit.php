@@ -76,7 +76,7 @@
                             name = "basic"
                             id   = "basic"
                             value="<?php echo $earning_dtls->basic_pay;?>"
-                            readonly
+                            
                         />
                     </div>
                 </div>
