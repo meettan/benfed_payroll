@@ -75,7 +75,7 @@
                     <div class="col-6">
                         <label for="exampleInputName1">DA:</label>
                         <input type = "text"
-                            class= "form-control ded"
+                            class= "form-control ded"   readonly
                             name = "da"
                             id   = "da"
                             value = 0.00 
@@ -88,7 +88,7 @@
                     <div class="col-6">
                         <label for="exampleInputName1">HRA:</label>
                         <input type = "text"
-                            class= "form-control ded"
+                            class= "form-control ded"  readonly
                             name = "hra"
                             id   = "hra"
                             value = 0.00

@@ -75,7 +75,7 @@
                             class="form-control ded"
                             name = "basic"
                             id   = "basic"
-                            value="<?php echo $earning_dtls->basic_pay;?>"
+                            value="<?php echo $earning_dtls->basic_pay;?>" readonly
                             
                         />
                     </div>
@@ -89,7 +89,7 @@
                             class="form-control ded"
                             name = "da"
                             id   = "da"
-                            value="<?php echo $earning_dtls->da_amt;?>"
+                            value="<?php echo $earning_dtls->da_amt;?>" readonly
                         />
                     </div>
                     <div class="col-6">
@@ -98,7 +98,7 @@
                             class="form-control ded"
                             name = "hra"
                             id   = "hra"
-                            value="<?php echo $earning_dtls->hra_amt;?>"
+                            value="<?php echo $earning_dtls->hra_amt;?>"  readonly
                         />
                     </div>
                 </div>

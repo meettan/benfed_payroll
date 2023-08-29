@@ -1428,7 +1428,7 @@ public function f_statementold_report(){
                     
                     while(($line = fgetcsv($csvFile)) !== FALSE){
                         
-                    if($line[2] > 0){
+                    if(is_numeric($line[2]) == 1){
                         $data = array(
                             'emp_code'     => $line[0],
                             'amount'       =>  $line[2],
