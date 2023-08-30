@@ -210,7 +210,7 @@
                         <label for="exampleInputName1">EPF:</label>
                         <input type = "text"
                             class= "form-control ded"
-                            name = "epf"
+                            name = "epf" readonly
                             id   = "epf"
                             value = "<?php echo $deduction_dtls->epf;?>"
                         />
