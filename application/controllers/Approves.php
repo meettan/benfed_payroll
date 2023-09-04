@@ -153,8 +153,8 @@ class Approves extends CI_Controller{
         $approve['unapprove_tot_dtls'] = [];
 
 
-        $select     =   array( "SUM(tot_deduction) gross",
-                               "SUM(net_amount) net_amount");
+        $select     =   array( "SUM(basic_pay+da_amt+hra_amt+med_allow+othr_allow) gross",
+        "SUM((basic_pay+da_amt+hra_amt+med_allow+othr_allow) - (insuarance+ccs+hbl+telephone+med_adv+festival_adv+tf+med_ins+comp_loan+ ptax + itax + gpf +epf + other_deduction) )as net_amount");
         
         
         for($i = 0; $i < count($approve['unapprove_dtls']); $i++){
@@ -170,6 +170,7 @@ class Approves extends CI_Controller{
             );
 
             $data_array     =   (array) $this->Salary_Process->f_get_particulars("td_pay_slip", $select, $where, 1);
+            //echo $this->db->last_query();die();
 
             array_push($approve['unapprove_tot_dtls'], (object) array_merge((array) $approve['unapprove_dtls'][$i], (array) $data_array));
 
