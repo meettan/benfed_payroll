@@ -213,7 +213,12 @@
                             name = "epf" readonly
                             id   = "epf"
                             value = "<?php //echo $deduction_dtls->epf;
-                            echo round(($earning_dtls->basic_pay+$earning_dtls->da_amt)*epfrate());
+                            if($deduction_dtls->emp_catg == 1){
+                                echo $deduction_dtls->epf;
+                            }else{
+                                echo round(($earning_dtls->basic_pay+$earning_dtls->da_amt)*epfrate());
+                            }
+                            
                             
                             ?>"
                         />

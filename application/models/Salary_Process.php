@@ -63,7 +63,7 @@
 		public function f_sal_dtls($emp_code) 										//Calculate Earnings
         {
 
-            $sql = $this->db->query("SELECT a.basic_pay,
+            $sql = $this->db->query("SELECT a.basic_pay,a.emp_catg,
 										    basic_pay * (select param_value from md_parameters where sl_no=1)/100 as da,
 									        basic_pay * (select param_value from md_parameters where sl_no=2)/100 as hra,
 											(select param_value from md_parameters where sl_no=4)epf, 

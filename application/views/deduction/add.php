@@ -353,8 +353,12 @@
                 
                 var netsal = parseFloat(parseData.basic_pay)+parseFloat(parseData.da)+parseFloat(parseData.hra)+parseFloat(parseData.ma);
                 var epfsal = parseFloat(parseData.basic_pay)+parseFloat(parseData.da);
+                if(parseData.emp_catg == 1){
+                    $('#epf').val('0.00');
+                }else{
+                    $('#epf').val(parseFloat((epfsal)*epfrate).toFixed());
+                }
                 
-                $('#epf').val(parseFloat((epfsal)*epfrate).toFixed());
                 if(netsal >= 10000 && netsal <= 15000){
                     $('#ptax').val(110);
                 }else if(netsal >= 15001 && netsal <= 25000){
