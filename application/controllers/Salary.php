@@ -431,6 +431,8 @@
             $deduction['month_list']        =   $this->Salary_Process->f_get_particulars("md_month", NULL, NULL, 0);
             
             $deduction['deduction_dtls']    =   $this->Salary_Process->f_get_particulars("md_employee a,td_deductions b,md_district c,md_category d", NULL, $where, 1);
+            $deduction['earning_dtls']    =   $this->Salary_Process->f_get_particulars("td_income", NULL,array( "emp_code"=>  $emp_cd,"1 order by effective_date desc"=>NULL), 1);
+           // echo $this->db->last_query();die();
 
             $this->load->view('post_login/payroll_main');
 

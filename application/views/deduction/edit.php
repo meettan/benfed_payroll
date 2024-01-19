@@ -212,7 +212,10 @@
                             class= "form-control ded"
                             name = "epf" readonly
                             id   = "epf"
-                            value = "<?php echo $deduction_dtls->epf;?>"
+                            value = "<?php //echo $deduction_dtls->epf;
+                            echo round(($earning_dtls->basic_pay+$earning_dtls->da_amt)*epfrate());
+                            
+                            ?>"
                         />
                     </div>
                     <div class="col-4">
@@ -314,9 +317,10 @@ $(document).ready(function(){
         .done(function(data){
             var parseData = JSON.parse(data);
             //console.log(parseData );
+            var epfrate = "<?php echo epfrate() ?>";
             var basic = parseData.basic_pay; 
             var da    = parseData.da;
-            var epf   = (basic + da)*(parseData.epf/100);
+            var epf   = (basic + da)*epfrate;
 
             console.log(basic);
 
