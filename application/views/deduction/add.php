@@ -351,8 +351,9 @@
                
                 var epfrate = "<?php echo epfrate() ?>";
                 
-                var netsal = (parseData.basic_pay+parseData.da+parseData.hra+parseData.ma); 
-                $('#epf').val(parseFloat((netsal)*epfrate).toFixed());
+                var netsal = (parseData.basic_pay+parseData.da+parseData.hra+parseData.ma);
+                var epfsal = (parseData.basic_pay+parseData.da); 
+                $('#epf').val(parseFloat((epfsal)*epfrate).toFixed());
                 if(netsal >= 10000 && netsal <= 15000){
                     $('#ptax').val(110);
                 }else if(netsal >= 15001 && netsal <= 25000){
