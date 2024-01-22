@@ -279,7 +279,7 @@
 			// 		FROM   td_salary 
 			// 		GROUP BY sal_month, 
 			// 				 sal_year LIMIT 1";
-				$sql = " SELECT max(sal_month) sal_month,max(`sal_year`) sal_year FROM `td_salary`
+				$sql = "SELECT max(sal_month) sal_month,max(`sal_year`) sal_year FROM `td_salary`
 				where sal_year=(select max(sal_year) from  td_salary) AND approval_status ='A'";
 			$result	=	$this->db->query($sql);
 

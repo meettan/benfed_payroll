@@ -512,7 +512,11 @@
             $data['monthn'] = 'January';
 
         }else{
-            $data['year'] = $max_year->sal_year;
+            if($max_year->sal_year != NULL){
+                $data['year'] = $max_year->sal_year;
+            }else{
+                $data['year'] = date('Y');
+            }
             $data['month'] = ($max_year->sal_month)+1;
             $data['monthn'] = $this->Salary_Process->f_get_particulars("md_month", NULL, array('id'=>$data['month']), 1)->month_name;
         }
