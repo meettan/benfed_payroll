@@ -120,7 +120,11 @@
                         <td >Date of Retirement
                         <!-- <td></td> -->
                         <td class="left_algn">:</td>
-                        <td><?php if(($emp_dtls->ret_dt != "0000-00-00") && ($emp_dtls->ret_dt != NULL)){ echo date('d-m-Y', strtotime($emp_dtls->ret_dt)); } ?></td>
+                        <td><?php if(($emp_dtls->ret_dt != "0000-00-00") && ($emp_dtls->ret_dt != NULL)){ //echo date('d-m-Y', strtotime($emp_dtls->ret_dt)); }
+                              $data =explode('-',$emp_dtls->ret_dt);
+                              echo $data[0].'-'.$data[1].'-'.$data[2];
+                            }
+                        ?></td>
                       </tr>
                       <tr>
                         <td>Phone Number</td>
