@@ -174,7 +174,7 @@ IF((TIMESTAMPDIFF(MONTH, DATE_FORMAT(b.`dob` ,'%Y-%m-01'), DATE_FORMAT(CONCAT(a.
 FROM td_pay_slip a,md_employee b,md_month c 
 where a.emp_no=b.emp_code and a.emp_no = $empno
  and a.`trans_date` between'$start' and '$end'
-  and a.sal_month=c.id ORDER BY c.id ASC";
+  and a.sal_month=c.id ORDER BY a.sal_year ASC";
 
 
 
