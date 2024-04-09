@@ -354,7 +354,7 @@ public function salarycatgreport() {
             $payslip['pf_dtls']    =   $this->Report_Process->f_get_emp_pf_dtls($empno,$ssal_yr,$esal_yr);
 
             // echo $this->db->last_query();
-            // die();
+            // die();   
             $this->load->view('post_login/payroll_main');
 
             $this->load->view("reports/pfledger", $payslip);

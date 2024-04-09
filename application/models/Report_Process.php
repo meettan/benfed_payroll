@@ -150,8 +150,9 @@
 
 		public function f_get_emp_pf_dtls($empno,$ssal_yr,$esal_yr){
 
-			$start = $ssal_yr.'-01-04';
-			$end   = $esal_yr.'-03-31';
+			// $start = $ssal_yr.'-01-04';
+			$start = $ssal_yr.'-03-01';
+			$end   = $esal_yr.'-03-01';
 			// $sql   ="SELECT b.`emp_name`,b.`dob`,b.`UAN`,b.`bank_ac_no`, CONCAT(c.month_name,' ',a.sal_year)WAGE_MONTH,
 			// MONTHNAME(LAST_DAY(CONCAT(a.sal_year,'-',c.id,'-','01')  + INTERVAL 1 MONTH))CONTRIBUTION_MONTH,
 			// YEAR(LAST_DAY(CONCAT(a.sal_year,'-',c.id,'-','01')  + INTERVAL 1 MONTH))CONTRIBUTION_YR,a.basic_pay+a.da_amt as EPF_WAGES,15000 EPF_WAGE,
@@ -174,7 +175,7 @@ IF((TIMESTAMPDIFF(MONTH, DATE_FORMAT(b.`dob` ,'%Y-%m-01'), DATE_FORMAT(CONCAT(a.
 FROM td_pay_slip a,md_employee b,md_month c 
 where a.emp_no=b.emp_code and a.emp_no = $empno
  and a.`trans_date` between'$start' and '$end'
- and LAST_DAY(CONCAT(a.sal_year,'-',c.id,'-','01')+ INTERVAL 1 MONTH)between '$start' and '$end'
+ 
   and a.sal_month=c.id ORDER BY a.sal_year ASC";
 
 
