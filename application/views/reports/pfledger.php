@@ -93,17 +93,7 @@
                 <div class="col-12">
                   <div class="table-responsive table_responsive_print">
                     <table id="order-listing" class="table" width="100%" border="0" cellspacing="0" cellpadding="0">
-                      <!-- <thead>
-                      <tr>
-                            <th class="noborder" width="25%"></th>
-                            <th class="noborder" width="1%"></th>
-                            <th class="noborder" width="25%"></th>
-                            <th class="noborder" width="1%"></th>
-                            <th class="noborder" width="25%"></th>
-                            <th class="noborder" width="1%"></th>
-                            <th class="noborder" width="25%"></th>
-                        </tr>
-                      </thead> -->
+                      
                       <tbody>
                      
                       <tr>
@@ -140,7 +130,7 @@
                         
                       </tbody>
                     </table>
-                    <br>
+                    <!-- <br> -->
                     <table class="width tablePrint" cellpadding="6" style="width:100%;" width="100%" border="0" cellspacing="0" cellpadding="0">
                         <thead style="background-color:#808080 !important">
                             <tr class="t2">
