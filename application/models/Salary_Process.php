@@ -65,7 +65,7 @@
 
             $sql = $this->db->query("SELECT a.basic_pay,a.emp_catg,
 										    basic_pay * (select param_value from md_parameters where sl_no=1)/100 as da,
-									        basic_pay * (select param_value from md_parameters where sl_no=2)/100 as hra,
+											if(basic_pay * (select param_value from md_parameters where sl_no=2)/100>12000,12000,basic_pay * (select param_value from md_parameters where sl_no=2)/100) as hra,
 											(select param_value from md_parameters where sl_no=4)epf, 
 										    (select param_value from md_parameters where sl_no=3) ma
 									FROM md_employee a 
