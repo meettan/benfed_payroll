@@ -112,10 +112,23 @@
 				$from_yr_day = date('Y-m-d',strtotime($from_fin_yr.'-04-01'));
 
 				$to_yr_day 	 = date('Y-m-d',strtotime($to_fin_yr.'-03-31'));*/
+				// 1. CATEGORY HANDLING
+				if ($category == null) {
+					$category = $this->input->post('category');   // from form
+				}
+				if ($category == null) {
+					$category = $this->input->get('category');    // from URL
+				}
+		
+				// If still null → ERROR
+				if ($category == null) {
+					die("Category missing! Please provide category.");
+				}
+		
 
 				$data['tot_employee'] = $this->Login_Process->f_get_particulars('md_employee',array('count(*) as tot_emp'),array('emp_status'=>'A'),1);
 
-				$data['generation_dtls']    =   $this->Salary_Process->f_get_generation();
+				$data['generation_dtls']    =   $this->Salary_Process->f_get_generation($category);
 			
 				$data['tot_ear_deduction']  = $this->Login_Process->f_get_particulars('td_pay_slip',array('sum(basic_pay+da_amt+hra_amt+med_allow+othr_allow) as tot_eer','sum(insuarance+ccs+hbl+telephone+med_adv+festival_adv+tf+med_ins+comp_loan+ptax+itax+gpf+epf+other_deduction) as tot_ded'),
 				array('sal_month'=>$data['generation_dtls']->sal_month,'sal_year'=>$data['generation_dtls']->sal_year),1);
