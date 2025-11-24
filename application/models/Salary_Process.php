@@ -272,7 +272,7 @@
 		}*/
 
 		//For Salary slip generation
-		public function f_get_generation() {
+		public function f_get_generation($category) {
 
 			// $sql = "SELECT sal_month, sal_year, 
 			// 			   MAX(trans_date) trans_date
@@ -280,7 +280,8 @@
 			// 		GROUP BY sal_month, 
 			// 				 sal_year LIMIT 1";
 				$sql = "SELECT max(sal_month) sal_month,max(`sal_year`) sal_year FROM `td_salary`
-				where sal_year=(select max(sal_year) from  td_salary) AND approval_status ='A'";
+				where sal_year=(select max(sal_year) from  td_salary) AND approval_status ='A'
+				AND catg_cd=$category";
 			$result	=	$this->db->query($sql);
 
 			return $result->row();

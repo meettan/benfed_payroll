@@ -505,7 +505,7 @@
 
         $category = $this->input->post('category');
         //$max_year =   $this->Salary_Process->f_get_particulars("td_salary", NULL, array( "approval_status" => 'A','catg_cd'=>$category,'1 order by sal_year,sal_month desc limit 1'=> NULL), 1);
-        $max_year = $this->Salary_Process->f_get_generation();
+        $max_year = $this->Salary_Process->f_get_generation($category);
         if($max_year->sal_month == 12){
             $data['year'] = ($max_year->sal_year)+1;
             $data['month'] = 1;
