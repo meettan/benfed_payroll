@@ -113,17 +113,17 @@
 
 				$to_yr_day 	 = date('Y-m-d',strtotime($to_fin_yr.'-03-31'));*/
 				// 1. CATEGORY HANDLING
-				if ($category == null) {
-					$category = $this->input->post('category');   // from form
-				}
-				if ($category == null) {
-					$category = $this->input->get('category');    // from URL
-				}
+				// if ($category == null) {
+				// 	$category = $this->input->post('category');   // from form
+				// }
+				// if ($category == null) {
+				// 	$category = $this->input->get('category');    // from URL
+				// }
 		
 				// If still null → ERROR
-				if ($category == null) {
-					die("Category missing! Please provide category.");
-				}
+				// if ($category == null) {
+				// 	die("Category missing! Please provide category.");
+				// }
 		
 
 				$data['tot_employee'] = $this->Login_Process->f_get_particulars('md_employee',array('count(*) as tot_emp'),array('emp_status'=>'A'),1);
