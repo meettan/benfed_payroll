@@ -707,10 +707,10 @@
 
             //For Current Date
             $generation['sys_date']   =   $_SESSION['sys_date'];
-
+            $category = $this->input->post('category');
             //Last payslip generation date
             $generation['generation_dtls']    =   $this->Salary_Process->f_get_generation($category);
-            // $category = $this->input->post('category');
+            // 
 
             //Category List
 	        $generation['category']   =   $this->Salary_Process->f_get_particulars("md_category", NULL, NULL, 0);
