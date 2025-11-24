@@ -214,7 +214,8 @@
                             id   = "epf"
                             value = "<?php //echo $deduction_dtls->epf;
                             if($deduction_dtls->emp_catg == 1){
-                                echo $deduction_dtls->epf;
+                                // echo $deduction_dtls->epf;
+                                echo 0;
                             }else{
                                 echo round(($earning_dtls->basic_pay+$earning_dtls->da_amt)*epfrate());
                             }
