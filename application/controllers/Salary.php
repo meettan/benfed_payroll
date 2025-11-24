@@ -706,7 +706,9 @@
             $generation['month_list'] =   $this->Salary_Process->f_get_particulars("md_month",NULL, NULL, 0);
 
             //For Current Date
-            $generation['sys_date']   =   $_SESSION['sys_date'];
+            // $generation['sys_date']   =   $_SESSION['sys_date'];
+            $generation['sys_date'] = $this->session->userdata('sys_date');
+
             $category = $this->input->post('category');
             //Last payslip generation date
             $generation['generation_dtls']    =   $this->Salary_Process->f_get_generation($category);
