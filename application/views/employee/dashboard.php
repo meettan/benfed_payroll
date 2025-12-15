@@ -43,7 +43,7 @@
                 <div class="col-1">
                     <div class="form-check">
                         <label class="form-check-label" style="margin-left: 1.3rem;font-size: 13px;">
-                          <input type="radio" class="form-check-input" name="active_status" id="active_status" value="RG" >
+                          <input type="radio" class="form-check-input" name="active_status" id="active_status" value="N" >
                             Resigned
                             </label>
                             
@@ -52,7 +52,7 @@
                 <div class="col-2">
                     <div class="form-check">
                         <label class="form-check-label">
-                          <input type="radio" class="form-check-input" name="active_status" id="active_status" value="OH" >
+                          <input type="radio" class="form-check-input" name="active_status" id="active_status" value="H" >
                             On Hold
                             </label>
                     </div>
