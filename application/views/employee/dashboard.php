@@ -57,6 +57,14 @@
                             </label>
                     </div>
                 </div>
+                <div class="col-2">
+                    <div class="form-check">
+                        <label class="form-check-label">
+                          <input type="radio" class="form-check-input" name="active_status" id="active_status" value="T" >
+                            Transfer
+                            </label>
+                    </div>
+                </div>
                 
                 <div class="col-1 addBtnSec">
                 <small><a href="<?php echo site_url("emadst");?>" class="btn btn-primary">Add</a></small>
