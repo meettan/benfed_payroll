@@ -98,7 +98,7 @@
                             class="form-control ded"
                             name = "hra"
                             id   = "hra"
-                            value="<?php echo $earning_dtls->hra_amt;?>"  readonly
+                            value="<?php echo $earning_dtls->hra_amt;?>"  
                         />
                     </div>
                 </div>
