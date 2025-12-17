@@ -264,10 +264,11 @@
                             <label for="exampleInputName1">Status:</label>
                             <select name='emp_status' class='form-control'>
                                 <option value="A"<?php if($employee_dtls->emp_status=='A') echo 'selected'; ?>>Active</option>
-                                <option value="OH" <?php if($employee_dtls->emp_status=='OH') echo 'selected'; ?>>On Hold</option>
+                                <option value="H" <?php if($employee_dtls->emp_status=='H') echo 'selected'; ?>>On Hold</option>
                                 <option value="R" <?php if($employee_dtls->emp_status=='R') echo 'selected'; ?>>Retired</option>
                                 <option value="S" <?php if($employee_dtls->emp_status=='S') echo 'selected'; ?>>Suspended</option>
-                                <option value="RG" <?php if($employee_dtls->emp_status=='RG') echo 'selected'; ?>>Resigned</option>
+                                <option value="N" <?php if($employee_dtls->emp_status=='N') echo 'selected'; ?>>Resigned</option>
+                                <option value="T" <?php if($employee_dtls->emp_status=='T') echo 'selected'; ?>>Transfer</option>
                             </select>
                         </div>
                     </div>
@@ -293,7 +294,7 @@
         </div>
 
     <script type="text/javascript">
-     <?php  if($employee_dtls->emp_status == 'R' OR $employee_dtls->emp_status == 'RG' ){ ?> 
+     <?php  if($employee_dtls->emp_status == 'R' OR $employee_dtls->emp_status == 'N' ){ ?> 
       $(document).ready(function(){
         $("#myform :input").prop("disabled", true);
       });
