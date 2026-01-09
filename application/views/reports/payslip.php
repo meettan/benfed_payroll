@@ -314,7 +314,11 @@
                     </table>
                     <div>
                        <p style="display: inline;">Amount (<small>in words</small>):
-                       <b>   <?php echo getIndianCurrency($tot_er - $tot_dd);?></p></b>
+                       <b>   <?php echo getIndianCurrency($tot_er - $tot_dd);?></b></p>
+                        <!-- ✅ ONLY ADDITION (BOLD TEXT) -->
+        <div style="margin-top:30px; text-align:center; font-size:14px; font-weight:bold;">
+            System generated copy – signature not required
+        </div>
                     </div>
                   </div>
                 </div>
