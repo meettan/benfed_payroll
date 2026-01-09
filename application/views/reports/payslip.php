@@ -400,9 +400,11 @@
                             </div>
                             
                     <input type="submit" class="btn btn-info" value="Proceed" />
-                    <button type="button" class="btn btn-light" onclick="window.location.href='<?php echo site_url("reports/payslipreport"); ?>'">
-    Cancel
-</button>
+                    <a href="<?php echo site_url("main"); ?>" 
+                class="btn btn-danger" 
+                style="width: 100px; margin-left:10px;">
+                ⬅ Back
+            </a>
 
                         </form>
                         </div>
