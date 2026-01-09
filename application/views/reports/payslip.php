@@ -399,12 +399,13 @@
                                 </div>
                             </div>
                             
-                    <input type="submit" class="btn btn-info" value="Proceed" />
+                
                     <a href="<?php echo site_url("Payroll_Login/main"); ?>" 
                 class="btn btn-danger" 
                 style="width: 100px; margin-left:10px;">
                 ⬅ Back
             </a>
+            <input type="submit" class="btn btn-info" value="Proceed" />
 
                         </form>
                         </div>
