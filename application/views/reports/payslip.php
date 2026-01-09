@@ -325,8 +325,12 @@
               </div>
             </div>
             <div class="row">
-            <div class="col-md-12" style="text-align: center;"><button type="button" class='btn btn-primary' id='btn' value='Print' onclick='printDiv();'>Print</button></div>
-           
+            <div class="col-md-12" style="text-align: center;">
+            <button type="button" class='btn btn-primary' id='btn' value='Print' onclick='printDiv();'>Print</button></div>
+            <button type="button" class="btn btn-secondary" style="margin-left:10px;" onclick="window.history.back();">
+        Back
+    </button>
+
             </div>
             </div>
           </div>
