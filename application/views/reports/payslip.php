@@ -400,7 +400,10 @@
                             </div>
                             
                     <input type="submit" class="btn btn-info" value="Proceed" />
-                            <button class="btn btn-light">Cancel</button>
+                    <button type="button" class="btn btn-light" onclick="window.location.href='<?php echo site_url("reports/payslipreport"); ?>'">
+    Cancel
+</button>
+
                         </form>
                         </div>
                     </div>
