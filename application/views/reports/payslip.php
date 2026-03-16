@@ -152,9 +152,9 @@
                         <thead>
                             <tr class="t2">
                                 <th width="30%">Earnings</th>
-                                <th width="20%">Amount</th>
+                                <th width="20%">Amount(₹)</th>
                                 <th width="30%">Deductions</th>
-                                <th width="20%">Amount</th>
+                                <th width="20%">Amount(₹)</th>
                                
                             </tr>
 
@@ -306,14 +306,14 @@
 
                                 <td class="left_algn"></td>
                                 <td class="right_algn"></td>
-                                <td class="left_algn">Net Amount</td>
+                                <td class="left_algn">Net Amount(₹)</td>
                                 <td class="right_algn"><?php echo $tot_er - $tot_dd; ?></td>
                             </tr>
                         </tbody>
 
                     </table>
                     <div>
-                       <p style="display: inline;">Amount (<small>in words</small>):
+                       <p style="display: inline;">Amount(₹) (<small>in words</small>):
                        <b>   <?php echo getIndianCurrency($tot_er - $tot_dd);?></b></p>
                         <!-- ✅ ONLY ADDITION (BOLD TEXT) -->
         <div style="margin-top:30px; text-align:center; font-size:14px; font-weight:bold;">
