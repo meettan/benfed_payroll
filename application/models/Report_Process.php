@@ -139,7 +139,7 @@
 			bank_ac_no Bank_Account_Number,
 			b.emp_name,'' Remittance_Details,2 Debit_Account_System,''Originator_Of_Remmittance,
 			phn_no EMAILMOBILENO
-			FROM td_pay_slip a,md_employee b
+		FROM td_pay_slip a,md_employee b
 			WHERE a.emp_no=b.emp_code
 			and a.sal_month=$month
 			and a.sal_year=$sal
@@ -176,7 +176,7 @@ FROM td_pay_slip a,md_employee b,md_month c
 where a.emp_no=b.emp_code and a.emp_no = $empno
  and a.`trans_date` between'$start' and '$end'
  
-  and a.sal_month=c.id ORDER BY a.sal_year ASC";
+  and a.sal_month=c.id ORDER BY a.sal_year,c.month_no ASC";
 
 
 
