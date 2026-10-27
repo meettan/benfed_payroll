@@ -116,7 +116,7 @@
                             <!-- <p class="text-muted mb-0">Connecticut</p> -->
                           </td>
                           <td>
-                            <p class="mb-0">10000.00</p>
+                            <p class="mb-0">20000.00</p>
                             <!-- <p class="text-muted mb-0">9:30 am</p> -->
                           </td>
                           <td>
@@ -128,15 +128,15 @@
                         <tr>
                           <td>2</td>
                           <td>
-                            <p class="mb-0">10001.00</p>
+                            <p class="mb-0">20001.00</p>
                             <!-- <p class="text-muted mb-0">Connecticut</p> -->
                           </td>
                           <td>
-                            <p class="mb-0">15000.00</p>
+                            <p class="mb-0">30000.00</p>
                             <!-- <p class="text-muted mb-0">9:30 am</p> -->
                           </td>
                           <td>
-                            <p class="mb-0">110.00</p>
+                            <p class="mb-0">100.00</p>
                             <!-- <p class="text-muted mb-0">View on map</p> -->
                           </td>
                         </tr>
@@ -144,15 +144,15 @@
                         <tr>
                           <td>3</td>
                           <td>
-                            <p class="mb-0">15001.00</p>
+                            <p class="mb-0">30001.00</p>
                             <!-- <p class="text-muted mb-0">Connecticut</p> -->
                           </td>
                           <td>
-                            <p class="mb-0">25000.00</p>
+                            <p class="mb-0">50000.00</p>
                             <!-- <p class="text-muted mb-0">9:30 am</p> -->
                           </td>
                           <td>
-                            <p class="mb-0">130.00</p>
+                            <p class="mb-0">140.00</p>
                             <!-- <p class="text-muted mb-0">View on map</p> -->
                           </td>
                         </tr>
@@ -160,15 +160,15 @@
                         <tr>
                           <td>4</td>
                           <td>
-                            <p class="mb-0">25001.00</p>
+                            <p class="mb-0">50001.00</p>
                             <!-- <p class="text-muted mb-0">Connecticut</p> -->
                           </td>
                           <td>
-                            <p class="mb-0">40000.00</p>
+                            <p class="mb-0">100000.00</p>
                             <!-- <p class="text-muted mb-0">9:30 am</p> -->
                           </td>
                           <td>
-                            <p class="mb-0">150.00</p>
+                            <p class="mb-0">170.00</p>
                             <!-- <p class="text-muted mb-0">View on map</p> -->
                           </td>
                         </tr>
@@ -176,7 +176,7 @@
                           <tr>
                           <td>5</td>
                           <td>
-                            <p class="mb-0">40001.00</p>
+                            <p class="mb-0">100001.00</p>
                             <!-- <p class="text-muted mb-0">Connecticut</p> -->
                           </td>
                           <td>
@@ -184,7 +184,7 @@
                             <!-- <p class="text-muted mb-0">9:30 am</p> -->
                           </td>
                           <td>
-                            <p class="mb-0">200.00</p>
+                            <p class="mb-0">208.00</p>
                             <!-- <p class="text-muted mb-0">View on map</p> -->
                           </td>
                         </tr>
