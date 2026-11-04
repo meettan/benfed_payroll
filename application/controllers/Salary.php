@@ -524,8 +524,8 @@
         echo  json_encode($data);
     }
 
-    public function generation_add() {
-
+    public function generation_add()
+    {
         if ($this->input->method(TRUE) !== 'POST') {
             $generation['month_list'] = $this->Salary_Process->f_get_particulars("md_month", NULL, NULL, 0);
             $generation['sys_date'] = $this->session->userdata('sys_date');
@@ -538,35 +538,46 @@
             return;
         }
 
-        $trans_dt = trim((string)$this->input->post('sal_date', TRUE));
+        $trans_dt  = trim((string)$this->input->post('sal_date', TRUE));
         $sal_month = (int)$this->input->post('month');
-        $year = (int)$this->input->post('year');
-        $category = (int)$this->input->post('category');
+        $sal_year  = (int)$this->input->post('year');
+        $category  = (int)$this->input->post('category');
 
         $date_obj = DateTime::createFromFormat('Y-m-d', $trans_dt);
         if (!$date_obj || $date_obj->format('Y-m-d') !== $trans_dt ||
-            $sal_month < 1 || $sal_month > 12 || $year < 2000 || $category <= 0) {
+            $sal_month < 1 || $sal_month > 12 || $sal_year < 2000 || $category <= 0) {
             $this->session->set_flashdata('msg', 'Invalid generation date, month, year or category.');
             redirect('addgen');
             return;
         }
 
-        // EPF percentage is configured in md_parameters (sl_no = 4).
-        $rate_row = $this->db->select('param_value')->where('sl_no', 4)->get('md_parameters')->row();
+        // Read EPF percentage once. md_parameters.sl_no=4 stores percentage, e.g. 12.
+        $rate_row = $this->db->select('param_value')
+            ->where('sl_no', 4)
+            ->get('md_parameters')->row();
+
         if (!$rate_row || !is_numeric($rate_row->param_value)) {
             $this->session->set_flashdata('msg', 'EPF rate is missing or invalid in Payroll Parameters (sl_no = 4).');
             redirect('genspl');
             return;
         }
-        $epf_rate = ((float)$rate_row->param_value) / 100;
+
+        $epf_percent = (float)$rate_row->param_value;
+        if ($epf_percent <= 0 || $epf_percent > 100) {
+            $this->session->set_flashdata('msg', 'Invalid EPF percentage. Please check Payroll Parameters (sl_no = 4).');
+            redirect('genspl');
+            return;
+        }
+        $epf_rate = $epf_percent / 100.0;
 
         $this->db->trans_begin();
 
-        // Prevent duplicate generation for the same category, month and year.
+        // A category/month/year can have only one generation.
         $exists = $this->db->where('catg_cd', $category)
-                           ->where('sal_month', $sal_month)
-                           ->where('sal_year', $year)
-                           ->count_all_results('td_salary');
+            ->where('sal_month', $sal_month)
+            ->where('sal_year', $sal_year)
+            ->count_all_results('td_salary');
+
         if ($exists > 0) {
             $this->db->trans_rollback();
             $this->session->set_flashdata('msg', 'For this month and category Payslip already generated!');
@@ -574,24 +585,34 @@
             return;
         }
 
+        // trans_no is generated for the selected transaction date.
         $max_row = $this->db->select('MAX(trans_no) AS trans_no', FALSE)
-                            ->where('trans_date', $trans_dt)
-                            ->get('td_salary')->row();
+            ->where('trans_date', $trans_dt)
+            ->get('td_salary')->row();
         $trans_no = ($max_row && $max_row->trans_no !== NULL) ? ((int)$max_row->trans_no + 1) : 1;
+
+        $logged_user = $this->session->userdata('loggedin');
+        $created_by = (is_array($logged_user) && isset($logged_user['user_id'])) ? $logged_user['user_id'] : '';
 
         $header = array(
             'trans_date' => $trans_dt,
             'trans_no' => $trans_no,
             'sal_month' => $sal_month,
-            'sal_year' => $year,
+            'sal_year' => $sal_year,
             'catg_cd' => $category,
             'approval_status' => 'U',
-            'created_by' => $this->session->userdata['loggedin']['user_id'],
+            'created_by' => $created_by,
             'created_dt' => date('Y-m-d H:i:s')
         );
-        $this->db->insert('td_salary', $header);
 
-        // Fetch each employee's latest salary earning effective on or before generation date.
+        if (!$this->db->insert('td_salary', $header)) {
+            $this->db->trans_rollback();
+            $this->session->set_flashdata('msg', 'Generation header could not be saved.');
+            redirect('genspl');
+            return;
+        }
+
+        // Fetch exactly one latest earning row per employee, effective on/before generation date.
         $employee_sql = "
             SELECT e.emp_code, e.emp_name, e.emp_catg, e.remarks,
                    i.basic_pay, i.da_amt, i.hra_amt, i.med_allow, i.othr_allow
@@ -612,55 +633,75 @@
 
         if (empty($employees)) {
             $this->db->trans_rollback();
-            $this->session->set_flashdata('msg', 'No active employee with salary earning found for this category and generation date. No generation was saved.');
+            $this->session->set_flashdata('msg', 'No active employee with valid salary earning found for this category and date.');
             redirect('genspl');
             return;
         }
 
         $created_count = 0;
         foreach ($employees as $emp) {
+            $basic = is_numeric($emp->basic_pay) ? (float)$emp->basic_pay : 0.0;
+            $da    = is_numeric($emp->da_amt) ? (float)$emp->da_amt : 0.0;
+            $hra   = is_numeric($emp->hra_amt) ? (float)$emp->hra_amt : 0.0;
+            $medical = is_numeric($emp->med_allow) ? (float)$emp->med_allow : 0.0;
+            $other_allowance = is_numeric($emp->othr_allow) ? (float)$emp->othr_allow : 0.0;
+
+            // Do not generate a slip from invalid/negative salary source values.
+            if ($basic < 0 || $da < 0 || $hra < 0 || $medical < 0 || $other_allowance < 0) {
+                $this->db->trans_rollback();
+                log_message('error', 'Salary generation stopped: negative earning value for employee ' . $emp->emp_code);
+                $this->session->set_flashdata('msg', 'Generation stopped: invalid negative salary amount for Employee No. ' . $emp->emp_code . '. Check TD Income.');
+                redirect('genspl');
+                return;
+            }
+
+            // EPF is ONLY calculated on Basic Pay + DA. No gross/allowance or old EPF value is used.
+            $epf_base = round($basic + $da, 2);
+            $epf = round($epf_base * $epf_rate, 2);
+
+            $gross = round($basic + $da + $hra + $medical + $other_allowance, 2);
+            if (!is_finite($epf) || $epf < 0 || $epf > $gross) {
+                $this->db->trans_rollback();
+                log_message('error', 'Invalid EPF for employee ' . $emp->emp_code . ': basic=' . $basic . ', da=' . $da . ', rate=' . $epf_percent . '%, epf=' . $epf . ', gross=' . $gross);
+                $this->session->set_flashdata('msg', 'Generation stopped: EPF exceeds Gross Salary for Employee No. ' . $emp->emp_code . '. Check Basic Pay and DA in TD Income.');
+                redirect('genspl');
+                return;
+            }
+
             $ded = $this->db->get_where('td_deductions', array('emp_cd' => $emp->emp_code))->row();
+            $insuarance = $ded ? (float)$ded->insuarance : 0.0;
+            $ccs = $ded ? (float)$ded->ccs : 0.0;
+            $hbl = $ded ? (float)$ded->hbl : 0.0;
+            $telephone = $ded ? (float)$ded->telephone : 0.0;
+            $med_adv = $ded ? (float)$ded->med_adv : 0.0;
+            $festival_adv = $ded ? (float)$ded->festival_adv : 0.0;
+            $tf = $ded ? (float)$ded->tf : 0.0;
+            $med_ins = $ded ? (float)$ded->med_ins : 0.0;
+            $comp_loan = $ded ? (float)$ded->comp_loan : 0.0;
+            $ptax = $ded ? (float)$ded->ptax : 0.0;
+            $itax = $ded ? (float)$ded->itax : 0.0;
+            $gpf = $ded ? (float)$ded->gpf : 0.0;
+            $other_deduction = $ded ? (float)$ded->other_deduction : 0.0;
 
-            $basic = (float)$emp->basic_pay;
-            $da = (float)$emp->da_amt;
-            $hra = (float)$emp->hra_amt;
-            $medical = (float)$emp->med_allow;
-            $other_allowance = (float)$emp->othr_allow;
-
-            // Same configured EPF rate applies to Category 1 and other categories.
-            $epf = round(($basic + $da) * $epf_rate, 2);
-
-            $insuarance = $ded ? (float)$ded->insuarance : 0;
-            $ccs = $ded ? (float)$ded->ccs : 0;
-            $hbl = $ded ? (float)$ded->hbl : 0;
-            $telephone = $ded ? (float)$ded->telephone : 0;
-            $med_adv = $ded ? (float)$ded->med_adv : 0;
-            $festival_adv = $ded ? (float)$ded->festival_adv : 0;
-            $tf = $ded ? (float)$ded->tf : 0;
-            $med_ins = $ded ? (float)$ded->med_ins : 0;
-            $comp_loan = $ded ? (float)$ded->comp_loan : 0;
-            $ptax = $ded ? (float)$ded->ptax : 0;
-            $itax = $ded ? (float)$ded->itax : 0;
-            $gpf = $ded ? (float)$ded->gpf : 0;
-            $other_deduction = $ded ? (float)$ded->other_deduction : 0;
-
-            $gross = $basic + $da + $hra + $medical + $other_allowance;
-            $total_deduction = $insuarance + $ccs + $hbl + $telephone +
-                $med_adv + $festival_adv + $tf + $med_ins + $comp_loan +
-                $ptax + $itax + $gpf + $epf + $other_deduction;
-            $net_amount = $gross - $total_deduction;
+            // Include calculated EPF exactly once in total deductions.
+            $total_deduction = round(
+                $insuarance + $ccs + $hbl + $telephone + $med_adv + $festival_adv +
+                $tf + $med_ins + $comp_loan + $ptax + $itax + $gpf + $epf + $other_deduction,
+                2
+            );
+            $net_amount = round($gross - $total_deduction, 2);
 
             $slip = array(
                 'trans_date' => $trans_dt,
                 'trans_no' => $trans_no,
-                'sal_month' => $sal_month,
-                'sal_year' => $year,
+                'sal_month' => (string)$sal_month,
+                'sal_year' => $sal_year,
                 'emp_no' => $emp->emp_code,
-                'basic_pay' => $basic,
-                'da_amt' => $da,
-                'hra_amt' => $hra,
-                'med_allow' => $medical,
-                'othr_allow' => $other_allowance,
+                'basic_pay' => round($basic, 2),
+                'da_amt' => round($da, 2),
+                'hra_amt' => round($hra, 2),
+                'med_allow' => round($medical, 2),
+                'othr_allow' => round($other_allowance, 2),
                 'insuarance' => $insuarance,
                 'ccs' => $ccs,
                 'hbl' => $hbl,
@@ -680,24 +721,30 @@
                 'remarks' => $emp->remarks,
                 'approval_status' => 'U'
             );
-            $this->db->insert('td_pay_slip', $slip);
+
+            if (!$this->db->insert('td_pay_slip', $slip)) {
+                $this->db->trans_rollback();
+                log_message('error', 'Payslip insert failed for employee ' . $emp->emp_code . '. ' . $this->db->last_query());
+                $this->session->set_flashdata('msg', 'Generation failed while saving Employee No. ' . $emp->emp_code . '. No partial generation was saved.');
+                redirect('genspl');
+                return;
+            }
             $created_count++;
         }
 
         if ($this->db->trans_status() === FALSE) {
             $this->db->trans_rollback();
-            log_message('error', 'Salary generation failed. Last query: ' . $this->db->last_query());
-            $this->session->set_flashdata('msg', 'Generation failed. Database changes were rolled back. Please check application logs.');
+            log_message('error', 'Salary generation transaction failed. ' . $this->db->last_query());
+            $this->session->set_flashdata('msg', 'Generation failed. Database transaction was rolled back.');
             redirect('genspl');
             return;
         }
 
         $this->db->trans_commit();
-        $rate_text = rtrim(rtrim(number_format($epf_rate * 100, 2, '.', ''), '0'), '.');
-        $this->session->set_flashdata('msg', 'Successfully generated! Total employees: ' . $created_count . '. EPF rate: ' . $rate_text . '%.');
+        $rate_text = rtrim(rtrim(number_format($epf_percent, 2, '.', ''), '0'), '.');
+        $this->session->set_flashdata('msg', 'Successfully generated! Employees: ' . $created_count . '. EPF: ' . $rate_text . '% of Basic Pay + DA.');
         redirect('genspl');
     }
-
 
     public function f_salary_report() {
 
