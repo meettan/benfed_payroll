@@ -638,6 +638,37 @@
             return;
         }
 
+        // IMPORTANT: td_pay_slip primary key is (trans_date, sal_month, sal_year, emp_no).
+        // trans_no is NOT part of that primary key. Check existing slips before inserting.
+        $employee_codes = array();
+        foreach ($employees as $employee_row) {
+            $employee_codes[] = (string)$employee_row->emp_code;
+        }
+
+        $existing_slips = $this->db->select('emp_no')
+            ->from('td_pay_slip')
+            ->where('trans_date', $trans_dt)
+            ->where('sal_month', (string)$sal_month)
+            ->where('sal_year', $sal_year)
+            ->where_in('emp_no', $employee_codes)
+            ->get()->result();
+
+        if (!empty($existing_slips)) {
+            $duplicate_codes = array();
+            foreach ($existing_slips as $existing_slip) {
+                $duplicate_codes[] = $existing_slip->emp_no;
+            }
+            $this->db->trans_rollback();
+            $this->session->set_flashdata(
+                'msg',
+                'Generation stopped. Payslip already exists for Employee No(s): ' .
+                implode(', ', $duplicate_codes) .
+                ' for this transaction date/month/year. Check the existing Unapproved Generation before deleting anything.'
+            );
+            redirect('genspl');
+            return;
+        }
+
         $created_count = 0;
         foreach ($employees as $emp) {
             $basic = is_numeric($emp->basic_pay) ? (float)$emp->basic_pay : 0.0;
