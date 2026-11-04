@@ -526,213 +526,179 @@
 
     public function generation_add() {
 
-        if($_SERVER['REQUEST_METHOD'] == "POST") {
-
-            $trans_dt     =   $this->input->post('sal_date');
-
-            $sal_month    =   $this->input->post('month');
-
-            $year         =   $this->input->post('year');
-
-            $category     =   $this->input->post('category');
-
-            //Check given category exsit or not
-            //for given month and date
-            $select     =   array("catg_cd");
-
-            $where      =   array(
-
-                "catg_cd"       =>  $category,
-                
-                "sal_month"     =>  $sal_month,
-
-                "sal_year"      =>  $year
-            
-            );
-
-            $flag     =   $this->Salary_Process->f_get_particulars("td_salary", $select, $where, 1);
-
-            if($flag) {
-
-                $this->session->set_flashdata('msg', 'For this month and category Payslip already generated!');
-
-            }
-
-            else {
-
-                //Retrive max trans no
-                $select     =   array("MAX(trans_no) trans_no");
-
-                $where      =   array(
-
-                    "trans_date"    =>  $trans_dt,
-                    
-                    "sal_month"     =>  $sal_month,
-
-                    "sal_year"      =>  $year
-                
-                );
-                
-                $trans_no     =   $this->Salary_Process->f_get_particulars("td_salary", $select, $where, 1);
-
-                $data_array = array (
-
-                    "trans_date"   =>  $trans_dt,
-
-                    "trans_no"     =>  ($trans_no != NULL)? ($trans_no->trans_no + 1):'1',
-    
-                    "sal_month"    =>  $sal_month,
-
-                    "sal_year"     =>  $year,
-
-                    "catg_cd"      =>  $category,
-    
-                    "created_by"   =>  $this->session->userdata['loggedin']['user_id'],
-    
-                    "created_dt"   =>  date('Y-m-d h:i:s')
-    
-                );
-    
-                $this->Salary_Process->f_insert("td_salary", $data_array);
-
-
-                /*
-
-
-                    For double Salary Generation
-
-
-                */
-
-                //For those Employees who have double salary in the current payslip generation month and year
-                /*$select = array ("sal_month", "year", "emp_code", "emp_name", 
-                                 "emp_catg", "designation", "department", "pan_no",
-                                 "bank_name", "bank_ac_no",
-                                 "pf_ac_no", "cash_allow", "band_pay", 
-                                 "grade_pay", "ma", "p_tax_id", "ir_pay", "remarks");
-
-
-                $where = array(
-
-                            "sal_month"       =>  $sal_month,
-
-                            "year"            =>  $year,
-
-                            "emp_catg"        =>  $category,
-
-                            "emp_status"      =>  "A"
-
-                        );*/
-                
-                        
-                //Retriving Employee list
-                //$emp_dtls    =   $this->Payroll->f_get_particulars("md_doublesal", $select, $where, 0);
-                
-                //If Present then employee(s) details will inserted in the td_pay_slip table
-                /*if($emp_dtls) {
-
-                    unset($data_array);
-
-                    foreach($emp_dtls as $e_list) {
-
-                        $data_array  =   array(
-
-                            "trans_date"        =>  $trans_dt,
-        
-                            "trans_no"          =>  ($trans_no != NULL)? ($trans_no->trans_no + 1):'1',
-        
-                            "sal_month"         =>  $sal_month,
-        
-                            "sal_year"          =>  $year,
-        
-                            "emp_no"            =>  $e_list->emp_code,
-        
-                            "emp_name"          =>  $e_list->emp_name,
-        
-                            "emp_catg"          =>  $e_list->emp_catg,
-        
-                            "designation"       =>  $e_list->designation,
-        
-                            "band_pay"          =>  $e_list->band_pay,
-        
-                            "grade_pay"         =>  $e_list->grade_pay,
-        
-                            // "basic_pay"       =>  $basic = round($e_list->band_pay + $e_list->grade_pay),
-                            "basic_pay"         =>  $basic = round($e_list->band_pay ),
-                            
-        
-                            "da"                =>  $basic,
-        
-                            "ir"                =>  $e_list->ir_pay,
-        
-                            "hra"               =>  $hra = round(($basic * 15) / 100),
-        
-                            "ma"                =>  $e_list->ma,
-        
-                            "cash_allow"        =>  $e_list->cash_allow,
-        
-                            "gross"             =>  $gross = (2 * $basic) + $hra + $e_list->ma + $e_list->ir_pay + $e_list->cash_allow,
-        
-                            "pf"                =>  $pf = round((2 * $basic  * 12) / 100),
-        
-                            "ptax"              =>  $ptax = $e_list->p_tax_id,
-        
-                            "tot_deduction"     =>  $pf + $ptax,
-        
-                            "net_amount"        =>  $gross - ($pf + $ptax),
-        
-                            "remarks"           =>  $e_list->remarks
-        
-                        );
-
-                        $this->Payroll->f_insert("td_pay_slip", $data_array);
-
-                    }
-
-                }*/
-
-                $this->session->set_flashdata('msg', 'Successfully generated!');
-
-            }
-
-            redirect('genspl');
-
-
-        }
-
-        else {
-
-            //Month List
-            $generation['month_list'] =   $this->Salary_Process->f_get_particulars("md_month",NULL, NULL, 0);
-
-            //For Current Date
-            // $generation['sys_date']   =   $_SESSION['sys_date'];
+        if ($this->input->method(TRUE) !== 'POST') {
+            $generation['month_list'] = $this->Salary_Process->f_get_particulars("md_month", NULL, NULL, 0);
             $generation['sys_date'] = $this->session->userdata('sys_date');
-
-            $category = $this->input->post('category');
-            //Last payslip generation date
-            $generation['generation_dtls']    =   $this->Salary_Process->f_get_generation($category);
-            // 
-
-            //Category List
-	        $generation['category']   =   $this->Salary_Process->f_get_particulars("md_category", NULL, NULL, 0);
+            $generation['generation_dtls'] = NULL;
+            $generation['category'] = $this->Salary_Process->f_get_particulars("md_category", NULL, NULL, 0);
 
             $this->load->view('post_login/payroll_main');
-
             $this->load->view("generation/add", $generation);
-
             $this->load->view('post_login/footer');
-
+            return;
         }
-        
+
+        $trans_dt = trim((string)$this->input->post('sal_date', TRUE));
+        $sal_month = (int)$this->input->post('month');
+        $year = (int)$this->input->post('year');
+        $category = (int)$this->input->post('category');
+
+        $date_obj = DateTime::createFromFormat('Y-m-d', $trans_dt);
+        if (!$date_obj || $date_obj->format('Y-m-d') !== $trans_dt ||
+            $sal_month < 1 || $sal_month > 12 || $year < 2000 || $category <= 0) {
+            $this->session->set_flashdata('msg', 'Invalid generation date, month, year or category.');
+            redirect('addgen');
+            return;
+        }
+
+        // EPF percentage is configured in md_parameters (sl_no = 4).
+        $rate_row = $this->db->select('param_value')->where('sl_no', 4)->get('md_parameters')->row();
+        if (!$rate_row || !is_numeric($rate_row->param_value)) {
+            $this->session->set_flashdata('msg', 'EPF rate is missing or invalid in Payroll Parameters (sl_no = 4).');
+            redirect('genspl');
+            return;
+        }
+        $epf_rate = ((float)$rate_row->param_value) / 100;
+
+        $this->db->trans_begin();
+
+        // Prevent duplicate generation for the same category, month and year.
+        $exists = $this->db->where('catg_cd', $category)
+                           ->where('sal_month', $sal_month)
+                           ->where('sal_year', $year)
+                           ->count_all_results('td_salary');
+        if ($exists > 0) {
+            $this->db->trans_rollback();
+            $this->session->set_flashdata('msg', 'For this month and category Payslip already generated!');
+            redirect('genspl');
+            return;
+        }
+
+        $max_row = $this->db->select('MAX(trans_no) AS trans_no', FALSE)
+                            ->where('trans_date', $trans_dt)
+                            ->get('td_salary')->row();
+        $trans_no = ($max_row && $max_row->trans_no !== NULL) ? ((int)$max_row->trans_no + 1) : 1;
+
+        $header = array(
+            'trans_date' => $trans_dt,
+            'trans_no' => $trans_no,
+            'sal_month' => $sal_month,
+            'sal_year' => $year,
+            'catg_cd' => $category,
+            'approval_status' => 'U',
+            'created_by' => $this->session->userdata['loggedin']['user_id'],
+            'created_dt' => date('Y-m-d H:i:s')
+        );
+        $this->db->insert('td_salary', $header);
+
+        // Fetch each employee's latest salary earning effective on or before generation date.
+        $employee_sql = "
+            SELECT e.emp_code, e.emp_name, e.emp_catg, e.remarks,
+                   i.basic_pay, i.da_amt, i.hra_amt, i.med_allow, i.othr_allow
+            FROM md_employee e
+            INNER JOIN td_income i
+                ON i.emp_code = e.emp_code
+               AND i.effective_date = (
+                    SELECT MAX(i2.effective_date)
+                    FROM td_income i2
+                    WHERE i2.emp_code = e.emp_code
+                      AND i2.effective_date <= ?
+               )
+            WHERE e.emp_catg = ?
+              AND e.emp_status IN ('A', 'S')
+            ORDER BY e.emp_code
+        ";
+        $employees = $this->db->query($employee_sql, array($trans_dt, $category))->result();
+
+        if (empty($employees)) {
+            $this->db->trans_rollback();
+            $this->session->set_flashdata('msg', 'No active employee with salary earning found for this category and generation date. No generation was saved.');
+            redirect('genspl');
+            return;
+        }
+
+        $created_count = 0;
+        foreach ($employees as $emp) {
+            $ded = $this->db->get_where('td_deductions', array('emp_cd' => $emp->emp_code))->row();
+
+            $basic = (float)$emp->basic_pay;
+            $da = (float)$emp->da_amt;
+            $hra = (float)$emp->hra_amt;
+            $medical = (float)$emp->med_allow;
+            $other_allowance = (float)$emp->othr_allow;
+
+            // Same configured EPF rate applies to Category 1 and other categories.
+            $epf = round(($basic + $da) * $epf_rate, 2);
+
+            $insuarance = $ded ? (float)$ded->insuarance : 0;
+            $ccs = $ded ? (float)$ded->ccs : 0;
+            $hbl = $ded ? (float)$ded->hbl : 0;
+            $telephone = $ded ? (float)$ded->telephone : 0;
+            $med_adv = $ded ? (float)$ded->med_adv : 0;
+            $festival_adv = $ded ? (float)$ded->festival_adv : 0;
+            $tf = $ded ? (float)$ded->tf : 0;
+            $med_ins = $ded ? (float)$ded->med_ins : 0;
+            $comp_loan = $ded ? (float)$ded->comp_loan : 0;
+            $ptax = $ded ? (float)$ded->ptax : 0;
+            $itax = $ded ? (float)$ded->itax : 0;
+            $gpf = $ded ? (float)$ded->gpf : 0;
+            $other_deduction = $ded ? (float)$ded->other_deduction : 0;
+
+            $gross = $basic + $da + $hra + $medical + $other_allowance;
+            $total_deduction = $insuarance + $ccs + $hbl + $telephone +
+                $med_adv + $festival_adv + $tf + $med_ins + $comp_loan +
+                $ptax + $itax + $gpf + $epf + $other_deduction;
+            $net_amount = $gross - $total_deduction;
+
+            $slip = array(
+                'trans_date' => $trans_dt,
+                'trans_no' => $trans_no,
+                'sal_month' => $sal_month,
+                'sal_year' => $year,
+                'emp_no' => $emp->emp_code,
+                'basic_pay' => $basic,
+                'da_amt' => $da,
+                'hra_amt' => $hra,
+                'med_allow' => $medical,
+                'othr_allow' => $other_allowance,
+                'insuarance' => $insuarance,
+                'ccs' => $ccs,
+                'hbl' => $hbl,
+                'telephone' => $telephone,
+                'med_adv' => $med_adv,
+                'festival_adv' => $festival_adv,
+                'tf' => $tf,
+                'med_ins' => $med_ins,
+                'comp_loan' => $comp_loan,
+                'ptax' => $ptax,
+                'itax' => $itax,
+                'gpf' => $gpf,
+                'epf' => $epf,
+                'other_deduction' => $other_deduction,
+                'tot_deduction' => $total_deduction,
+                'net_amount' => $net_amount,
+                'remarks' => $emp->remarks,
+                'approval_status' => 'U'
+            );
+            $this->db->insert('td_pay_slip', $slip);
+            $created_count++;
+        }
+
+        if ($this->db->trans_status() === FALSE) {
+            $this->db->trans_rollback();
+            log_message('error', 'Salary generation failed. Last query: ' . $this->db->last_query());
+            $this->session->set_flashdata('msg', 'Generation failed. Database changes were rolled back. Please check application logs.');
+            redirect('genspl');
+            return;
+        }
+
+        $this->db->trans_commit();
+        $rate_text = rtrim(rtrim(number_format($epf_rate * 100, 2, '.', ''), '0'), '.');
+        $this->session->set_flashdata('msg', 'Successfully generated! Total employees: ' . $created_count . '. EPF rate: ' . $rate_text . '%.');
+        redirect('genspl');
     }
-    
 
 
-   
-  /*************************REPORTS**************************/
-
-    //For Categorywise Salary Report
     public function f_salary_report() {
 
         if($_SERVER['REQUEST_METHOD'] == "POST") {
