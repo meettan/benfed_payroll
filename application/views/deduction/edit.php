@@ -326,8 +326,12 @@ $(document).ready(function(){
             var epfrate = "<?php echo epfrate() ?>";
             var basic = parseData.basic_pay; 
             var da    = parseData.da;
-            var epf   = (basic + da)*epfrate;
-            epf = Math.round(epf);
+            // var epf   = (basic + da)*epfrate;
+            // epf = Math.round(epf);
+            var epf = Math.round(
+    (parseFloat(basic) + parseFloat(da)) * parseFloat(epfrate)
+);
+$('#epf').val(epf);
             console.log(basic);
 
             console.log(da);
