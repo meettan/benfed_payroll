@@ -359,14 +359,14 @@
                     $('#epf').val(parseFloat((epfsal)*epfrate).toFixed());
                 }
                 
-                if(netsal >= 10000 && netsal <= 15000){
-                    $('#ptax').val(110);
-                }else if(netsal >= 15001 && netsal <= 25000){
-                    $('#ptax').val(130);
-                }else if(netsal >= 25001 && netsal <= 40000){
-                    $('#ptax').val(150);
-                }else if(netsal >= 40001){
-                    $('#ptax').val(200);
+                if(netsal >= 20001 && netsal <= 30000){
+                    $('#ptax').val(100);
+                }else if(netsal >= 30001 && netsal <= 50000){
+                    $('#ptax').val(140);
+                }else if(netsal >= 50001 && netsal <= 100000){
+                    $('#ptax').val(170);
+                }else if(netsal >= 100001{
+                    $('#ptax').val(208);
                 }
 
 			});

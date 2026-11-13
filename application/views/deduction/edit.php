@@ -327,7 +327,7 @@ $(document).ready(function(){
             var basic = parseData.basic_pay; 
             var da    = parseData.da;
             var epf   = (basic + da)*epfrate;
-
+            epf = Math.round(epf);
             console.log(basic);
 
             console.log(da);
@@ -352,4 +352,124 @@ $(document).ready(function(){
 
 });
 
+$(document).ready(function () {
+
+var epfrate = parseFloat("<?php echo epfrate(); ?>") || 0;
+var empCategory = "<?php echo $deduction_dtls->emp_catg; ?>";
+
+// Calculate total deductions
+function calculateTotalDeduction() {
+
+    var sum = 0;
+
+    $('.ded').each(function () {
+        sum += parseFloat($(this).val()) || 0;
+    });
+
+    $('#tdud').val(sum.toFixed(2));
+}
+
+// Calculate PTAX from salary details
+function calculatePTAX(parseData) {
+
+    var basic = parseFloat(parseData.basic_pay) || 0;
+    var da    = parseFloat(parseData.da) || 0;
+    var hra   = parseFloat(parseData.hra) || 0;
+    var ma    = parseFloat(parseData.ma) || 0;
+
+    var netsal = basic + da + hra + ma;
+
+    var ptax = 0;
+
+    if (netsal >= 20001 && netsal <= 30000) {
+
+        ptax = 100;
+
+    } else if (netsal >= 30001 && netsal <= 50000) {
+
+        ptax = 140;
+
+    } else if (netsal >= 50001 && netsal <= 100000) {
+
+        ptax = 170;
+
+    } else if (netsal >= 100001) {
+
+        ptax = 208;
+    }
+
+    $('#netsal').val(netsal.toFixed(2));
+
+    $('#ptax').val(ptax);
+
+    // Recalculate total deduction
+    calculateTotalDeduction();
+}
+
+// Fetch employee salary details
+function loadSalaryDetails() {
+
+    $.get(
+        '<?php echo site_url("Salary/f_sal_dtls"); ?>',
+        {
+            emp_code: $("#emp_code").val()
+        }
+    )
+
+    .done(function (data) {
+
+        try {
+
+            var parseData = (typeof data === 'string')
+                ? JSON.parse(data)
+                : data;
+
+            var basic = parseFloat(parseData.basic_pay) || 0;
+            var da    = parseFloat(parseData.da) || 0;
+
+            // EPF calculation
+            var epf = 0;
+
+            if (empCategory != "1") {
+                // epf = (basic + da) * epfrate;
+                Math.round((basic + da) * epfrate);
+            }
+
+            $('#epf').val(epf.toFixed(2));
+
+            // PTAX calculation
+            calculatePTAX(parseData);
+
+            // Update total deductions
+            calculateTotalDeduction();
+
+        } catch (error) {
+
+            console.error("Salary data error:", error);
+            console.error(data);
+
+        }
+
+    })
+
+    .fail(function (xhr) {
+
+        console.error("Salary AJAX failed:", xhr.responseText);
+
+    });
+}
+
+// Load salary immediately when page opens
+loadSalaryDetails();
+
+// Recalculate total when deduction changes
+$(document).on('input change', '.ded', function () {
+
+    calculateTotalDeduction();
+
+});
+
+});
+
 </script>
+
